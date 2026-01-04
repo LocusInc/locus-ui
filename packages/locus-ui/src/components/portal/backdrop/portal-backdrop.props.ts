@@ -25,7 +25,7 @@ const PortalBackdropPropsDefs = {
   opacity: {
     type: "string",
     default: "0.3",
-    cssProperty: "--lcs-backdrop-opacity",
+    cssProperty: "--backdrop-opacity",
   } satisfies PropDef<string>,
 
   /**
@@ -37,7 +37,7 @@ const PortalBackdropPropsDefs = {
   blur: {
     type: "string",
     default: "2px",
-    cssProperty: "--lcs-backdrop-blur",
+    cssProperty: "--backdrop-blur",
   } satisfies PropDef<string>,
 };
 

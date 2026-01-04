@@ -1,21 +1,19 @@
-.lcs-portal {
+.portal[data-anchored="true"] {
+  position: absolute;
+  inset: auto;
+  width: auto;
+  height: auto;
+  z-index: 9999;
+}
+
+.portal:not([data-anchored="true"]) {
   position: fixed;
   display: flex;
   inset: 0;
   width: 100dvw;
   height: 100dvh;
   z-index: 9999;
-}
 
-/* Anchored portal styles - override full-screen overlay */
-.lcs-portal[data-anchored="true"] {
-  position: absolute;
-  inset: auto;
-  width: auto;
-  height: auto;
-}
-
-.lcs-portal:not([data-anchored="true"]) {
   &[data-position="tl"] {
     justify-content: start;
   }

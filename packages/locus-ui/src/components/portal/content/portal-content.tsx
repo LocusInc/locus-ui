@@ -137,7 +137,7 @@ const PortalContent = React.forwardRef<HTMLDivElement, PortalContentProps>(
     const portalContent = (
       <div
         ref={setRefs}
-        className={clsx("lcs-portal", className)}
+        className={clsx("portal", className)}
         data-appearance={themeContext?.appearance}
         data-radius={themeContext?.radius}
         data-roundness={themeContext?.roundness ?? "theme"}
@@ -152,7 +152,7 @@ const PortalContent = React.forwardRef<HTMLDivElement, PortalContentProps>(
         {...dataAttrs}
       >
         <div
-          className="lcs-portal-content"
+          className="portal-content"
           onClick={(e) => e.stopPropagation()}
         >
           {children}

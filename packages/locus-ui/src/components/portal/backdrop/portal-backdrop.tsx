@@ -29,7 +29,7 @@ const PortalBackdrop = React.forwardRef<HTMLDivElement, PortalBackdropProps>(
     return (
       <div
         ref={ref}
-        className={clsx("lcs-portal-backdrop", className)}
+        className={clsx("portal-backdrop", className)}
         {...dataAttrs}
         {...rest}
       />

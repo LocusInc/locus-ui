@@ -32,12 +32,9 @@ const PortalContentPropsDefs = {
    * Whether the portal content is anchored to an element.
    *
    * When anchored, the portal content is positioned relative to the trigger element unless a custom anchorRef is provided.
-   *
-   * @default false
    */
   anchored: {
     type: "boolean",
-    default: false,
     dataAttr: "anchored",
   } satisfies PropDef<boolean>,
 

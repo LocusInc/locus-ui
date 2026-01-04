@@ -1,4 +1,4 @@
-.lcs-portal-backdrop {
+.portal-backdrop[data-variant] {
   position: fixed;
   top: 0;
   left: 0;
@@ -11,11 +11,11 @@
   }
 
   &[data-variant="shadow"] {
-    background-color: rgba(0, 0, 0, var(--lcs-backdrop-opacity, 0.3));
+    background-color: rgba(0, 0, 0, var(--backdrop-opacity, 0.3));
   }
 
   &[data-variant="blurred"] {
-    background-color: rgba(0, 0, 0, var(--lcs-backdrop-opacity, 0.3));
-    backdrop-filter: blur(var(--lcs-backdrop-blur, 2px));
+    background-color: rgba(0, 0, 0, var(--backdrop-opacity, 0.3));
+    backdrop-filter: blur(var(--backdrop-blur, 2px));
   }
 }
