@@ -94,15 +94,15 @@
 
     &:not([data-checked="true"]) {
       border-color: rgb(var(--border-color));
-
-      & > svg > path {
-        fill: rgb(var(--primary));
-      }
     }
 
     &[data-checked="true"],
     &[data-indeterminate="true"] {
       border-color: rgb(var(--primary));
+
+      & > svg > path {
+        fill: rgb(var(--primary));
+      }
     }
 
     &[data-hovered="true"]:not([data-disabled="true"], [data-readonly="true"]) {
