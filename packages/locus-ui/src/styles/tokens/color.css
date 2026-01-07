@@ -6,11 +6,12 @@
   --text-color: 30, 30, 30;
   --text-color-disabled: 14, 14, 14;
 
-  --background-color-1: 218, 217, 217;
-  --background-color-2: 186, 186, 186;
-  --background-color-3: 154, 154, 154;
+  --background-color-1: 242, 242, 242;
+  --background-color-2: 230, 230, 230;
+  --background-color-3: 218, 218, 218;
 
   --border-color: 65, 65, 65;
+  --panel-color: 188, 188, 188;
 
   --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.4);
 }
@@ -23,11 +24,12 @@
   --text-color: 238, 238, 238;
   --text-color-disabled: 144, 144, 144;
 
-  --background-color-1: 24, 24, 24;
-  --background-color-2: 48, 48, 48;
-  --background-color-3: 72, 72, 72;
+  --background-color-1: 4, 2, 6;
+  --background-color-2: 16, 16, 16;
+  --background-color-3: 24, 24, 24;
 
   --border-color: 156, 156, 156;
+  --panel-color: 48, 48, 48;
 
   --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.4);
 }
