@@ -53,7 +53,7 @@
   /* Solid variant */
   &[data-variant="solid"] {
     &:not([data-checked="true"]) {
-      background-color: rgba(var(--background-color-2), 0.8);
+      background-color: rgba(var(--panel-color), 0.8);
     }
 
     &[data-checked="true"],
@@ -90,7 +90,7 @@
 
   /* Outlined variant */
   &[data-variant="outlined"] {
-    background-color: rgba(var(--background-color-2), 0.8);
+    background-color: rgba(var(--panel-color), 0.8);
 
     &:not([data-checked="true"]) {
       border-color: rgb(var(--border-color));
@@ -116,11 +116,11 @@
   }
 
   &[data-variant="muted"] {
-    background-color: rgba(var(--background-color-2), 0.6);
+    background-color: rgba(var(--panel-color), 0.5);
 
     &[data-checked="true"],
     &[data-indeterminate="true"] {
-      background-color: rgba(var(--primary), 0.4);
+      background-color: rgba(var(--primary), 0.2);
 
       & > svg > path {
         fill: rgb(var(--primary));
@@ -128,12 +128,12 @@
     }
 
     &[data-hovered="true"]:not([data-disabled="true"], [data-readonly="true"]) {
-      background-color: rgba(var(--primary), 0.2);
+      background-color: rgba(var(--primary), 0.4);
     }
 
     &:focus:not([data-disabled="true"], [data-readonly="true"]) {
       outline: 1px solid rgba(var(--primary), 0.6);
-      background-color: rgba(var(--primary), 0.2);
+      background-color: rgba(var(--primary), 0.4);
     }
   }
 }
