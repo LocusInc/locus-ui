@@ -1,4 +1,4 @@
-import { Box, Container } from "locus-ui";
+import { Box, Container, Text } from "locus-ui";
 
 const PaddingPage = () => {
   const paddingValues = [0, 1, 2, 3, 4, 5, 6, 8] as const;
@@ -7,10 +7,10 @@ const PaddingPage = () => {
   const spacingValues = ["xs", "sm", "md", "lg", "xl"] as const;
 
   return (
-    <Container className="p-4 w-[100vw] h-[100vh] bg-[rgb(var(--background-color-1))]">
-      <Box className="border" p="4" m="4">
-        This is the spacing page
-      </Box>
+    <Container className="flex flex-col gap-4 p-4 w-full min-h-full">
+      <Text className="text-2xl font-bold mb-4">Spacing Property</Text>
+
+      <Text>Padding</Text>
 
       <Box className="flex gap-2 py-4 items-center">
         {paddingValues.map((num) => (
@@ -44,9 +44,13 @@ const PaddingPage = () => {
         </Box>
       </Box>
 
+      <Text>Custom Padding Value</Text>
+
       <Box className="border w-fit" p="17px">
         p = 17px
       </Box>
+
+      <Text>Margin</Text>
 
       <Box py="4" className="flex gap-2 items-center">
         {marginValues.map((num) => (
@@ -88,9 +92,13 @@ const PaddingPage = () => {
         </Box>
       </Box>
 
+      <Text>Custom Margin Value</Text>
+
       <Box className="border w-fit" m="17px">
         m = 17px
       </Box>
+
+      <Text>Spacing Property</Text>
 
       <Box py="4" className="flex gap-2 items-center">
         {spacingValues.map((size) => (
@@ -100,10 +108,12 @@ const PaddingPage = () => {
         ))}
       </Box>
 
-      <Box spacing="xl" className="border" p="1">
-        Parent Box
-        <Box className="border" p="1">
-          Child 1
+      <Text>Spacing Inheritance</Text>
+
+      <Box spacing="xl" className="border" p="2" m="2">
+        Parent Box (XL Spacing, p=2, m=2)
+        <Box className="border" p="2" m="2">
+          Child 1 (Default Spacing, p=2, m=2)
         </Box>
       </Box>
     </Container>

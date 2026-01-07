@@ -4,7 +4,7 @@ export default function BoxPage() {
   const { appearance, onAppearanceChange } = useTheme();
 
   return (
-    <Container className="p-4 w-[100vw] h-[100vh] bg-[rgb(var(--background-color-1))]">
+    <Container className="p-4 w-full min-h-full bg-[rgb(var(--background-color-1))]">
       <Text>Theme</Text>
 
       <Text>Appearance - {appearance}</Text>

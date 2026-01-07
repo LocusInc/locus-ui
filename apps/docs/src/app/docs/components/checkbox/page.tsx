@@ -1,7 +1,7 @@
 "use client";
 
 import { Box, Checkbox, Container, Text } from "locus-ui";
-import { PropertyTable } from "../../../components/property-table";
+import { PropertyTable } from "../../../../components/property-table";
 
 const CheckboxPage = () => {
   const labelPositions = ["top", "bottom", "left", "right"] as const;
@@ -10,8 +10,8 @@ const CheckboxPage = () => {
   const alignments = ["start", "center", "end"] as const;
 
   return (
-    <Container className="p-4 min-h-fit w-[100vw] h-[100vh] bg-[rgb(var(--background-color-1))]">
-      <h1 className="text-2xl font-bold mb-4">Checkbox Component</h1>
+    <Container className="p-4 w-full min-h-full">
+      <Text className="text-2xl font-bold mb-4">Checkbox Component</Text>
 
       <div className="flex flex-col gap-2">
         <Text mt="4" className="font-bold">

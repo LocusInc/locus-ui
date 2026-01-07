@@ -21,12 +21,12 @@ export default function SelectPage() {
   const aligns = ["start", "center", "end"] as const;
 
   return (
-    <Container className="flex flex-col gap-4 p-4 w-[100vw] h-[100vh] bg-[rgb(var(--background-color-1))]">
-      <Text>Portal Component</Text>
+    <Container className="flex flex-col gap-4 p-4 w-full min-h-full">
+      <Text className="text-2xl font-bold mb-4">Portal Component</Text>
 
       <Text>Positions</Text>
 
-      <Box className="flex gap-4">
+      <Box className="flex gap-4 flex-wrap">
         {positions.map((position) => (
           <Portal.Root key={position}>
             <Portal.Trigger>
