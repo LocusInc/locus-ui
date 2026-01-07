@@ -116,6 +116,7 @@ const ThemeSub = React.forwardRef<
         data-theme-radius={radius}
         data-theme-roundness={roundness}
         {...rest}
+        className="flex"
       >
         {children}
       </div>
