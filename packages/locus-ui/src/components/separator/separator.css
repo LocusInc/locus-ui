@@ -1,0 +1,33 @@
+.separator[data-direction] {
+  &[data-direction="horizontal"] {
+    width: 100%;
+    height: 1px;
+  }
+
+  &[data-direction="vertical"] {
+    height: 100%;
+    width: 1px;
+  }
+
+  &[data-variant="solid"]:not([data-direction="vertical"]) {
+    border-top: 1px solid rgb(var(--border-color));
+  }
+
+  &[data-variant="solid"]:not([data-direction="horizontal"]) {
+    border-right: 1px solid rgb(var(--border-color));
+  }
+
+  &[data-variant="dashed"]:not([data-direction="vertical"]) {
+    border-top: 1px dashed rgb(var(--border-color));
+  }
+  &[data-variant="dashed"]:not([data-direction="horizontal"]) {
+    border-right: 1px dashed rgb(var(--border-color));
+  }
+
+  &[data-variant="dotted"]:not([data-direction="vertical"]) {
+    border-top: 1px dotted rgb(var(--border-color));
+  }
+  &[data-variant="dotted"]:not([data-direction="horizontal"]) {
+    border-right: 1px dotted rgb(var(--border-color));
+  }
+}
