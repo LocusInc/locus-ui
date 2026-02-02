@@ -1,3 +1,4 @@
+import { Theme } from "locus-ui";
 import "locus-ui/styles";
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
@@ -28,7 +29,9 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        {children}
+        <Theme appearance="dark" radius="md" roundness="3" spacing="md">
+          {children}
+        </Theme>
       </body>
     </html>
   );

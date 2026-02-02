@@ -1,6 +1,6 @@
 "use client";
 
-import { Box, Separator, Text, Theme, ThemeControl } from "locus-ui";
+import { Box, Separator, Text, ThemeControl } from "locus-ui";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
@@ -8,35 +8,25 @@ type ComponentsLayoutProps = React.PropsWithChildren & {};
 
 export const ComponentsLayout = ({ children }: ComponentsLayoutProps) => {
   return (
-    <Theme appearance="dark" radius="md" roundness="3">
-      <div className="flex relative gap-4 h-[calc(100vh-0.5rem)] bg-[rgb(var(--background-color-1))] overflow-hidden">
-        <div className="flex flex-col gap-2 mx-4 min-w-50 shrink-0">
-          <ComponentList title="Components" components={components} />
+    <div className="flex relative gap-4 h-[calc(100vh-0.5rem)] bg-[rgb(var(--background-color-1))] overflow-hidden">
+      <div className="flex flex-col gap-2 mx-4 min-w-50 shrink-0">
+        <ComponentList title="Components" components={components} />
 
-          <ComponentList title="Properties" components={properties} />
-        </div>
-
-        <Separator direction="vertical" />
-
-        <div className="flex flex-col flex-1 min-w-0 h-full overflow-auto bg-[rgb(var(--background-color-1))]">
-          {children}
-        </div>
-
-        <Separator
-          direction="vertical"
-          variant="dashed"
-          className="opacity-20"
-        />
-
-        <Box
-          pr="4"
-          py="4"
-          className="flex flex-col gap-2 mx-4 min-w-60 shrink-0"
-        >
-          <ThemeControl />
-        </Box>
+        <ComponentList title="Properties" components={properties} />
       </div>
-    </Theme>
+
+      <Separator direction="vertical" />
+
+      <div className="flex flex-col flex-1 min-w-0 h-full overflow-auto bg-[rgb(var(--background-color-1))]">
+        {children}
+      </div>
+
+      <Separator direction="vertical" variant="dashed" className="opacity-20" />
+
+      <Box pr="4" py="4" className="flex flex-col gap-2 mx-4 min-w-60 shrink-0">
+        <ThemeControl />
+      </Box>
+    </div>
   );
 };
 
