@@ -115,6 +115,7 @@ const ThemeSub = React.forwardRef<
         data-appearance={appearance}
         data-theme-radius={radius}
         data-theme-roundness={roundness}
+        data-theme-spacing={spacing}
         {...rest}
         className="flex"
       >
