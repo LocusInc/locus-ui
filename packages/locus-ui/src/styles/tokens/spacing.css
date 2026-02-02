@@ -4,18 +4,23 @@
 
 [data-theme-spacing="xs"] {
   --theme-spacing: 0.5;
+  --lcs-spacing: 0.5;
 }
 [data-theme-spacing="sm"] {
   --theme-spacing: 0.75;
+  --lcs-spacing: 0.75;
 }
 [data-theme-spacing="md"] {
   --theme-spacing: 1;
+  --lcs-spacing: 1;
 }
 [data-theme-spacing="lg"] {
   --theme-spacing: 1.5;
+  --lcs-spacing: 1.5;
 }
 [data-theme-spacing="xl"] {
   --theme-spacing: 2;
+  --lcs-spacing: 2;
 }
 
 @breakpoints {
