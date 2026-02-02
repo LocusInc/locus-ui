@@ -1,6 +1,6 @@
 "use client";
 
-import { Text } from "../text";
+import { Select } from "../select";
 import { useTheme } from "./theme-context";
 
 export function ThemeControl() {
@@ -17,98 +17,78 @@ export function ThemeControl() {
 
   return (
     <div className="flex flex-col gap-2">
-      <label>
-        <Text>Appearance:</Text>
-      </label>
-      <select
-        value={appearance ?? ""}
-        onChange={(e) => onAppearanceChange?.(e.target.value as any)}
+      <Select.Root
+        variant="solid"
+        value={appearance}
+        onValueChange={(change) => onAppearanceChange?.(change as any)}
       >
-        <option value="light">
-          <Text>Light</Text>
-        </option>
-        <option value="dark">
-          <Text>Dark</Text>
-        </option>
-      </select>
+        <Select.Label position="inside">Theme Settings</Select.Label>
 
-      <label>
-        <Text>Radius:</Text>
-      </label>
-      <select
-        value={radius ?? ""}
-        onChange={(e) => onRadiusChange?.(e.target.value as any)}
-      >
-        <option value="xs">
-          <Text>XS</Text>
-        </option>
-        <option value="sm">
-          <Text>SM</Text>
-        </option>
-        <option value="md">
-          <Text>MD</Text>
-        </option>
-        <option value="lg">
-          <Text>LG</Text>
-        </option>
-        <option value="xl">
-          <Text>XL</Text>
-        </option>
-        <option value="full">
-          <Text>FULL</Text>
-        </option>
-      </select>
+        <Select.Trigger />
 
-      <label>
-        <Text>Roundness:</Text>
-      </label>
-      <select
-        value={roundness ?? ""}
-        onChange={(e) => onRoundnessChange?.(e.target.value as any)}
-      >
-        <option value="1">
-          <Text>1</Text>
-        </option>
-        <option value="2">
-          <Text>2</Text>
-        </option>
-        <option value="3">
-          <Text>3</Text>
-        </option>
-        <option value="4">
-          <Text>4</Text>
-        </option>
-        <option value="5">
-          <Text>5</Text>
-        </option>
-        <option value="6">
-          <Text>6</Text>
-        </option>
-      </select>
+        <Select.Content>
+          <Select.Item value="light">Light</Select.Item>
+          <Select.Item value="dark">Dark</Select.Item>
+        </Select.Content>
+      </Select.Root>
 
-      <label>
-        <Text>Spacing:</Text>
-      </label>
-      <select
-        value={spacing ?? ""}
-        onChange={(e) => onSpacingChange?.(e.target.value as any)}
+      <Select.Root
+        variant="solid"
+        value={radius}
+        onValueChange={(change) => onRadiusChange?.(change as any)}
       >
-        <option value="xs">
-          <Text>XS</Text>
-        </option>
-        <option value="sm">
-          <Text>SM</Text>
-        </option>
-        <option value="md">
-          <Text>MD</Text>
-        </option>
-        <option value="lg">
-          <Text>LG</Text>
-        </option>
-        <option value="xl">
-          <Text>XL</Text>
-        </option>
-      </select>
+        <Select.Label position="inside">Radius</Select.Label>
+
+        <Select.Trigger />
+
+        <Select.Content>
+          <Select.Item value="xs">XS</Select.Item>
+          <Select.Item value="sm">SM</Select.Item>
+          <Select.Item value="md">MD</Select.Item>
+          <Select.Item value="lg">LG</Select.Item>
+          <Select.Item value="xl">XL</Select.Item>
+          <Select.Item value="full">FULL</Select.Item>
+        </Select.Content>
+      </Select.Root>
+
+      <Select.Root
+        variant="solid"
+        value={roundness}
+        onValueChange={(change) => onRoundnessChange?.(change as any)}
+      >
+        <Select.Label className="min-w-40!" position="inside">
+          Roundness
+        </Select.Label>
+
+        <Select.Trigger />
+
+        <Select.Content>
+          <Select.Item value="1">1</Select.Item>
+          <Select.Item value="2">2</Select.Item>
+          <Select.Item value="3">3</Select.Item>
+          <Select.Item value="4">4</Select.Item>
+          <Select.Item value="5">5</Select.Item>
+          <Select.Item value="6">6</Select.Item>
+        </Select.Content>
+      </Select.Root>
+
+      <Select.Root
+        variant="solid"
+        value={spacing}
+        onValueChange={(change) => onSpacingChange?.(change as any)}
+      >
+        <Select.Label position="inside">Spacing</Select.Label>
+
+        <Select.Trigger />
+
+        <Select.Content>
+          <Select.Item value="xs">XS</Select.Item>
+          <Select.Item value="sm">SM</Select.Item>
+          <Select.Item value="md">MD</Select.Item>
+          <Select.Item value="lg">LG</Select.Item>
+          <Select.Item value="xl">XL</Select.Item>
+        </Select.Content>
+      </Select.Root>
     </div>
   );
 }

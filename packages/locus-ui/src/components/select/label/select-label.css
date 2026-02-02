@@ -1,0 +1,15 @@
+.select-label {
+  order: -1;
+}
+
+.select-label[data-position="left"] {
+  flex-shrink: 0;
+  min-width: fit-content;
+  margin-right: calc(4px * var(--lcs-spacing, var(--theme-spacing, 1)));
+}
+
+.select-label[data-position="inside"] {
+  order: 0;
+  flex-shrink: 0;
+  padding-right: calc(4px * var(--lcs-spacing, var(--theme-spacing, 1)));
+}

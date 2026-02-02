@@ -1,0 +1,86 @@
+.select-root[data-variant] {
+  flex: 1;
+  display: flex;
+  flex-wrap: wrap;
+  gap: calc(8px * var(--lcs-spacing, 1));
+  width: 100%;
+  outline: none;
+
+  &[data-state] {
+    align-items: center;
+    justify-content: space-between;
+    min-height: 32px;
+    padding: calc(4px * var(--lcs-spacing, 1)) calc(8px * var(--lcs-spacing, 1));
+  }
+
+  &[data-state="open"] {
+    box-shadow: var(--shadow-md);
+  }
+
+  &:has(.select-trigger[data-state="open"]) {
+    border-bottom-left-radius: 0 !important;
+    border-bottom-right-radius: 0 !important;
+  }
+
+  &:has(.select-label[data-position="top"]) {
+    flex-direction: column;
+  }
+
+  &:has(.select-label[data-position="left"]) {
+    flex-direction: row;
+    align-items: center;
+  }
+
+  &:has(.select-label[data-position="inside"]) {
+    flex-direction: row;
+    align-items: center;
+  }
+
+  &[data-variant="outlined"] {
+    &:focus {
+      outline: 1px solid rgba(var(--primary), 0.6);
+    }
+
+    &:has(.select-label[data-position="inside"]) {
+      border: 1px solid rgb(var(--border-color));
+      border-radius: var(--lcs-radius);
+      padding: 0 0 0 calc(8px * var(--lcs-spacing, 1));
+    }
+
+    &:not(:has(.select-label[data-position="inside"])) {
+      .select-trigger {
+        border: 1px solid rgb(var(--border-color));
+      }
+    }
+  }
+
+  &[data-variant="solid"] {
+    &:focus {
+      background-color: rgba(var(--primary), 0.2) !important;
+    }
+
+    &:has(.select-label[data-position="inside"]) {
+      background-color: rgba(var(--background-color-2), 0.95);
+      padding: 0 0 0 calc(8px * var(--lcs-spacing, 1));
+
+      &:focus {
+        .select-trigger {
+          border: transparent !important;
+          background-color: transparent !important;
+        }
+      }
+    }
+  }
+
+  &[data-variant="clear"] {
+    &:focus {
+      background-color: rgba(var(--primary), 0.2) !important;
+    }
+
+    &:has(.select-label[data-position="inside"]) {
+      border: 1px solid transparent;
+      background-color: transparent;
+      padding: 0 0 0 calc(8px * var(--lcs-spacing, 1));
+    }
+  }
+}

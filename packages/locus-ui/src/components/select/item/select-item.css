@@ -1,0 +1,20 @@
+.select-item {
+  display: flex;
+  align-items: center;
+  gap: calc(8px * var(--lcs-spacing, 1));
+  min-height: 32px;
+
+  &:not([data-variant="clear"]) {
+    border: 2px solid transparent;
+  }
+}
+
+.select-item[data-highlighted]:not([data-disabled]) {
+  background-color: rgba(var(--primary, --background-color-3), 0.2);
+  cursor: pointer;
+}
+
+.select-item:hover:not([data-disabled]) {
+  background-color: rgba(var(--primary, --background-color-3), 0.2);
+  cursor: pointer;
+}

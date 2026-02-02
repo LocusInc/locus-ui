@@ -1,0 +1,5 @@
+.select-viewport {
+  display: flex;
+  flex-direction: column;
+  gap: calc(4px * var(--lcs-spacing, 1));
+}

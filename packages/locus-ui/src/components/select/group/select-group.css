@@ -1,0 +1,8 @@
+.select-group {
+  display: flex;
+  flex-direction: column;
+
+  .select-group-label {
+    padding: calc(4px * var(--lcs-spacing, 1)) calc(8px * var(--lcs-spacing, 1));
+  }
+}

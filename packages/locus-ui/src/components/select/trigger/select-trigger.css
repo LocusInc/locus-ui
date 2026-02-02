@@ -1,0 +1,59 @@
+.select-trigger[data-variant] {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-radius: var(--lcs-radius);
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  min-height: 32px;
+  gap: calc(8px * var(--lcs-spacing));
+  padding: calc(4px * var(--lcs-spacing)) calc(8px * var(--lcs-spacing));
+  outline: none;
+
+  &[data-state="open"] {
+    border-bottom-left-radius: 0 !important;
+    border-bottom-right-radius: 0 !important;
+  }
+
+  &[data-variant="outlined"] {
+    &:focus {
+      outline: 1px solid rgba(var(--primary), 0.6);
+    }
+  }
+
+  &[data-variant="solid"] {
+    background-color: rgba(var(--background-color-2), 0.95);
+
+    &:focus {
+      background-color: rgba(var(--primary), 0.2);
+    }
+  }
+
+  &[data-variant="clear"] {
+    border: 1px solid transparent;
+    background-color: transparent;
+
+    &:focus {
+      background-color: rgba(var(--primary), 0.2);
+    }
+  }
+
+  .select-trigger-icon {
+    transition: transform 150ms ease-in-out;
+  }
+
+  .select-trigger[data-state="open"] {
+    .select-trigger-icon {
+      transform: rotate(-180deg);
+    }
+  }
+
+  .select-root:has(.select-label[data-position="inside"]) .select-trigger {
+    border: none;
+    padding: 0;
+    background-color: transparent;
+    min-height: 0px;
+  }
+}
