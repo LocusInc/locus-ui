@@ -41,11 +41,11 @@ const ComponentList = ({
 
   return (
     <>
-      <Text className="font-bold text-lg" m="2" mt="5">
+      <Text className="font-bold text-lg" mt="2">
         {title}
       </Text>
 
-      <div className="flex flex-col gap-2 ml-4">
+      <div className="flex flex-col ml-4">
         {components.map((component) => {
           const isActive = pathname === component.path;
           return (
