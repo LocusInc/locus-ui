@@ -1,35 +1,24 @@
-[data-appearance="light"] {
-  --primary: 247, 143, 25;
-  --primary-dark: 201, 108, 2;
-  --primary-light: 252, 160, 56;
-
-  --text-color: 30, 30, 30;
-  --text-color-disabled: 14, 14, 14;
-
-  --background-color-1: 242, 242, 242;
-  --background-color-2: 230, 230, 230;
-  --background-color-3: 218, 218, 218;
-
-  --border-color: 65, 65, 65;
-  --panel-color: 188, 188, 188;
-
-  --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.4);
+[data-color] {
+  --color: var(--primary);
 }
-
-[data-appearance="dark"] {
-  --primary: 247, 143, 25;
-  --primary-dark: 201, 108, 2;
-  --primary-light: 252, 160, 56;
-
-  --text-color: 238, 238, 238;
-  --text-color-disabled: 144, 144, 144;
-
-  --background-color-1: 4, 2, 6;
-  --background-color-2: 16, 16, 16;
-  --background-color-3: 24, 24, 24;
-
-  --border-color: 80, 80, 80;
-  --panel-color: 48, 48, 48;
-
-  --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.4);
+[data-color="secondary"] {
+  --color: var(--secondary);
+}
+[data-color="tertiary"] {
+  --color: var(--tertiary);
+}
+[data-color="accent"] {
+  --color: var(--accent);
+}
+[data-color="success"] {
+  --color: var(--success);
+}
+[data-color="danger"] {
+  --color: var(--danger);
+}
+[data-color="warning"] {
+  --color: var(--warning);
+}
+[data-color="info"] {
+  --color: var(--info);
 }
