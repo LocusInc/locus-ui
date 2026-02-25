@@ -1,18 +1,69 @@
 import clsx from "clsx";
+import { useState } from "react";
+import {
+  ColorProp,
+  MarginPropDefs,
+  MarginProps,
+  PaddingPropDefs,
+  PaddingProps,
+  RadiusPropDefs,
+  RadiusProps,
+  SizeProp,
+  SizePropDef,
+} from "../../props";
+import { getComponentProps } from "../../utils/get-component-props";
+import { ButtonRootInternalProps, ButtonRootPropsDefs } from "./button.props";
 
-type ButtonProps = {
-  className?: string;
-  [key: string]: any;
-};
+interface AllButtonRootProps
+  extends ButtonRootInternalProps,
+    ColorProp,
+    MarginProps,
+    PaddingProps,
+    RadiusProps,
+    SizeProp {}
 
-export const Button = ({ className, ...props }: ButtonProps) => {
+type ButtonRootProps = AllButtonRootProps &
+  React.ButtonHTMLAttributes<HTMLButtonElement>;
+
+const Button: React.FC<ButtonRootProps> = (props) => {
+  const {
+    color,
+    variant,
+    className,
+    dataAttrs,
+    disabled,
+    highContrast,
+    readonly,
+    ...rest
+  } = getComponentProps(
+    props,
+    ButtonRootPropsDefs,
+    MarginPropDefs,
+    PaddingPropDefs,
+    RadiusPropDefs,
+    SizePropDef
+  );
+
+  const [hovered, setHovered] = useState(false);
+
   return (
     <button
-      className={clsx(
-        "px-4 py-2 rounded bg-indigo-600 text-white hover:bg-indigo-700",
-        className
-      )}
-      {...props}
-    />
+      className={clsx("button", className)}
+      data-color={color ?? true}
+      data-variant={variant}
+      data-disabled={disabled ? true : undefined}
+      data-high-contrast={highContrast ? true : undefined}
+      data-readonly={readonly ? true : undefined}
+      data-hovered={hovered ? true : undefined}
+      {...dataAttrs}
+      disabled={disabled || readonly}
+      onMouseEnter={() => setHovered(true)}
+      onMouseLeave={() => setHovered(false)}
+      {...rest}
+    >
+      <span>{props.children}</span>
+    </button>
   );
 };
+
+export { AllButtonRootProps, Button, ButtonRootProps };
