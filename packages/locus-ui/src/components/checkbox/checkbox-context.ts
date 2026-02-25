@@ -5,6 +5,7 @@ export interface CheckboxContextValue {
   value: boolean;
   setValue: (value: boolean) => void;
   onCheckedChange?: (value: boolean) => void;
+  color?: string;
   labelId: string;
   labelPosition?: LabelPosition;
   setLabelPosition?: (position: LabelPosition) => void;

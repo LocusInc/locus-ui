@@ -1,4 +1,6 @@
 .checkbox-indicator[data-variant] {
+  --checkbox-color: var(--color, var(--primary));
+
   position: relative;
   display: flex;
   align-items: center;
@@ -58,16 +60,16 @@
 
     &[data-checked="true"],
     &[data-indeterminate="true"] {
-      background-color: rgb(var(--primary));
+      background-color: rgb(var(--checkbox-color));
     }
 
     &[data-hovered="true"]:not([data-disabled="true"], [data-readonly="true"]) {
-      background-color: rgba(var(--primary), 0.7);
+      background-color: rgba(var(--checkbox-color), 0.7);
     }
 
     &:focus:not([data-disabled="true"], [data-readonly="true"]) {
-      outline: 1px solid rgba(var(--primary), 1);
-      background-color: rgba(var(--primary), 0.7);
+      outline: 1px solid rgba(var(--checkbox-color), 1);
+      background-color: rgba(var(--checkbox-color), 0.7);
     }
 
     &[data-checked="true"][data-high-contrast="true"],
@@ -83,7 +85,7 @@
       & > * {
         z-index: 1;
         position: relative;
-        background-color: rgba(var(--primary), 0.2);
+        background-color: rgba(var(--checkbox-color), 0.2);
       }
     }
   }
@@ -98,20 +100,20 @@
 
     &[data-checked="true"],
     &[data-indeterminate="true"] {
-      border-color: rgb(var(--primary));
+      border-color: rgb(var(--checkbox-color));
 
       & > svg > path {
-        fill: rgb(var(--primary));
+        fill: rgb(var(--checkbox-color));
       }
     }
 
     &[data-hovered="true"]:not([data-disabled="true"], [data-readonly="true"]) {
-      border-color: rgba(var(--primary-dark), 0.7);
+      border-color: rgba(var(--checkbox-color-dark), 0.7);
     }
 
     &:focus:not([data-disabled="true"], [data-readonly="true"]) {
-      outline: 1px solid rgba(var(--primary), 0.9);
-      border-color: rgba(var(--primary-dark), 0.7);
+      outline: 1px solid rgba(var(--checkbox-color), 0.9);
+      border-color: rgba(var(--checkbox-color-dark), 0.7);
     }
   }
 
@@ -120,20 +122,20 @@
 
     &[data-checked="true"],
     &[data-indeterminate="true"] {
-      background-color: rgba(var(--primary), 0.2);
+      background-color: rgba(var(--checkbox-color), 0.2);
 
       & > svg > path {
-        fill: rgb(var(--primary));
+        fill: rgb(var(--checkbox-color));
       }
     }
 
     &[data-hovered="true"]:not([data-disabled="true"], [data-readonly="true"]) {
-      background-color: rgba(var(--primary), 0.4);
+      background-color: rgba(var(--checkbox-color), 0.4);
     }
 
     &:focus:not([data-disabled="true"], [data-readonly="true"]) {
-      outline: 1px solid rgba(var(--primary), 0.6);
-      background-color: rgba(var(--primary), 0.4);
+      outline: 1px solid rgba(var(--checkbox-color), 0.6);
+      background-color: rgba(var(--checkbox-color), 0.4);
     }
   }
 }

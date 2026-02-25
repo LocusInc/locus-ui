@@ -8,6 +8,16 @@ const CheckboxPage = () => {
   const variants = ["outlined", "solid", "muted"] as const;
   const sizes = ["xs", "sm", "md", "lg", "xl"] as const;
   const alignments = ["start", "center", "end"] as const;
+  const colors = [
+    "primary",
+    "secondary",
+    "tertiary",
+    "accent",
+    "success",
+    "danger",
+    "warning",
+    "info",
+  ] as const;
 
   return (
     <Container className="p-4 w-full min-h-full">
@@ -34,6 +44,18 @@ const CheckboxPage = () => {
           {variants.map((variant) => (
             <Checkbox key={variant} variant={variant}>
               <Checkbox.Label>{variant}</Checkbox.Label>
+            </Checkbox>
+          ))}
+        </div>
+
+        <Text mt="4" className="font-bold">
+          Colors
+        </Text>
+
+        <div className="flex gap-4">
+          {colors.map((color) => (
+            <Checkbox defaultChecked key={color} variant="muted" color={color}>
+              <Checkbox.Label>{color}</Checkbox.Label>
             </Checkbox>
           ))}
         </div>

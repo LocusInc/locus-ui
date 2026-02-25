@@ -28,6 +28,7 @@ const CheckboxIndicator: React.FC<CheckboxIndicatorProps> = React.forwardRef<
     value,
     setValue,
     hovered,
+    color,
     disabled,
     readonly,
     highContrast,
@@ -65,6 +66,7 @@ const CheckboxIndicator: React.FC<CheckboxIndicatorProps> = React.forwardRef<
       ref={ref}
       style={style}
       role="checkbox"
+      data-color={color}
       data-hovered={hovered}
       aria-disabled={disabled}
       aria-readonly={readonly}

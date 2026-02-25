@@ -12,6 +12,7 @@ import React, {
 import {
   AlignProp,
   AlignPropDef,
+  ColorProp,
   MarginPropDefs,
   MarginProps,
   SizeProp,
@@ -38,6 +39,7 @@ import {
 interface AllCheckboxRootProps
   extends CheckboxRootInternalProps,
     AlignProp,
+    ColorProp,
     MarginProps,
     SizeProp {}
 
@@ -59,6 +61,7 @@ const CheckboxRoot: FC<CheckboxRootProps> = (props) => {
   const {
     name,
     size,
+    color,
     variant,
     checked,
     dataAttrs,
@@ -117,6 +120,7 @@ const CheckboxRoot: FC<CheckboxRootProps> = (props) => {
     () => ({
       name,
       value,
+      color,
       setValue,
       onCheckedChange,
       labelId,
@@ -134,6 +138,7 @@ const CheckboxRoot: FC<CheckboxRootProps> = (props) => {
     [
       name,
       value,
+      color,
       onCheckedChange,
       setValue,
       labelId,
