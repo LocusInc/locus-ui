@@ -1,6 +1,6 @@
 import { defineConfig } from "tsup";
 
-export default defineConfig({
+export default defineConfig((overrideOptions) => ({
   entry: ["src/index.ts", "src/index.css"],
   outDir: "dist",
   format: ["esm", "cjs"],
@@ -8,7 +8,7 @@ export default defineConfig({
   target: "esnext",
   sourcemap: true,
   shims: true,
-  clean: true,
+  clean: !overrideOptions.watch,
   splitting: true,
   external: ["react", "react-dom"],
   banner: {
@@ -19,4 +19,4 @@ export default defineConfig({
       "@": "./src",
     };
   },
-});
+}));
