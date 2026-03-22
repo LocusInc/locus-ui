@@ -33,6 +33,7 @@ export function getComponentProps<
     if (
       prop.type === "boolean" ||
       prop.type === "string" ||
+      prop.type === "value | array" ||
       prop.type === "reactNode" ||
       prop.type === "function"
     ) {

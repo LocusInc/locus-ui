@@ -43,6 +43,13 @@ type EnumOrStringPropDef<T extends string> = {
   dataAttr?: string;
 };
 
+type ValueOrArrayPropDef<T> = {
+  type: "value | array";
+  default?: T | T[];
+  required?: boolean;
+  className?: string;
+};
+
 type FunctionPropDef<
   T extends (...args: any[]) => any = (...args: any[]) => any
 > = {
@@ -56,6 +63,7 @@ type BasePropDef<T = any> =
   | ReactNodePropDef<T>
   | EnumPropDef<T>
   | EnumOrStringPropDef<T & string>
+  | ValueOrArrayPropDef<T>
   | FunctionPropDef<T & ((...args: any[]) => any)>;
 
 type ResponsivePropDef<T = any> = BasePropDef<T> & { responsive: true };
@@ -78,6 +86,10 @@ type GetPropDefType<Def> = Def extends BooleanPropDef
   ? Def extends ResponsivePropDef<infer Type extends string>
     ? Responsive<Union<string, Type>>
     : Union<string, Type>
+  : Def extends ValueOrArrayPropDef<infer Type>
+  ? Def extends ResponsivePropDef<infer Type>
+    ? Responsive<Type | Type[]>
+    : Type | Type[]
   : Def extends EnumPropDef<infer Type>
   ? Def extends ResponsivePropDef<infer Type>
     ? Responsive<Type>
@@ -89,4 +101,4 @@ type GetPropDefTypes<P> = {
 };
 
 export { Breakpoint, GetPropDefTypes, PropDef, Responsive };
-export type { FunctionPropDef, ReactNodePropDef };
+export type { FunctionPropDef, ReactNodePropDef, ValueOrArrayPropDef };
