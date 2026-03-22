@@ -25,6 +25,10 @@ const AccordionHeader: FC<AccordionHeaderProps> = (props) => {
     AccordionHeaderPropDefs,
   );
 
+  const itemOpen = context.multiple
+    ? context.value?.includes(value ?? "")
+    : context.value === value;
+
   const handleClick = () => {
     if (!value) return;
 
@@ -41,6 +45,7 @@ const AccordionHeader: FC<AccordionHeaderProps> = (props) => {
 
   return (
     <div
+      data-open={itemOpen}
       data-variant={context.variant}
       className={clsx("accordion-header", className)}
       role="button"
