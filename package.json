@@ -7,7 +7,7 @@
     "dev": "concurrently -k -n UI,DOCS -c green,blue \"npm run dev:ui --workspace=packages/locus-ui\" \"npm run dev --workspace=apps/docs\"",
     "dev:ui": "tsup --watch src --silent",
     "build:ui": "tsup",
-    "build": "npm run build:ui --workspace=packages/locus-ui && npm run build --workspace=apps/docs"
+    "build": "npm run build --workspace=packages/locus-ui && npm run build --workspace=apps/docs"
   },
   "keywords": [],
   "author": "",
