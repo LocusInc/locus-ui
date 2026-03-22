@@ -4,9 +4,9 @@ import { Box, Separator, Text, ThemeControl } from "@locus-ui/components";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
-type ComponentsLayoutProps = React.PropsWithChildren & {};
+type DocsLayoutProps = React.PropsWithChildren & {};
 
-export const ComponentsLayout = ({ children }: ComponentsLayoutProps) => {
+const DocsLayout = ({ children }: DocsLayoutProps) => {
   return (
     <div className="flex relative gap-4 h-[calc(100vh-0.5rem)] bg-[rgb(var(--background-color-1))] overflow-hidden">
       <div className="flex flex-col gap-2 mx-4 min-w-50 shrink-0">
@@ -52,12 +52,12 @@ const ComponentList = ({
             <Link
               key={component.name}
               href={component.path}
-              className="focus:outline-2 focus:outline-[rgba(var(--primary),_0.4)] focus:outline-border-[rgba(var(--primary),_0.4)] focus:bg-[rgba(var(--primary),_0.2)] focus:border-[rgba(var(--primary),_0.4)] rounded-full"
+              className="focus:outline-2 focus:outline-[rgba(var(--primary),0.4)] focus:outline-border-[rgba(var(--primary),_0.4)] focus:bg-[rgba(var(--primary),0.2)] focus:border-[rgba(var(--primary),0.4)] rounded-full"
             >
               <Box
                 radius="full"
-                className={`border-2 border-transparent hover:border-[rgba(var(--primary),_0.4)] hover:bg-[rgba(var(--primary),_0.2)] ${
-                  isActive ? "bg-[rgba(var(--primary),_0.6)]" : ""
+                className={`border-2 border-transparent hover:border-[rgba(var(--primary),0.4)] hover:bg-[rgba(var(--primary),0.2)] ${
+                  isActive ? "bg-[rgba(var(--primary),0.6)]" : ""
                 }`}
               >
                 <Text px="2">{component.name}</Text>
@@ -70,7 +70,7 @@ const ComponentList = ({
   );
 };
 
-export default ComponentsLayout;
+export default DocsLayout;
 
 const components = [
   { name: "Accordion", path: "/docs/components/accordion" },
