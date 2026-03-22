@@ -17,8 +17,8 @@
   },
   "sideEffects": false,
   "scripts": {
-    "dev": "tsup --watch",
-    "dev:ui": "tsup --watch",
+    "dev": "tsup --watch src",
+    "dev:ui": "tsup --watch src",
     "build": "tsup"
   },
   "keywords": [],

@@ -1,10 +1,8 @@
 import type { NextConfig } from "next";
-import createTM from "next-transpile-modules";
-
-const withTM = createTM(["locus-ui"]);
 
 const nextConfig: NextConfig = {
   reactStrictMode: true,
+  transpilePackages: ["locus-ui"],
 };
 
-export default withTM(nextConfig);
+export default nextConfig;
