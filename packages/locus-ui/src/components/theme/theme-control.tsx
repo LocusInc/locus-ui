@@ -42,6 +42,7 @@ export function ThemeControl() {
         <Select.Trigger />
 
         <Select.Content>
+          <Select.Item value="none">None</Select.Item>
           <Select.Item value="xs">XS</Select.Item>
           <Select.Item value="sm">SM</Select.Item>
           <Select.Item value="md">MD</Select.Item>
