@@ -1,5 +1,5 @@
-import { Theme } from "locus-ui";
-import "locus-ui/styles";
+import { Theme } from "@locus-ui/components";
+import "@locus-ui/components/styles";
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";

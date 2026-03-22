@@ -1,6 +1,6 @@
 "use client";
 
-import { Box, Container, Select, Text } from "locus-ui";
+import { Box, Container, Select, Text } from "@locus-ui/components";
 
 export default function SelectPage() {
   const labelPositions = ["top", "left", "inside"] as const;

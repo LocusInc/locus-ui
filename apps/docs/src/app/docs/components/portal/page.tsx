@@ -1,6 +1,6 @@
 "use client";
 
-import { Box, Container, Portal, Text } from "locus-ui";
+import { Box, Container, Portal, Text } from "@locus-ui/components";
 
 const positions = [
   "tl",

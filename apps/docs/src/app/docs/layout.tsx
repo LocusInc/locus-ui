@@ -1,6 +1,6 @@
 "use client";
 
-import { Box, Separator, Text, ThemeControl } from "locus-ui";
+import { Box, Separator, Text, ThemeControl } from "@locus-ui/components";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 

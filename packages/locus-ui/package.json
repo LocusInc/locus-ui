@@ -1,7 +1,7 @@
 {
-  "name": "locus-ui",
-  "version": "1.0.0",
-  "description": "",
+  "name": "@locus-ui/components",
+  "version": "0.0.1",
+  "description": "A React UI component library",
   "main": "dist/index.js",
   "module": "dist/index.mjs",
   "types": "dist/index.d.ts",
@@ -15,11 +15,18 @@
       "default": "./dist/index.css"
     }
   },
+  "files": [
+    "dist"
+  ],
   "sideEffects": false,
   "scripts": {
     "dev": "tsup --watch src",
     "dev:ui": "tsup --watch src",
-    "build": "tsup"
+    "build": "tsup",
+    "prepublishOnly": "npm run build"
+  },
+  "publishConfig": {
+    "access": "public"
   },
   "keywords": [],
   "author": "",
@@ -30,10 +37,7 @@
     "react-dom": "^18.0.0 || ^19.0.0"
   },
   "dependencies": {
-    "clsx": "^2.1.1",
-    "react": "^18.0.0 || ^19.0.0",
-    "react-dom": "^18.0.0 || ^19.0.0",
-    "tsup": "^8.5.0"
+    "clsx": "^2.1.1"
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4.1.18",
@@ -43,6 +47,7 @@
     "react": "^19.1.1",
     "react-dom": "^19.1.1",
     "tailwindcss": "^4.1.18",
+    "tsup": "^8.5.0",
     "typescript": "^5.9.2"
   }
 }

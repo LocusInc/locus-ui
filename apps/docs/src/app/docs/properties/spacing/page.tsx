@@ -1,4 +1,4 @@
-import { Box, Container, Text } from "locus-ui";
+import { Box, Container, Text } from "@locus-ui/components";
 
 const PaddingPage = () => {
   const paddingValues = [0, 1, 2, 3, 4, 5, 6, 8] as const;

@@ -1,6 +1,6 @@
 "use client";
 
-import { Box, Checkbox, Container, Text } from "locus-ui";
+import { Box, Checkbox, Container, Text } from "@locus-ui/components";
 import { PropertyTable } from "../../../../components/property-table";
 
 const CheckboxPage = () => {

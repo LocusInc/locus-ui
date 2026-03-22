@@ -1,4 +1,4 @@
-import { Box, Container, Text } from "locus-ui";
+import { Box, Container, Text } from "@locus-ui/components";
 
 export default function BoxPage() {
   const numbers = ["1", "2", "3", "4", "5", "6"] as const;

@@ -1,4 +1,4 @@
-import { Container, Text, useTheme } from "locus-ui";
+import { Container, Text, useTheme } from "@locus-ui/components";
 
 export default function BoxPage() {
   const { appearance, onAppearanceChange } = useTheme();

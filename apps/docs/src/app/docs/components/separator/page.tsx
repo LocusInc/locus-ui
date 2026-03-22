@@ -1,4 +1,4 @@
-import { Box, Container, Separator, Text } from "locus-ui";
+import { Box, Container, Separator, Text } from "@locus-ui/components";
 
 export default function SeparatorPage() {
   const variants = ["solid", "dashed", "dotted"];

@@ -1,4 +1,4 @@
-import { Box, Button, Container, Text } from "locus-ui";
+import { Box, Button, Container, Text } from "@locus-ui/components";
 
 export default function ButtonPage() {
   const variants = ["solid", "outlined", "muted", "clear"] as const;

@@ -1,6 +1,6 @@
 "use client";
 
-import { Accordion, Container, Text } from "locus-ui";
+import { Accordion, Container, Text } from "@locus-ui/components";
 
 export default function AccordionPage() {
   const variants = ["solid", "outlined", "muted"] as const;

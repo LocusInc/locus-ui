@@ -1,4 +1,4 @@
-import { Box, Text } from "locus-ui";
+import { Box, Text } from "@locus-ui/components";
 
 interface Property {
   name: string;

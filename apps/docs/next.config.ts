@@ -2,7 +2,7 @@ import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
   reactStrictMode: true,
-  transpilePackages: ["locus-ui"],
+  transpilePackages: ["@locus-ui/components"],
 };
 
 export default nextConfig;
