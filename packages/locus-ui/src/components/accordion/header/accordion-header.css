@@ -7,8 +7,18 @@
   user-select: none;
   transition: background-color 150ms ease;
 
-  &:hover {
-    background-color: rgba(var(--primary), 0.08);
+  &[data-variant="solid"]:hover,
+  &[data-variant="outlined"]:hover,
+  &[data-variant="muted"]:hover {
+    background-color: rgba(var(--primary, --background-color-3), 0.2);
+  }
+
+  &[data-variant="solid"] {
+    background-color: rgba(var(--background-color-2), 0.95);
+  }
+
+  &[data-variant="muted"] {
+    background-color: rgba(var(--background-color-2), 0.6);
   }
 
   &[data-variant="solid"]:focus,
