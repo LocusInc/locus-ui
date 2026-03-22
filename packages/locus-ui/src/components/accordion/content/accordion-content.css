@@ -1,0 +1,18 @@
+.accordion-content[data-variant] {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 200ms ease;
+
+  .accordion-item[data-open="true"] > & {
+    grid-template-rows: 1fr;
+  }
+
+  .accordion-content-inner {
+    overflow: hidden;
+  }
+
+  .accordion-content-inner > * {
+    padding: calc(8px * var(--lcs-spacing, 1))
+      calc(12px * var(--lcs-spacing, 1));
+  }
+}

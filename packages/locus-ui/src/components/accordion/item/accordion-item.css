@@ -1,0 +1,14 @@
+.accordion-item[data-variant] {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+
+  & + .accordion-item[data-variant="solid"],
+  & + .accordion-item[data-variant="muted"] {
+    border-top: 1px solid rgba(var(--border-color), 0.2);
+  }
+
+  & + .accordion-item[data-variant="outlined"] {
+    border-top: 1px solid rgba(var(--border-color), 1);
+  }
+}

@@ -73,6 +73,7 @@ const ComponentList = ({
 export default ComponentsLayout;
 
 const components = [
+  { name: "Accordion", path: "/docs/components/accordion" },
   { name: "Box", path: "/docs/components/box" },
   { name: "Button", path: "/docs/components/button" },
   { name: "Checkbox", path: "/docs/components/checkbox" },

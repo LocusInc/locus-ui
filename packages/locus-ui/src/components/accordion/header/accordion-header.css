@@ -1,0 +1,40 @@
+.accordion-header[data-variant] {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: calc(8px * var(--lcs-spacing, 1)) calc(12px * var(--lcs-spacing, 1));
+  cursor: pointer;
+  user-select: none;
+  transition: background-color 150ms ease;
+
+  &:hover {
+    background-color: rgba(var(--primary), 0.08);
+  }
+
+  &[data-variant="solid"]:focus,
+  &[data-variant="muted"]:focus {
+    outline: none;
+    background-color: rgba(var(--primary), 0.15);
+  }
+
+  &[data-variant="outlined"]:focus {
+    background-color: rgba(var(--primary), 0.1);
+    outline: 2px solid rgba(var(--primary), 0.5);
+    outline-offset: -2px;
+  }
+
+  .accordion-header-indicator {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 200ms ease;
+    flex-shrink: 0;
+    margin-left: calc(8px * var(--lcs-spacing, 1));
+  }
+
+  .accordion-item[data-open="true"]
+    > .accordion-header
+    .accordion-header-indicator {
+    transform: rotate(180deg);
+  }
+}
