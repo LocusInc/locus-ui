@@ -1,3 +1,5 @@
+"use client";
+
 import { Container, Text, useTheme } from "@locus-ui/components";
 
 export default function BoxPage() {
