@@ -61,7 +61,7 @@ export default function BadgePage() {
   );
 }
 
-export const CheckMark = () => {
+const CheckMark = () => {
   return (
     <svg
       width="16"
