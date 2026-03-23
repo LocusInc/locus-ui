@@ -10,9 +10,9 @@ const DocsLayout = ({ children }: DocsLayoutProps) => {
   return (
     <div className="flex relative gap-4 h-[calc(100vh-0.5rem)] bg-[rgb(var(--background-color-1))] overflow-hidden">
       <div className="flex flex-col gap-2 mx-4 min-w-50 shrink-0">
-        <ComponentList title="Components" components={components} />
-
-        <ComponentList title="Properties" components={properties} />
+        <SideBarLinks title="Overview" components={overview} />
+        <SideBarLinks title="Components" components={components} />
+        <SideBarLinks title="Properties" components={properties} />
       </div>
 
       <Separator direction="vertical" />
@@ -30,7 +30,7 @@ const DocsLayout = ({ children }: DocsLayoutProps) => {
   );
 };
 
-const ComponentList = ({
+const SideBarLinks = ({
   title,
   components,
 }: {
@@ -72,16 +72,20 @@ const ComponentList = ({
 
 export default DocsLayout;
 
+const overview = [
+  { name: "About", path: "/docs/overview/about" },
+  { name: "Getting Started", path: "/docs/overview/getting-started" },
+];
+
 const components = [
   { name: "Accordion", path: "/docs/components/accordion" },
+  { name: "Badge", path: "/docs/components/badge" },
   { name: "Box", path: "/docs/components/box" },
   { name: "Button", path: "/docs/components/button" },
   { name: "Checkbox", path: "/docs/components/checkbox" },
-  { name: "Container", path: "/docs/components/container" },
   { name: "Portal", path: "/docs/components/portal" },
   { name: "Select", path: "/docs/components/select" },
   { name: "Separator", path: "/docs/components/separator" },
-  { name: "Text", path: "/docs/components/text" },
   { name: "Theme", path: "/docs/components/theme" },
 ];
 

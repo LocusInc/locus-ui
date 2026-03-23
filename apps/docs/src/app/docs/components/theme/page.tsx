@@ -1,6 +1,6 @@
 "use client";
 
-import { Container, Text, useTheme } from "@locus-ui/components";
+import { Box, Button, Container, Text, useTheme } from "@locus-ui/components";
 
 export default function BoxPage() {
   const { appearance, onAppearanceChange } = useTheme();
@@ -11,19 +11,15 @@ export default function BoxPage() {
 
       <Text>Appearance - {appearance}</Text>
 
-      <button
-        style={{ padding: "4px 8px", border: "1px solid", margin: "4px" }}
-        onClick={() => onAppearanceChange?.("light")}
-      >
-        <Text>Light</Text>
-      </button>
+      <Box className="flex gap-2 flex-wrap mt-2">
+        <Button variant="muted" onClick={() => onAppearanceChange?.("light")}>
+          <Text>Light</Text>
+        </Button>
 
-      <button
-        style={{ padding: "4px 8px", border: "1px solid", margin: "4px" }}
-        onClick={() => onAppearanceChange?.("dark")}
-      >
-        <Text>Dark</Text>
-      </button>
+        <Button variant="muted" onClick={() => onAppearanceChange?.("dark")}>
+          <Text>Dark</Text>
+        </Button>
+      </Box>
     </Container>
   );
 }
