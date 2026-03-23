@@ -1,4 +1,5 @@
 export { Accordion } from "./accordion";
+export { Badge } from "./badge";
 export { Box } from "./box";
 export { Button } from "./button";
 export { Checkbox } from "./checkbox";
