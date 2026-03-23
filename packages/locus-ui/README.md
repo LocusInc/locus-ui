@@ -1,5 +1,7 @@
 # @locus-ui/components
 
+**GitHub:** [https://github.com/LocusInc/locus-ui](https://github.com/LocusInc/locus-ui)
+
 An (optionally) unstyled modern React UI component library built with Tailwind CSS v4, featuring compound components, responsive props, and a powerful theming system.
 
 ## Features

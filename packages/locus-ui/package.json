@@ -1,6 +1,6 @@
 {
   "name": "@locus-ui/components",
-  "version": "0.0.1",
+  "version": "0.0.12",
   "description": "A React UI component library",
   "main": "dist/index.js",
   "module": "dist/index.mjs",
@@ -31,6 +31,11 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/LocusInc/locus-ui.git",
+    "directory": "packages/locus-ui"
+  },
   "type": "commonjs",
   "peerDependencies": {
     "react": "^18.0.0 || ^19.0.0",

@@ -12,6 +12,10 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/LocusInc/locus-ui.git"
+  },
   "type": "commonjs",
   "private": true,
   "workspaces": [
