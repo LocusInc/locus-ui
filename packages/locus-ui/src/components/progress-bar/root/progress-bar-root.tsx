@@ -29,9 +29,6 @@ interface AllProgressBarRootProps
 
 const ALLOWED_CHILDREN = [ProgressBarFill.displayName!];
 
-/**
- * A ProgressBar.
- */
 type ProgressBarRootProps = AllProgressBarRootProps &
   WithOptionalStrictChildren<
     HTMLAttributes<HTMLDivElement>,

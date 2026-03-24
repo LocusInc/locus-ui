@@ -75,21 +75,21 @@ export default function ProgressBarPage() {
       <Text className="font-bold">Stacking</Text>
 
       <Box className="flex flex-col gap-2">
-        <ProgressBar className="w-48" variant="solid" size="xl">
+        <ProgressBar.Root className="w-48" variant="solid" size="xl">
           <ProgressBar.Fill value={0.3} color="primary" />
           <ProgressBar.Fill value={0.2} color="secondary" />
           <ProgressBar.Fill value={0.1} color="accent" />
-        </ProgressBar>
+        </ProgressBar.Root>
       </Box>
 
       <Text className="font-bold">Over Stacking</Text>
 
       <Box className="flex flex-col gap-2">
-        <ProgressBar className="w-48" variant="solid" size="xl">
+        <ProgressBar.Root className="w-48" variant="solid" size="xl">
           <ProgressBar.Fill value={0.5} color="primary" />
           <ProgressBar.Fill value={0.4} color="secondary" />
           <ProgressBar.Fill value={0.3} color="accent" />
-        </ProgressBar>
+        </ProgressBar.Root>
       </Box>
     </Container>
   );
