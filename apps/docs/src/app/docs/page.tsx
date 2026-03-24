@@ -20,6 +20,12 @@ export default function Docs() {
         experiences without worrying about the underlying implementation
         details.
       </Text>
+
+      <Text>
+        To interact with our theme control, you can press{" "}
+        <kbd>Alt</kbd> + <kbd>T</kbd> or <kbd>⌥ Option</kbd> + <kbd>T</kbd> to
+        open the theme control panel.
+      </Text>
     </Box>
   );
 }
