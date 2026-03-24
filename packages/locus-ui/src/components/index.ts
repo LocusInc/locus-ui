@@ -4,6 +4,7 @@ export { Box } from "./box";
 export { Button } from "./button";
 export { Checkbox } from "./checkbox";
 export { Container } from "./container";
+export { Panel } from "./panel";
 export { Portal } from "./portal";
 export { Select } from "./select";
 export { Separator } from "./separator";

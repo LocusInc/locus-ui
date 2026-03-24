@@ -1,0 +1,18 @@
+.panel[data-variant] {
+  backdrop-filter: blur(var(--panel-blur, 0px));
+
+  &[data-variant="solid"] {
+    background-color: rgb(var(--panel-color));
+    border: 1px solid transparent;
+  }
+
+  &[data-variant="outlined"] {
+    background-color: rgba(var(--panel-color), 0.8);
+    border: 1px solid rgb(var(--border-color));
+  }
+
+  &[data-variant="muted"] {
+    background-color: rgba(var(--panel-color), 0.5);
+    border: 1px solid transparent;
+  }
+}
