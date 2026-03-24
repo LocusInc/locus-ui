@@ -3,6 +3,7 @@
 @import "./box/box.css";
 @import "./button/button.css";
 @import "./checkbox/checkbox.css";
+@import "./panel//panel.css";
 @import "./portal/portal.css";
 @import "./progress-bar/progress-bar.css";
 @import "./select/select.css";
