@@ -29,6 +29,15 @@ export type WithStrictChildren<
   AllowedChildProps
 > = Omit<Props, "children"> & StrictChildren<AllowedChildProps>;
 
+/**
+ * Like WithStrictChildren, but children are optional.
+ * When provided, children are still restricted to the allowed types.
+ */
+export type WithOptionalStrictChildren<
+  Props extends { children?: React.ReactNode },
+  AllowedChildProps
+> = Omit<Props, "children"> & Partial<StrictChildren<AllowedChildProps>>;
+
 export interface FilterChildrenOptions {
   /** The parent component's displayName (for error/warning messages) */
   parentDisplayName?: string;
