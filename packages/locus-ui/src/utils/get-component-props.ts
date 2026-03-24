@@ -7,7 +7,7 @@ export function getComponentProps<
     style?: React.CSSProperties;
     [key: string]: any;
   },
-  T extends Record<string, PropDef>[]
+  T extends Record<string, PropDef>[],
 >(props: P, ...propDefs: T) {
   let style: React.CSSProperties = props.style ?? {};
   const classNames: string[] = props.className ? [props.className] : [];
@@ -33,6 +33,7 @@ export function getComponentProps<
     if (
       prop.type === "boolean" ||
       prop.type === "string" ||
+      prop.type === "number" ||
       prop.type === "value | array" ||
       prop.type === "reactNode" ||
       prop.type === "function"
@@ -67,7 +68,7 @@ export function getComponentProps<
           if (!prop.values.includes(propValue)) {
             if (prop.className) {
               classNames.push(
-                breakpoint ? `${prop.className}-${breakpoint}` : prop.className
+                breakpoint ? `${prop.className}-${breakpoint}` : prop.className,
               );
               style = {
                 ...style,
