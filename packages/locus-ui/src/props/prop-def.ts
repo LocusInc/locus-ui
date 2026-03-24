@@ -41,6 +41,7 @@ type EnumOrStringPropDef<T extends string> = {
   required?: boolean;
   className?: string;
   dataAttr?: string;
+  transform?: (value: string) => string;
 };
 
 type ValueOrArrayPropDef<T> = {
