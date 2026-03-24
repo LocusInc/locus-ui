@@ -65,13 +65,18 @@ export function getComponentProps<
           if (!breakpoint) extractedProps[key] = propValue;
 
           if (!prop.values.includes(propValue)) {
+            const transformedValue =
+              "transform" in prop && prop.transform
+                ? prop.transform(propValue)
+                : propValue;
+
             if (prop.className) {
               classNames.push(
-                breakpoint ? `${prop.className}-${breakpoint}` : prop.className
+                breakpoint ? `${prop.className}-${breakpoint}` : prop.className,
               );
               style = {
                 ...style,
-                [`--custom-${key}${usedBreakpoint}`]: propValue,
+                [`--custom-${key}${usedBreakpoint}`]: transformedValue,
               };
             }
 
