@@ -1,4 +1,7 @@
 [data-color] {
+  --color: var(--custom-color);
+}
+[data-color="primary"] {
   --color: var(--primary);
 }
 [data-color="secondary"] {
