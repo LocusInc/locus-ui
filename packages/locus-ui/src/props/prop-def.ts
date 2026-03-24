@@ -20,6 +20,12 @@ type StringPropDef = {
   cssProperty?: string;
 };
 
+type NumberPropDef = {
+  type: "number";
+  default?: number;
+  required?: boolean;
+};
+
 type ReactNodePropDef<T = React.ReactNode> = {
   type: "reactNode";
   required?: boolean;
@@ -52,7 +58,7 @@ type ValueOrArrayPropDef<T> = {
 };
 
 type FunctionPropDef<
-  T extends (...args: any[]) => any = (...args: any[]) => any
+  T extends (...args: any[]) => any = (...args: any[]) => any,
 > = {
   type: "function";
   required?: boolean;
@@ -61,6 +67,7 @@ type FunctionPropDef<
 type BasePropDef<T = any> =
   | BooleanPropDef
   | StringPropDef
+  | NumberPropDef
   | ReactNodePropDef<T>
   | EnumPropDef<T>
   | EnumOrStringPropDef<T & string>
@@ -76,26 +83,30 @@ type GetPropDefType<Def> = Def extends BooleanPropDef
     ? Responsive<boolean>
     : boolean
   : Def extends StringPropDef
-  ? Def extends ResponsivePropDef
-    ? Responsive<string>
-    : string
-  : Def extends ReactNodePropDef<infer Type>
-  ? Type
-  : Def extends FunctionPropDef<infer Fn>
-  ? Fn
-  : Def extends EnumOrStringPropDef<infer Type>
-  ? Def extends ResponsivePropDef<infer Type extends string>
-    ? Responsive<Union<string, Type>>
-    : Union<string, Type>
-  : Def extends ValueOrArrayPropDef<infer Type>
-  ? Def extends ResponsivePropDef<infer Type>
-    ? Responsive<Type | Type[]>
-    : Type | Type[]
-  : Def extends EnumPropDef<infer Type>
-  ? Def extends ResponsivePropDef<infer Type>
-    ? Responsive<Type>
-    : Type
-  : never;
+    ? Def extends ResponsivePropDef
+      ? Responsive<string>
+      : string
+    : Def extends NumberPropDef
+      ? Def extends ResponsivePropDef
+        ? Responsive<number>
+        : number
+      : Def extends ReactNodePropDef<infer Type>
+        ? Type
+        : Def extends FunctionPropDef<infer Fn>
+          ? Fn
+          : Def extends EnumOrStringPropDef<infer Type>
+            ? Def extends ResponsivePropDef<infer Type extends string>
+              ? Responsive<Union<string, Type>>
+              : Union<string, Type>
+            : Def extends ValueOrArrayPropDef<infer Type>
+              ? Def extends ResponsivePropDef<infer Type>
+                ? Responsive<Type | Type[]>
+                : Type | Type[]
+              : Def extends EnumPropDef<infer Type>
+                ? Def extends ResponsivePropDef<infer Type>
+                  ? Responsive<Type>
+                  : Type
+                : never;
 
 type GetPropDefTypes<P> = {
   [K in keyof P]?: GetPropDefType<P[K]>;
