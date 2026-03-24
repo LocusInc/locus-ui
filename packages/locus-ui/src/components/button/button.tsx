@@ -2,6 +2,7 @@ import clsx from "clsx";
 import { useState } from "react";
 import {
   ColorProp,
+  ColorPropDef,
   MarginPropDefs,
   MarginProps,
   PaddingPropDefs,
@@ -38,6 +39,7 @@ const Button: React.FC<ButtonRootProps> = (props) => {
   } = getComponentProps(
     props,
     ButtonRootPropsDefs,
+    ColorPropDef,
     MarginPropDefs,
     PaddingPropDefs,
     RadiusPropDefs,
