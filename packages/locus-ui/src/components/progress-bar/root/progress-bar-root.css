@@ -1,0 +1,39 @@
+.progress-bar-root[data-variant] {
+  --progress-bar-base: var(--lcs-color, var(--panel-color));
+  --progress-bar-color: var(--color, var(--primary));
+
+  display: flex;
+  overflow: hidden;
+  min-height: 1px;
+  border-radius: var(--lcs-radius, 1);
+  height: calc(4px * var(--lcs-spacing, 1));
+
+  &[data-variant="solid"] {
+    background-color: rgba(var(--progress-bar-base), 0.8);
+  }
+
+  &[data-variant="outlined"] {
+    background-color: transparent;
+    border: 1px solid rgba(var(--progress-bar-color), 0.8);
+  }
+
+  &[data-variant="muted"] {
+    background-color: rgba(var(--progress-bar-color), 0.2);
+  }
+
+  &[data-size="xs"] {
+    height: calc(2px * var(--lcs-spacing, 1));
+  }
+
+  &[data-size="sm"] {
+    height: calc(3px * var(--lcs-spacing, 1));
+  }
+
+  &[data-size="lg"] {
+    height: calc(6px * var(--lcs-spacing, 1));
+  }
+
+  &[data-size="xl"] {
+    height: calc(8px * var(--lcs-spacing, 1));
+  }
+}
