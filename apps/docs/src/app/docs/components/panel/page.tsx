@@ -3,6 +3,16 @@ import { Box, Container, Panel, Text } from "@locus-ui/components";
 export default function PanelPage() {
   const variants = ["solid", "outlined", "muted"] as const;
   const blurs = ["0px", "2px", "4px"] as const;
+  const colors = [
+    "primary",
+    "secondary",
+    "tertiary",
+    "accent",
+    "success",
+    "danger",
+    "warning",
+    "info",
+  ] as const;
 
   return (
     <Container className="flex flex-col gap-4 p-4 w-full min-h-full">
@@ -26,6 +36,17 @@ export default function PanelPage() {
         {blurs.map((blur) => (
           <Panel key={blur} blur={blur} p="4" variant="muted">
             Blur: {blur}
+          </Panel>
+        ))}
+      </Box>
+
+      <Text>Colors</Text>
+      <Box className="flex flex-wrap gap-4">
+        {colors.map((color) => (
+          <Panel key={color} color={color} px="4" py="2" variant="muted">
+            <Text color={color}>
+              {color.charAt(0).toUpperCase() + color.slice(1)} Panel
+            </Text>
           </Panel>
         ))}
       </Box>

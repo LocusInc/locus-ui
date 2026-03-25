@@ -1,6 +1,8 @@
 import clsx from "clsx";
 import * as React from "react";
 import {
+  ColorProp,
+  ColorPropDef,
   MarginPropDefs,
   MarginProps,
   PaddingPropDefs,
@@ -16,7 +18,13 @@ import { getComponentProps } from "../../utils/get-component-props";
 import { PanelInternalProps, PanelPropsDefs } from "./panel.props";
 
 interface PanelExternalProps
-  extends MarginProps, PaddingProps, SpacingProp, RadiusProps, RoundnessProp {}
+  extends
+    MarginProps,
+    PaddingProps,
+    SpacingProp,
+    RadiusProps,
+    RoundnessProp,
+    ColorProp {}
 
 type PanelProps = PanelInternalProps &
   PanelExternalProps &
@@ -34,6 +42,7 @@ const Panel = React.forwardRef<HTMLDivElement, PanelProps>((props, ref) => {
     SpacingPropDef,
     RadiusPropDefs,
     RoundnessPropDef,
+    ColorPropDef,
   );
 
   return (

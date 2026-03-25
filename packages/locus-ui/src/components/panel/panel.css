@@ -1,18 +1,20 @@
 .panel[data-variant] {
+  --panel-custom-color: var(--color, var(--panel-color));
+
   backdrop-filter: blur(var(--panel-blur, 0px));
 
   &[data-variant="solid"] {
-    background-color: rgb(var(--panel-color));
+    background-color: rgb(var(--panel-custom-color));
     border: 1px solid transparent;
   }
 
   &[data-variant="outlined"] {
-    background-color: rgba(var(--panel-color), 0.8);
-    border: 1px solid rgb(var(--border-color));
+    background-color: rgba(var(--panel-custom-color), 0.5);
+    border: 1px solid rgba(var(--color, var(--border-color)));
   }
 
   &[data-variant="muted"] {
-    background-color: rgba(var(--panel-color), 0.5);
+    background-color: rgba(var(--panel-custom-color), 0.4);
     border: 1px solid transparent;
   }
 }
