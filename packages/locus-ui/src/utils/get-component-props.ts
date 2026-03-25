@@ -40,12 +40,24 @@ export function getComponentProps<
     ) {
       extractedProps[key] = value;
 
-      if (prop.cssProperty && value !== undefined && value !== null) {
-        style = {
-          ...style,
-          [prop.cssProperty]:
-            prop.type === "boolean" ? (value ? "1" : "0") : value,
-        };
+      if (prop.cssProperty) {
+        if (value !== undefined && value !== null) {
+          style = {
+            ...style,
+            [prop.cssProperty]:
+              prop.type === "boolean" ? (value ? "1" : "0") : value,
+          };
+        } else if (prop.default !== undefined) {
+          style = {
+            ...style,
+            [prop.cssProperty]:
+              prop.type === "boolean"
+                ? prop.default
+                  ? "1"
+                  : "0"
+                : prop.default,
+          };
+        }
       }
 
       if (prop.dataAttr) {
