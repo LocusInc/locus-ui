@@ -3,6 +3,15 @@
   flex-direction: column;
   overflow: hidden;
 
+  &[data-variant="solid"] {
+    background-color: rgba(var(--background-color-2), 0.95);
+  }
+
+  &[data-variant="outlined"],
+  &[data-variant="muted"] {
+    background-color: rgba(var(--background-color-2), 0.6);
+  }
+
   & + .accordion-item[data-variant="solid"],
   & + .accordion-item[data-variant="muted"] {
     border-top: 1px solid rgba(var(--border-color), 0.2);

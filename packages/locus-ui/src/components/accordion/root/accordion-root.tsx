@@ -1,3 +1,5 @@
+"use client";
+
 import clsx from "clsx";
 import { FC, HTMLAttributes, ReactElement, useMemo, useRef } from "react";
 import { SizeProp, SizePropDef } from "../../../props";

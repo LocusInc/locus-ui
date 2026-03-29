@@ -1,3 +1,5 @@
+"use client";
+
 import clsx from "clsx";
 import React, { FC, useEffect, useMemo } from "react";
 import {
