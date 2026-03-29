@@ -88,6 +88,7 @@ const components = [
   { name: "Progress Bar", path: "/docs/components/progress-bar" },
   { name: "Select", path: "/docs/components/select" },
   { name: "Separator", path: "/docs/components/separator" },
+  { name: "Switch", path: "/docs/components/switch" },
   { name: "Theme", path: "/docs/components/theme" },
 ];
 
