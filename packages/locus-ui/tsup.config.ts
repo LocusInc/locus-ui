@@ -1,22 +1,21 @@
 import { defineConfig } from "tsup";
 
-export default defineConfig((overrideOptions) => ({
-  entry: ["src/index.ts", "src/index.css"],
-  outDir: "dist",
-  format: ["esm", "cjs"],
-  dts: true,
-  target: "esnext",
-  sourcemap: true,
-  shims: true,
-  clean: !overrideOptions.watch,
-  splitting: true,
-  external: ["react", "react-dom"],
-  banner: {
-    js: '"use client";',
+export default defineConfig((overrideOptions) => [
+  {
+    entry: ["src/**/*.{ts,tsx}"],
+    outDir: "dist",
+    format: ["esm", "cjs"],
+    dts: !overrideOptions.watch,
+    target: "esnext",
+    sourcemap: true,
+    shims: true,
+    clean: !overrideOptions.watch,
+    bundle: false,
+    external: ["react", "react-dom"],
   },
-  esbuildOptions(options) {
-    options.alias = {
-      "@": "./src",
-    };
+  {
+    entry: ["src/index.css"],
+    outDir: "dist",
+    clean: false,
   },
-}));
+]);
