@@ -1,3 +1,5 @@
+"use client";
+
 import React from "react";
 import { LabelPosition } from "./label/checkbox-label.props";
 
@@ -21,7 +23,7 @@ export interface CheckboxContextValue {
 }
 
 export const CheckboxContext = React.createContext<CheckboxContextValue | null>(
-  null
+  null,
 );
 
 export function useCheckboxContext() {

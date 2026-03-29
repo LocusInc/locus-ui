@@ -63,6 +63,7 @@ const PortalRoot: React.FC<PortalRootProps> = (props) => {
 
   const validChildren = filterChildren(children, ALLOWED_CHILDREN, {
     parentDisplayName: PortalRoot.displayName,
+    allowedTypes: [PortalTrigger, PortalBackdrop, PortalContent],
   });
 
   return (

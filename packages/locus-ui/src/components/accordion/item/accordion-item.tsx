@@ -1,6 +1,9 @@
 import clsx from "clsx";
 import React, { FC, useEffect, useMemo } from "react";
-import { filterChildren } from "../../../utils/filter-children";
+import {
+  filterChildren,
+  matchesComponent,
+} from "../../../utils/filter-children";
 import { getComponentProps } from "../../../utils/get-component-props";
 import { useAccordionContext } from "../accordion-context";
 import { AccordionContent } from "../content/accordion-content";
@@ -43,14 +46,12 @@ const AccordionItem: FC<AccordionItemProps> = (props) => {
   }) as React.ReactElement[];
 
   const { header, content } = useMemo(() => {
-    const header = validChildren.find(
-      (child) =>
-        (child.type as React.FC).displayName === AccordionHeader.displayName,
+    const header = validChildren.find((child) =>
+      matchesComponent(child.type, AccordionHeader),
     );
 
-    const content = validChildren.find(
-      (child) =>
-        (child.type as React.FC).displayName === AccordionContent.displayName,
+    const content = validChildren.find((child) =>
+      matchesComponent(child.type, AccordionContent),
     );
 
     return { header, content };

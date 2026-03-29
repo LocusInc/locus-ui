@@ -1,7 +1,7 @@
 "use client";
 
 import clsx from "clsx";
-import React, {
+import {
   FC,
   HTMLAttributes,
   isValidElement,
@@ -20,6 +20,7 @@ import {
 } from "../../../props";
 import {
   filterChildren,
+  matchesComponent,
   WithStrictChildren,
 } from "../../../utils/filter-children";
 import { getComponentProps } from "../../../utils/get-component-props";
@@ -37,7 +38,8 @@ import {
 } from "./checkbox-root.props";
 
 interface AllCheckboxRootProps
-  extends CheckboxRootInternalProps,
+  extends
+    CheckboxRootInternalProps,
     AlignProp,
     ColorProp,
     MarginProps,
@@ -78,7 +80,7 @@ const CheckboxRoot: FC<CheckboxRootProps> = (props) => {
     CheckboxRootPropsDefs,
     AlignPropDef,
     MarginPropDefs,
-    SizePropDef
+    SizePropDef,
   );
 
   const [value, setValue] = useControllableState<boolean>({
@@ -94,13 +96,14 @@ const CheckboxRoot: FC<CheckboxRootProps> = (props) => {
 
   const validChildren = filterChildren(props.children, ALLOWED_CHILDREN, {
     parentDisplayName: CheckboxRoot.displayName,
+    allowedTypes: [CheckboxLabel, CheckboxIndicator],
   });
 
   const { indicator, otherChildren } = useMemo(() => {
     const indicatorIndex = validChildren.findIndex(
       (child) =>
         isValidElement(child) &&
-        (child.type as React.FC).displayName === CheckboxIndicator.displayName
+        matchesComponent(child.type, CheckboxIndicator),
     );
 
     if (indicatorIndex > -1) {
@@ -149,7 +152,7 @@ const CheckboxRoot: FC<CheckboxRootProps> = (props) => {
       required,
       indeterminate,
       highContrast,
-    ]
+    ],
   );
 
   const handleClick = () => {

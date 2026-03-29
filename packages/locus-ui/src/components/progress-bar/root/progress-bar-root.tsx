@@ -11,6 +11,7 @@ import {
 } from "../../../props";
 import {
   filterChildren,
+  matchesComponent,
   WithOptionalStrictChildren,
 } from "../../../utils/filter-children";
 import { getComponentProps } from "../../../utils/get-component-props";
@@ -46,13 +47,13 @@ const ProgressBarRoot: FC<ProgressBarRootProps> = (props) => {
 
   const validChildren = filterChildren(props.children, ALLOWED_CHILDREN, {
     parentDisplayName: ProgressBarRoot.displayName,
+    allowedTypes: [ProgressBarFill],
   });
 
   const { fills, totalValue } = useMemo(() => {
     const fills = validChildren.filter(
       (child) =>
-        isValidElement(child) &&
-        (child.type as React.FC).displayName === ProgressBarFill.displayName,
+        isValidElement(child) && matchesComponent(child.type, ProgressBarFill),
     );
 
     if (fills.length > 0) {

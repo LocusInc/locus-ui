@@ -1,6 +1,8 @@
+"use client";
+
 import * as React from "react";
 import { LabelPosition } from "./label/select-label.props";
-import { TriggerVariant } from "./trigger/select-trigger.props";
+import { SelectTriggerVariant } from "./trigger/select-trigger.props";
 
 export interface SelectContextValue {
   open: boolean;
@@ -14,8 +16,8 @@ export interface SelectContextValue {
   contentRef: React.RefObject<HTMLDivElement | null>;
   labelPosition?: LabelPosition;
   setLabelPosition?: (position: LabelPosition) => void;
-  triggerVariant?: TriggerVariant;
-  setTriggerVariant?: (variant: TriggerVariant) => void;
+  triggerVariant?: SelectTriggerVariant;
+  setTriggerVariant?: (variant: SelectTriggerVariant) => void;
   disabled?: boolean;
   required?: boolean;
   name?: string;
@@ -28,7 +30,7 @@ export interface SelectContextValue {
 }
 
 export const SelectContext = React.createContext<SelectContextValue | null>(
-  null
+  null,
 );
 
 export function useSelectContext() {

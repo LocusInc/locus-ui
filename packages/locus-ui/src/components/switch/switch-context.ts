@@ -1,3 +1,5 @@
+"use client";
+
 import React from "react";
 import { LabelPosition } from "./label/switch-label.props";
 

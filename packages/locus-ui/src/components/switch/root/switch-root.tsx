@@ -1,7 +1,7 @@
 "use client";
 
 import clsx from "clsx";
-import React, {
+import {
   FC,
   HTMLAttributes,
   isValidElement,
@@ -21,6 +21,7 @@ import {
 } from "../../../props";
 import {
   filterChildren,
+  matchesComponent,
   WithStrictChildren,
 } from "../../../utils/filter-children";
 import { getComponentProps } from "../../../utils/get-component-props";
@@ -67,6 +68,8 @@ const SwitchRoot: FC<SwitchRootProps> = (props) => {
     variant,
     checked,
     dataAttrs,
+    style,
+    className,
     onCheckedChange,
     value: valueProp,
     disabled = false,
@@ -96,6 +99,7 @@ const SwitchRoot: FC<SwitchRootProps> = (props) => {
 
   const validChildren = filterChildren(props.children, ALLOWED_CHILDREN, {
     parentDisplayName: SwitchRoot.displayName,
+    allowedTypes: [SwitchLabel, SwitchIndicator],
   });
 
   const { restDataAttrs } = useMemo(() => {
@@ -106,8 +110,7 @@ const SwitchRoot: FC<SwitchRootProps> = (props) => {
   const { indicator, otherChildren } = useMemo(() => {
     const indicatorIndex = validChildren.findIndex(
       (child) =>
-        isValidElement(child) &&
-        (child.type as React.FC).displayName === SwitchIndicator.displayName,
+        isValidElement(child) && matchesComponent(child.type, SwitchIndicator),
     );
 
     if (indicatorIndex > -1) {
@@ -166,7 +169,7 @@ const SwitchRoot: FC<SwitchRootProps> = (props) => {
   return (
     <SwitchContext.Provider value={contextValue}>
       <div
-        className={clsx("switch-root", props.className)}
+        className={clsx("switch-root", className)}
         onClick={() => handleClick()}
         onFocus={() => setFocused(true)}
         onBlur={() => setFocused(false)}
@@ -174,19 +177,21 @@ const SwitchRoot: FC<SwitchRootProps> = (props) => {
         onMouseLeave={() => setHovered(false)}
         {...restDataAttrs}
       >
+        {otherChildren}
+
         <div
-          className="switch-container"
+          className={clsx("switch-container", className)}
           data-size={size}
           data-color={color}
           data-checked={value}
           data-hovered={hovered}
           data-focused={focused}
           data-variant={variant}
+          style={style}
         >
           {indicator}
         </div>
 
-        {otherChildren}
         {name && <input type="hidden" name={name} value={String(value)} />}
       </div>
     </SwitchContext.Provider>

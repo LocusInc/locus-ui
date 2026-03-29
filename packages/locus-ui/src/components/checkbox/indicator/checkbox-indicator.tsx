@@ -1,3 +1,5 @@
+"use client";
+
 import clsx from "clsx";
 import React from "react";
 import { CheckMark, Minus } from "../../../icons";
@@ -10,8 +12,7 @@ import {
 } from "./checkbox-indicator.props";
 
 interface AllCheckboxIndicatorProps
-  extends CheckboxIndicatorInternalProps,
-    SizeProp {}
+  extends CheckboxIndicatorInternalProps, SizeProp {}
 
 type CheckboxIndicatorProps = AllCheckboxIndicatorProps &
   Omit<React.HTMLAttributes<HTMLSpanElement>, "children">;
@@ -38,7 +39,7 @@ const CheckboxIndicator: React.FC<CheckboxIndicatorProps> = React.forwardRef<
   const { size, variant, className, style, dataAttrs } = getComponentProps(
     props,
     CheckboxIndicatorPropDefs,
-    SizePropDef
+    SizePropDef,
   );
 
   const indicatorVariant = variant || contextVariant;
