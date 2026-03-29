@@ -83,6 +83,7 @@ const components = [
   { name: "Box", path: "/docs/components/box" },
   { name: "Button", path: "/docs/components/button" },
   { name: "Checkbox", path: "/docs/components/checkbox" },
+  { name: "Flex", path: "/docs/components/flex" },
   { name: "Panel", path: "/docs/components/panel" },
   { name: "Portal", path: "/docs/components/portal" },
   { name: "Progress Bar", path: "/docs/components/progress-bar" },
