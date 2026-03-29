@@ -9,6 +9,7 @@ import json from "highlight.js/lib/languages/json";
 import typescript from "highlight.js/lib/languages/typescript";
 import xml from "highlight.js/lib/languages/xml";
 import "highlight.js/styles/github-dark.min.css";
+import { useState } from "react";
 import "./code-box.css";
 
 hljs.registerLanguage("javascript", javascript);
@@ -24,6 +25,7 @@ interface CodeBoxProps {
   children: string;
   language?: string;
   showLineNumbers?: boolean;
+  maxLines?: number;
 }
 
 export const CodeBox = ({
@@ -31,7 +33,10 @@ export const CodeBox = ({
   children,
   language = "plaintext",
   showLineNumbers = false,
+  maxLines = 12,
 }: CodeBoxProps) => {
+  const [expanded, setExpanded] = useState(false);
+
   const highlighted =
     language !== "plaintext" && hljs.getLanguage(language)
       ? hljs.highlight(children, { language })
@@ -43,10 +48,14 @@ export const CodeBox = ({
     lines.pop();
   }
 
+  const isTruncated = maxLines > 0 && lines.length > maxLines;
+  const visibleLines =
+    isTruncated && !expanded ? lines.slice(0, maxLines) : lines;
+
   const code = (
     <pre className="code-box">
       <code className={`hljs language-${language}`}>
-        {lines.map((line, i) => (
+        {visibleLines.map((line, i) => (
           <span key={i} className="code-box-line">
             {showLineNumbers && (
               <span className="code-box-line-number">{i + 1}</span>
@@ -58,6 +67,19 @@ export const CodeBox = ({
           </span>
         ))}
       </code>
+
+      {isTruncated && (
+        <button
+          className="code-box-toggle"
+          onClick={() => setExpanded((prev) => !prev)}
+        >
+          <Text>
+            {expanded
+              ? "Show less"
+              : `Show ${lines.length - maxLines} more lines`}
+          </Text>
+        </button>
+      )}
     </pre>
   );
 

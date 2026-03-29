@@ -31,8 +31,7 @@ export const ComponentPreview = ({
       <Panel variant="outlined" className="min-h-fit overflow-hidden">
         <Box
           p="4"
-          radius="none"
-          className="flex items-center justify-center min-h-40! bg-linear-to-br from-[rgba(var(--secondary),0.5)] to-[rgba(var(--tertiary),0.5)]"
+          className="flex items-center justify-center min-h-40! rounded-none! bg-linear-to-br from-[rgba(var(--secondary),0.5)] to-[rgba(var(--tertiary),0.5)]"
         >
           {children}
         </Box>
@@ -88,6 +87,6 @@ const TabButton = ({
         : "border-transparent text-[rgb(var(--foreground-color))] opacity-60 hover:opacity-100"
     }`}
   >
-    {children}
+    <Text>{children}</Text>
   </button>
 );

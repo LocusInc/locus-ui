@@ -30,7 +30,9 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         <Theme appearance="dark" radius="md" roundness="3" spacing="md">
-          {children}
+          <div className="bg-[rgb(var(--background-color-1))] min-h-screen">
+            {children}
+          </div>
         </Theme>
       </body>
     </html>
