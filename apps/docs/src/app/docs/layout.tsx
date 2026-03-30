@@ -13,7 +13,7 @@ const DocsLayout = ({ children }: DocsLayoutProps) => {
       <Flex
         gap="2"
         direction="column"
-        className="flex-1 sm:flex hidden  sticky top-0 self-start max-h-screen overflow-y-auto"
+        className="flex-1 md:flex! hidden! sticky top-0 self-start max-h-screen overflow-y-auto"
       >
         <SideBarLinks title="Overview" components={overview} />
         <SideBarLinks title="Components" components={components} />
@@ -25,7 +25,7 @@ const DocsLayout = ({ children }: DocsLayoutProps) => {
       <Flex
         data-docs-content
         direction="column"
-        className="flex-4 min-w-0 min-h-fit px-8 bg-[rgb(var(--background-color-1))]"
+        className="flex-4 min-w-0 min-h-fit lg:px-8 bg-[rgb(var(--background-color-1))]"
       >
         {children}
       </Flex>
@@ -39,7 +39,7 @@ const DocsLayout = ({ children }: DocsLayoutProps) => {
       <Flex
         px="4"
         pt="8"
-        className="flex-1 lg:flex hidden sticky top-0 self-start max-h-screen overflow-y-auto"
+        className="flex-1 lg:flex! hidden! sticky top-0 self-start max-h-screen overflow-y-auto"
       >
         <TableOfContents />
       </Flex>
