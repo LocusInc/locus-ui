@@ -23,6 +23,7 @@ export const PreviewBox: React.FC<{
   return (
     <Panel
       variant="outlined"
+      my="2"
       className="min-h-fit bg-[rgb(var(--background-color-3))]! overflow-hidden"
     >
       <Flex
