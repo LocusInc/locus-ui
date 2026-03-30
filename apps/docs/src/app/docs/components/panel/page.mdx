@@ -1,0 +1,104 @@
+import { Box, Flex, Panel, Text } from "@locus-ui/components";
+import { ComponentPreview } from "@/components/component-preview";
+import { PreviewBox } from "@/components/preview-box";
+import { CodeBox } from "@/components/code-box";
+import {
+  anatomySnippet,
+  blurSnippet,
+  colorsSnippet,
+  indexSnippet,
+  styleSnippet,
+  variantsSnippet,
+} from "./snippets";
+
+export const variants = ["solid", "outlined", "muted"];
+export const blurs = ["0px", "2px", "4px"];
+export const colors = [
+  "primary",
+  "secondary",
+  "tertiary",
+  "accent",
+  "success",
+  "danger",
+  "warning",
+  "info",
+];
+
+# Panel Component
+
+A versatile container used to provide layout and styling capabilities.
+
+<ComponentPreview
+  codeSnippets={[
+    {
+      title: "index.tsx",
+      code: indexSnippet,
+    },
+    {
+      title: "styles.css",
+      code: styleSnippet,
+    },
+  ]}
+  source="https://github.com/LocusInc/locus-ui/tree/main/packages/locus-ui/src/components/panel"
+>
+  <Panel variant="outlined" p="4">
+    Outlined Panel
+  </Panel>
+</ComponentPreview>
+
+## Anatomy
+
+Import the component:
+
+<CodeBox title="Anatomy" language="typescript" className="my-2">
+  {anatomySnippet}
+</CodeBox>
+
+## Examples
+
+### Variants
+
+Panel components come with three built in variants, `solid`, `outlined`, and `muted`.
+
+<PreviewBox title="variants.tsx" code={variantsSnippet}>
+  {variants.map((variant) => (
+    <Panel key={variant} variant={variant} p="4">
+      {variant.charAt(0).toUpperCase() + variant.slice(1)} Panel
+    </Panel>
+  ))}
+</PreviewBox>
+
+### Blurring
+
+The `blur` prop applies a backdrop blur effect to the panel content.
+
+<PreviewBox title="blur.tsx" code={blurSnippet}>
+  <Box className="relative">
+    <Box className="absolute">
+      <Text px="2" py="2">Test Text Test Text Test Text Test Text Test Test Text Test Text Test Text Test Text Test</Text>
+    </Box>
+
+    <Flex gap="3">
+      {blurs.map((blur) => (
+        <Panel key={blur} blur={blur} p="4" variant="muted">
+          Blur: {blur}
+        </Panel>
+      ))}
+    </Flex>
+
+  </Box>
+</PreviewBox>
+
+### Colors
+
+The panel component uses the `color` prop to allow for predefined and custom colors.
+
+<PreviewBox title="colors.tsx" code={colorsSnippet}>
+  {colors.map((color) => (
+    <Panel key={color} color={color} px="4" py="2" variant="muted">
+      <Text color={color}>
+        {color.charAt(0).toUpperCase() + color.slice(1)} Panel
+      </Text>
+    </Panel>
+  ))}
+</PreviewBox>
