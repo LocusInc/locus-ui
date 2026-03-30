@@ -1,0 +1,180 @@
+import { Box, Flex, Text } from "@locus-ui/components";
+import { ComponentPreview } from "@/components/component-preview";
+import { PreviewBox } from "@/components/preview-box";
+import { CodeBox } from "@/components/code-box";
+import {
+  alignSnippet,
+  anatomySnippet,
+  directionsSnippet,
+  gapsSnippet,
+  indexSnippet,
+  justifySnippet,
+  styleSnippet,
+  wrapSnippet,
+} from "./snippets";
+
+export const gaps = ["0", "1", "2", "3", "4", "5", "6", "7", "8"];
+export const directions = ["row", "row-reverse", "column", "column-reverse"];
+export const justifies = [
+  "start",
+  "end",
+  "center",
+  "between",
+  "around",
+  "evenly",
+];
+export const aligns = ["start", "end", "center", "stretch", "baseline"];
+export const wraps = ["nowrap", "wrap", "wrap-reverse"];
+
+# Flex Component
+
+A flexible layout component for arranging children with configurable gap, direction, justification, alignment, and wrapping.
+
+<ComponentPreview
+  codeSnippets={[
+    {
+      title: "index.tsx",
+      code: indexSnippet,
+    },
+    {
+      title: "styles.css",
+      code: styleSnippet,
+    },
+  ]}
+  source="https://github.com/LocusInc/locus-ui/tree/main/packages/locus-ui/src/components/flex"
+>
+  <Flex gap="4" direction="row" align="center">
+    <Box px="2" py="1" className="border">
+      Item 1
+    </Box>
+    <Box px="2" py="1" className="border">
+      Item 2
+    </Box>
+    <Box px="2" py="1" className="border">
+      Item 3
+    </Box>
+  </Flex>
+</ComponentPreview>
+
+## Anatomy
+
+Import the component:
+
+<CodeBox title="Anatomy" language="typescript" className="my-2">
+  {anatomySnippet}
+</CodeBox>
+
+## Examples
+
+### Gaps
+
+The `gap` prop controls the spacing between child elements using predefined scale values `0` through `8`.
+
+<PreviewBox title="gaps.tsx" code={gapsSnippet}>
+  <Flex wrap="wrap" gap="4">
+    {gaps.map((gap) => (
+      <Box key={gap} px="2" py="1">
+        <Text>{gap}</Text>
+        <Flex gap={gap}>
+          <Box px="2" py="1" className="border">
+            Item 1
+          </Box>
+          <Box px="2" py="1" className="border">
+            Item 2
+          </Box>
+        </Flex>
+      </Box>
+    ))}
+  </Flex>
+</PreviewBox>
+
+### Directions
+
+The `direction` prop sets the flex direction: `row`, `row-reverse`, `column`, or `column-reverse`.
+
+<PreviewBox title="directions.tsx" code={directionsSnippet}>
+  <Flex wrap="wrap" gap="4">
+    {directions.map((direction) => (
+      <Box key={direction} px="2" py="1">
+        <Text>{direction}</Text>
+        <Flex direction={direction} gap="2">
+          <Box px="2" py="1" className="border">
+            Item 1
+          </Box>
+          <Box px="2" py="1" className="border">
+            Item 2
+          </Box>
+        </Flex>
+      </Box>
+    ))}
+  </Flex>
+</PreviewBox>
+
+### Justify
+
+The `justify` prop controls the main-axis alignment: `start`, `end`, `center`, `between`, `around`, or `evenly`.
+
+<PreviewBox title="justify.tsx" code={justifySnippet}>
+  <Flex wrap="wrap" gap="4">
+    {justifies.map((justify) => (
+      <Box key={justify} px="2" py="1">
+        <Text>{justify}</Text>
+        <Flex justify={justify} gap="2" className="w-full">
+          <Box px="2" py="1" className="border">
+            Item 1
+          </Box>
+          <Box px="2" py="1" className="border">
+            Item 2
+          </Box>
+        </Flex>
+      </Box>
+    ))}
+  </Flex>
+</PreviewBox>
+
+### Align
+
+The `align` prop controls the cross-axis alignment: `start`, `end`, `center`, `stretch`, or `baseline`.
+
+<PreviewBox title="align.tsx" code={alignSnippet}>
+  <Flex wrap="wrap" gap="4">
+    {aligns.map((align) => (
+      <Box key={align} px="2" py="1">
+        <Text>{align}</Text>
+        <Flex align={align} gap="2" style={{ height: "100px" }}>
+          <Box px="2" py="1" className="border">
+            Item 1
+          </Box>
+          <Box px="2" py="1" className="border">
+            Item 2
+          </Box>
+        </Flex>
+      </Box>
+    ))}
+  </Flex>
+</PreviewBox>
+
+### Wrap
+
+The `wrap` prop controls flex wrapping: `nowrap`, `wrap`, or `wrap-reverse`.
+
+<PreviewBox title="wrap.tsx" code={wrapSnippet}>
+  <Flex wrap="wrap" gap="4">
+    {wraps.map((wrap) => (
+      <Box key={wrap} px="2" py="1">
+        <Text>{wrap}</Text>
+        <Flex wrap={wrap} gap="2" style={{ width: "200px" }}>
+          <Box px="2" py="1" className="border">
+            Item 1
+          </Box>
+          <Box px="2" py="1" className="border">
+            Item 2
+          </Box>
+          <Box px="2" py="1" className="border">
+            Item 3
+          </Box>
+        </Flex>
+      </Box>
+    ))}
+  </Flex>
+</PreviewBox>
