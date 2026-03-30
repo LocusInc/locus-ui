@@ -1,0 +1,221 @@
+import { Box, Portal, Text } from "@locus-ui/components";
+import { ComponentPreview } from "@/components/component-preview";
+import { PreviewBox } from "@/components/preview-box";
+import { CodeBox } from "@/components/code-box";
+import {
+  anchorAlignsSnippet,
+  anchorPositionsSnippet,
+  anchorSnippet,
+  anatomySnippet,
+  indexSnippet,
+  offsetSnippet,
+  positionsSnippet,
+  styleSnippet,
+  variantsSnippet,
+} from "./snippets";
+
+export const positions = [
+  "tl",
+  "top",
+  "tr",
+  "left",
+  "center",
+  "right",
+  "bl",
+  "bottom",
+  "br",
+];
+export const variants = ["clear", "shadow", "blurred"];
+export const sides = ["top", "right", "bottom", "left"];
+export const aligns = ["start", "center", "end"];
+
+# Portal Component
+
+A portal component for rendering content in an overlay, supporting fixed positions, anchored positioning, backdrop variants, and offset control.
+
+<ComponentPreview
+  codeSnippets={[
+    {
+      title: "index.tsx",
+      code: indexSnippet,
+    },
+    {
+      title: "styles.css",
+      code: styleSnippet,
+    },
+  ]}
+  source="https://github.com/LocusInc/locus-ui/tree/main/packages/locus-ui/src/components/portal"
+>
+  <Portal.Root>
+    <Portal.Trigger>
+      <Box className="border" px="2" py="1">
+        <Text>Open Portal</Text>
+      </Box>
+    </Portal.Trigger>
+    <Portal.Backdrop variant="shadow" />
+    <Portal.Content>
+      <Box
+        p="4"
+        m="4"
+        className="bg-[rgb(var(--background-color-2))] border border-[rgb(var(--border-color-1))]"
+      >
+        <Text>Portal Content</Text>
+      </Box>
+    </Portal.Content>
+  </Portal.Root>
+</ComponentPreview>
+
+## Anatomy
+
+Import the component and its parts:
+
+<CodeBox title="Anatomy" language="typescript" className="my-2">
+  {anatomySnippet}
+</CodeBox>
+
+## Examples
+
+### Positions
+
+The `position` prop on `Portal.Content` controls where the content appears on screen. Available positions are `tl`, `top`, `tr`, `left`, `center`, `right`, `bl`, `bottom`, and `br`.
+
+<PreviewBox title="positions.tsx" code={positionsSnippet}>
+  {positions.map((position) => (
+    <Portal.Root key={position}>
+      <Portal.Trigger>
+        <Box className="border" px="2" py="1">
+          <Text>{position.toUpperCase()}</Text>
+        </Box>
+      </Portal.Trigger>
+      <Portal.Backdrop variant="shadow" />
+      <Portal.Content position={position}>
+        <Box
+          p="4"
+          m="4"
+          className="bg-[rgb(var(--background-color-2))] border border-[rgb(var(--border-color-1))]"
+        >
+          <Text>{position.toUpperCase()}</Text>
+        </Box>
+      </Portal.Content>
+    </Portal.Root>
+  ))}
+</PreviewBox>
+
+### Variants
+
+The `Portal.Backdrop` component supports three variants: `clear`, `shadow`, and `blurred`.
+
+<PreviewBox title="variants.tsx" code={variantsSnippet}>
+  {variants.map((variant) => (
+    <Portal.Root key={variant}>
+      <Portal.Trigger>
+        <Box className="border" px="2" py="1">
+          <Text>{variant.charAt(0).toUpperCase() + variant.slice(1)}</Text>
+        </Box>
+      </Portal.Trigger>
+      <Portal.Backdrop variant={variant} />
+      <Portal.Content>
+        <Box className="p-4 bg-[rgb(var(--background-color-2))] border border-[rgb(var(--border-color-1))] rounded">
+          <Text>{variant.charAt(0).toUpperCase() + variant.slice(1)}</Text>
+        </Box>
+      </Portal.Content>
+    </Portal.Root>
+  ))}
+</PreviewBox>
+
+### Anchor
+
+When the `anchored` prop is set on `Portal.Content`, the content is positioned relative to the trigger element.
+
+<PreviewBox title="anchor.tsx" code={anchorSnippet}>
+  <Portal.Root>
+    <Portal.Trigger>
+      <Box className="border" px="2" py="1">
+        <Text>Anchor</Text>
+      </Box>
+    </Portal.Trigger>
+    <Portal.Backdrop />
+    <Portal.Content anchored side="bottom" align="end">
+      <Box className="p-4 bg-[rgb(var(--background-color-2))] border border-[rgb(var(--border-color-1))] rounded">
+        <Text>Anchor</Text>
+      </Box>
+    </Portal.Content>
+  </Portal.Root>
+</PreviewBox>
+
+### Anchor Positions
+
+The `side` prop controls which side of the trigger the anchored content appears on: `top`, `right`, `bottom`, or `left`.
+
+<PreviewBox title="anchor-positions.tsx" code={anchorPositionsSnippet}>
+  {sides.map((side) => (
+    <Portal.Root key={side}>
+      <Portal.Trigger>
+        <Box className="border" px="2" py="1">
+          <Text>{side.charAt(0).toUpperCase() + side.slice(1)}</Text>
+        </Box>
+      </Portal.Trigger>
+      <Portal.Backdrop />
+      <Portal.Content anchored side={side}>
+        <Box className="p-4 bg-[rgb(var(--background-color-2))] border border-[rgb(var(--border-color-1))] rounded">
+          <Text>{side.charAt(0).toUpperCase() + side.slice(1)}</Text>
+        </Box>
+      </Portal.Content>
+    </Portal.Root>
+  ))}
+</PreviewBox>
+
+### Anchor Aligns
+
+The `align` prop controls the alignment of the anchored content relative to the trigger: `start`, `center`, or `end`.
+
+<PreviewBox title="anchor-aligns.tsx" code={anchorAlignsSnippet}>
+  {aligns.map((align) => (
+    <Portal.Root key={align}>
+      <Portal.Trigger>
+        <Box className="border" px="2" py="1">
+          <Text>{align.charAt(0).toUpperCase() + align.slice(1)}</Text>
+        </Box>
+      </Portal.Trigger>
+      <Portal.Backdrop />
+      <Portal.Content anchored side="bottom" align={align}>
+        <Box className="p-4 bg-[rgb(var(--background-color-2))] border border-[rgb(var(--border-color-1))] rounded">
+          <Text>{align.charAt(0).toUpperCase() + align.slice(1)}</Text>
+        </Box>
+      </Portal.Content>
+    </Portal.Root>
+  ))}
+</PreviewBox>
+
+### Offset
+
+Use `sideOffset` and `alignOffset` to fine-tune the position of anchored content.
+
+<PreviewBox title="offset.tsx" code={offsetSnippet}>
+  <Portal.Root>
+    <Portal.Trigger>
+      <Box className="border" px="2" py="1">
+        <Text>Side Offset</Text>
+      </Box>
+    </Portal.Trigger>
+    <Portal.Backdrop />
+    <Portal.Content anchored side="bottom" align="start" sideOffset="32">
+      <Box className="p-4 bg-[rgb(var(--background-color-2))] border border-[rgb(var(--border-color-1))] rounded">
+        <Text>Side Offset of 32px</Text>
+      </Box>
+    </Portal.Content>
+  </Portal.Root>
+  <Portal.Root>
+    <Portal.Trigger>
+      <Box className="border" px="2" py="1">
+        <Text>Align Offset</Text>
+      </Box>
+    </Portal.Trigger>
+    <Portal.Backdrop />
+    <Portal.Content anchored side="bottom" align="start" alignOffset="32">
+      <Box className="p-4 bg-[rgb(var(--background-color-2))] border border-[rgb(var(--border-color-1))] rounded">
+        <Text>Align Offset of 32px</Text>
+      </Box>
+    </Portal.Content>
+  </Portal.Root>
+</PreviewBox>
