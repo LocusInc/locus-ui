@@ -1,3 +1,5 @@
+"use client";
+
 import clsx from "clsx";
 import * as React from "react";
 import { getComponentProps } from "../../../utils/get-component-props";
@@ -21,7 +23,7 @@ const SelectLabel = React.forwardRef<HTMLLabelElement, SelectLabelProps>(
     const context = useSelectContext();
     const { className, children, position, dataAttrs } = getComponentProps(
       props,
-      SelectLabelPropDefs
+      SelectLabelPropDefs,
     );
 
     React.useLayoutEffect(() => {
@@ -38,7 +40,7 @@ const SelectLabel = React.forwardRef<HTMLLabelElement, SelectLabelProps>(
         <Text disabled={context.disabled}>{children}</Text>
       </label>
     );
-  }
+  },
 );
 SelectLabel.displayName = "Select.Label";
 

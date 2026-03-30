@@ -1,3 +1,5 @@
+"use client";
+
 import clsx from "clsx";
 import * as React from "react";
 import { RadiusProps, RoundnessProp } from "../../../props";
@@ -12,9 +14,7 @@ import {
 } from "./select-trigger.props";
 
 interface AllSelectTriggerProps
-  extends SelectTriggerInternalProps,
-    RadiusProps,
-    RoundnessProp {}
+  extends SelectTriggerInternalProps, RadiusProps, RoundnessProp {}
 
 type SelectTriggerProps = AllSelectTriggerProps &
   Omit<React.ButtonHTMLAttributes<HTMLButtonElement>, "children"> & {
@@ -95,7 +95,7 @@ const SelectTrigger = React.forwardRef<HTMLButtonElement, SelectTriggerProps>(
         <SelectTriggerIcon />
       </button>
     );
-  }
+  },
 );
 SelectTrigger.displayName = "Select.Trigger";
 
