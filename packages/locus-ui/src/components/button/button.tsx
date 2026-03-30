@@ -1,5 +1,7 @@
+"use client";
+
 import clsx from "clsx";
-import { useState } from "react";
+import { ButtonHTMLAttributes, FC, useState } from "react";
 import {
   ColorProp,
   ColorPropDef,
@@ -16,7 +18,8 @@ import { getComponentProps } from "../../utils/get-component-props";
 import { ButtonRootInternalProps, ButtonRootPropsDefs } from "./button.props";
 
 interface AllButtonRootProps
-  extends ButtonRootInternalProps,
+  extends
+    ButtonRootInternalProps,
     ColorProp,
     MarginProps,
     PaddingProps,
@@ -24,9 +27,9 @@ interface AllButtonRootProps
     SizeProp {}
 
 type ButtonRootProps = AllButtonRootProps &
-  React.ButtonHTMLAttributes<HTMLButtonElement>;
+  ButtonHTMLAttributes<HTMLButtonElement>;
 
-const Button: React.FC<ButtonRootProps> = (props) => {
+const Button: FC<ButtonRootProps> = (props) => {
   const {
     color,
     variant,
@@ -35,6 +38,7 @@ const Button: React.FC<ButtonRootProps> = (props) => {
     disabled,
     highContrast,
     readonly,
+    children,
     ...rest
   } = getComponentProps(
     props,
@@ -43,7 +47,7 @@ const Button: React.FC<ButtonRootProps> = (props) => {
     MarginPropDefs,
     PaddingPropDefs,
     RadiusPropDefs,
-    SizePropDef
+    SizePropDef,
   );
 
   const [hovered, setHovered] = useState(false);
@@ -57,13 +61,13 @@ const Button: React.FC<ButtonRootProps> = (props) => {
       data-high-contrast={highContrast ? true : undefined}
       data-readonly={readonly ? true : undefined}
       data-hovered={hovered ? true : undefined}
-      {...dataAttrs}
       disabled={disabled || readonly}
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
+      {...dataAttrs}
       {...rest}
     >
-      <span>{props.children}</span>
+      <span>{children}</span>
     </button>
   );
 };
