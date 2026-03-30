@@ -8,6 +8,8 @@
   border: none;
   cursor: pointer;
   min-height: 32px;
+  max-height: fit-content;
+  min-width: 160px;
   gap: calc(8px * var(--lcs-spacing));
   padding: calc(4px * var(--lcs-spacing)) calc(8px * var(--lcs-spacing));
   outline: none;
@@ -48,12 +50,5 @@
     .select-trigger-icon {
       transform: rotate(-180deg);
     }
-  }
-
-  .select-root:has(.select-label[data-position="inside"]) .select-trigger {
-    border: none;
-    padding: 0;
-    background-color: transparent;
-    min-height: 0px;
   }
 }
