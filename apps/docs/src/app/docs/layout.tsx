@@ -10,7 +10,11 @@ type DocsLayoutProps = React.PropsWithChildren & {};
 const DocsLayout = ({ children }: DocsLayoutProps) => {
   return (
     <Flex gap="4" className="relative sm:px-20 px-4">
-      <Flex gap="2" direction="column" className="flex-1 sm:flex hidden">
+      <Flex
+        gap="2"
+        direction="column"
+        className="flex-1 sm:flex hidden  sticky top-0 self-start max-h-screen overflow-y-auto"
+      >
         <SideBarLinks title="Overview" components={overview} />
         <SideBarLinks title="Components" components={components} />
         <SideBarLinks title="Properties" components={properties} />
