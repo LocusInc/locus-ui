@@ -1,0 +1,154 @@
+import { Container, Flex, Panel, Switch, Text } from "@locus-ui/components";
+import { ComponentPreview } from "@/components/component-preview";
+import { PreviewBox } from "@/components/preview-box";
+import { CodeBox } from "@/components/code-box";
+import {
+  alignmentsSnippet,
+  anatomySnippet,
+  colorsSnippet,
+  indexSnippet,
+  labelPositionsSnippet,
+  sizesSnippet,
+  statesSnippet,
+  styleSnippet,
+  variantsSnippet,
+} from "./snippets";
+
+export const labelPositions = ["top", "bottom", "left", "right"];
+export const variants = ["outlined", "solid", "muted"];
+export const sizes = ["xs", "sm", "md", "lg", "xl"];
+export const alignments = ["start", "center", "end"];
+export const colors = [
+  "primary",
+  "secondary",
+  "tertiary",
+  "accent",
+  "success",
+  "danger",
+  "warning",
+  "info",
+];
+
+# Switch Component
+
+A versatile Switch, managing state, context, and styling.
+
+<ComponentPreview
+  codeSnippets={[
+    {
+      title: "index.tsx",
+      code: indexSnippet,
+    },
+    {
+      title: "styles.css",
+      code: styleSnippet,
+    },
+  ]}
+  source="https://github.com/LocusInc/locus-ui/tree/main/packages/locus-ui/src/components/switch"
+>
+  <Switch.Root variant="outlined">
+    <Switch.Label>Show All</Switch.Label>
+  </Switch.Root>
+</ComponentPreview>
+
+## Anatomy
+
+Import the component and its parts:
+
+<CodeBox title="Anatomy" language="typescript" className="my-2">
+  {anatomySnippet}
+</CodeBox>
+
+## Examples
+
+### Variants
+
+Switch components come with three built in variants, `solid`, `outlined`, and `muted`.
+
+<PreviewBox title="variants.tsx" code={variantsSnippet}>
+  {variants.map((variant) => (
+    <Switch.Root key={variant} variant={variant}>
+      <Switch.Label>
+        {variant.charAt(0).toUpperCase() + variant.slice(1)} Switch
+      </Switch.Label>
+    </Switch.Root>
+  ))}
+</PreviewBox>
+
+### Label Positions
+
+The label element `<label>` is available in the switch component anatomy. If included it can be easily positioned with the `position` prop.
+
+<PreviewBox title="label-positions.tsx" code={labelPositionsSnippet}>
+  {labelPositions.map((position) => (
+    <Switch.Root key={position} variant="outlined">
+      <Switch.Label position={position}>
+        {position.charAt(0).toUpperCase() + position.slice(1)} Label
+      </Switch.Label>
+    </Switch.Root>
+  ))}
+</PreviewBox>
+
+### Sizes
+
+To manage the size of the switch component you can provide a default or custom size through the `size` prop.
+
+<PreviewBox title="sizes.tsx" code={sizesSnippet}>
+  {sizes.map((size) => (
+    <Switch.Root key={size} size={size} variant="muted">
+      <Switch.Label>{size.toUpperCase()}</Switch.Label>
+    </Switch.Root>
+  ))}
+  <Switch.Root size="80px" variant="muted">
+    <Switch.Label>Custom Size</Switch.Label>
+  </Switch.Root>
+</PreviewBox>
+
+### Colors
+
+The switch component uses the `color` prop to allow for predefined and custom colors.
+
+<PreviewBox title="colors.tsx" code={colorsSnippet}>
+  {colors.map((color) => (
+    <Switch.Root defaultChecked key={color} variant="muted" color={color}>
+      <Switch.Label>
+        {color.charAt(0).toUpperCase() + color.slice(1)}
+      </Switch.Label>
+    </Switch.Root>
+  ))}
+</PreviewBox>
+
+### Alignments
+
+To set alignment of the switch and its label content you can use the `align` prop.
+
+<PreviewBox title="alignments.tsx" code={alignmentsSnippet}>
+  {alignments.map((alignment) => (
+    <Switch.Root
+      key={alignment}
+      align={alignment}
+      variant="muted"
+      className="w-1/4"
+    >
+      <Switch.Label>
+        This switch is {alignment} aligned relative to its label.
+      </Switch.Label>
+    </Switch.Root>
+  ))}
+</PreviewBox>
+
+### States
+
+Switches can be given the `disabled`, `readonly`, and `defaultChecked` states.
+
+<PreviewBox title="states.tsx" code={statesSnippet}>
+  <Switch.Root disabled variant="muted">
+    <Switch.Label>Disabled</Switch.Label>
+  </Switch.Root>
+  <Switch.Root readonly variant="muted">
+    <Switch.Label>Readonly</Switch.Label>
+  </Switch.Root>
+  <Switch.Root defaultChecked variant="muted">
+    <Switch.Label>Default Checked</Switch.Label>
+  </Switch.Root>
+</PreviewBox>

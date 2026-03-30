@@ -1,3 +1,5 @@
+"use client";
+
 import clsx from "clsx";
 import * as React from "react";
 
@@ -12,7 +14,7 @@ const SelectViewport = React.forwardRef<HTMLDivElement, SelectViewportProps>(
         {children}
       </div>
     );
-  }
+  },
 );
 SelectViewport.displayName = "Select.Viewport";
 

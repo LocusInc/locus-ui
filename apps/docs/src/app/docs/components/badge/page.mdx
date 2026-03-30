@@ -1,0 +1,122 @@
+import { Badge } from "@locus-ui/components";
+import { ComponentPreview } from "@/components/component-preview";
+import { PreviewBox } from "@/components/preview-box";
+import { CodeBox } from "@/components/code-box";
+import {
+  anatomySnippet,
+  colorInheritanceSnippet,
+  colorsSnippet,
+  indexSnippet,
+  sizesSnippet,
+  styleSnippet,
+  variantsSnippet,
+} from "./snippets";
+
+export const CheckMark = () => (
+  <svg
+    width="16"
+    height="16"
+    viewBox="0 0 15 15"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <path
+      d="M11.4669 3.72684C11.7558 3.91574 11.8369 4.30308 11.648 4.59198L7.39799 11.092C7.29783 11.2452 7.13556 11.3467 6.95402 11.3699C6.77247 11.3931 6.58989 11.3355 6.45446 11.2124L3.70446 8.71241C3.44905 8.48022 3.43023 8.08494 3.66242 7.82953C3.89461 7.57412 4.28989 7.55529 4.5453 7.78749L6.75292 9.79441L10.6018 3.90792C10.7907 3.61902 11.178 3.53795 11.4669 3.72684Z"
+      fill="currentColor"
+      fillRule="evenodd"
+      clipRule="evenodd"
+    />
+  </svg>
+);
+
+export const variants = ["solid", "outlined", "muted", "clear"];
+export const colors = [
+  "primary",
+  "secondary",
+  "tertiary",
+  "accent",
+  "success",
+  "danger",
+  "warning",
+  "info",
+];
+export const sizes = ["xs", "sm", "md", "lg", "xl"];
+
+# Badge Component
+
+A versatile Badge component for labeling and categorizing content.
+
+<ComponentPreview
+  codeSnippets={[
+    {
+      title: "index.tsx",
+      code: indexSnippet,
+    },
+    {
+      title: "styles.css",
+      code: styleSnippet,
+    },
+  ]}
+  source="https://github.com/LocusInc/locus-ui/tree/main/packages/locus-ui/src/components/badge"
+>
+  <Badge variant="solid">Top Subscriber</Badge>
+</ComponentPreview>
+
+## Anatomy
+
+Import the component and its parts:
+
+<CodeBox title="Anatomy" language="typescript" className="my-2">
+  {anatomySnippet}
+</CodeBox>
+
+## Examples
+
+### Variants
+
+Badge components come with four built in variants, `solid`, `outlined`, `muted`, and `clear`.
+
+<PreviewBox title="variants.tsx" code={variantsSnippet}>
+  {variants.map((variant) => (
+    <Badge key={variant} variant={variant}>
+      {variant.charAt(0).toUpperCase() + variant.slice(1)} Badge
+    </Badge>
+  ))}
+</PreviewBox>
+
+### Colors
+
+The badge component uses the `color` prop to allow for predefined and custom colors.
+
+<PreviewBox title="colors.tsx" code={colorsSnippet}>
+  {colors.map((color) => (
+    <Badge key={color} color={color} variant="muted">
+      {color.charAt(0).toUpperCase() + color.slice(1)} Badge
+    </Badge>
+  ))}
+</PreviewBox>
+
+### Sizes
+
+To manage the size of the badge component you can provide a default or custom size through the `size` prop.
+
+<PreviewBox title="sizes.tsx" code={sizesSnippet}>
+  {sizes.map((size) => (
+    <Badge key={size} size={size} variant="muted">
+      {size.toUpperCase()} Badge
+    </Badge>
+  ))}
+</PreviewBox>
+
+### Color Inheritance
+
+Works with any svg with `fill="currentColor"`.
+
+<PreviewBox title="color-inheritance.tsx" code={colorInheritanceSnippet}>
+  {variants.map((variant) => (
+    <Badge key={variant} variant={variant} color="success">
+      Verified
+      <CheckMark />
+    </Badge>
+  ))}
+</PreviewBox>

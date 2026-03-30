@@ -1,3 +1,5 @@
+"use client";
+
 import clsx from "clsx";
 import * as React from "react";
 import { getComponentProps } from "../../../utils/get-component-props";
@@ -22,7 +24,7 @@ const SelectItem = React.forwardRef<HTMLDivElement, SelectItemProps>(
     const context = useSelectContext();
     const { value, disabled, children, className, ...rest } = getComponentProps(
       props,
-      SelectItemPropDefs
+      SelectItemPropDefs,
     );
 
     const selected = context.value === value;
@@ -95,7 +97,7 @@ const SelectItem = React.forwardRef<HTMLDivElement, SelectItemProps>(
         <Text disabled={disabled}>{children}</Text>
       </Box>
     );
-  }
+  },
 );
 SelectItem.displayName = "Select.Item";
 

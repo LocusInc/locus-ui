@@ -1,3 +1,5 @@
+"use client";
+
 import React from "react";
 
 export interface AccordionContextValue {
@@ -17,7 +19,7 @@ export function useAccordionContext() {
   const context = React.useContext(AccordionContext);
   if (!context) {
     throw new Error(
-      "Accordion components must be used within an Accordion.Root"
+      "Accordion components must be used within an Accordion.Root",
     );
   }
   return context;

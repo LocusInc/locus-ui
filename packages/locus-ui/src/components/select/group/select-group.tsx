@@ -1,3 +1,5 @@
+"use client";
+
 import clsx from "clsx";
 import * as React from "react";
 import { getComponentProps } from "../../../utils/get-component-props";
@@ -16,7 +18,7 @@ const SelectGroup = React.forwardRef<HTMLDivElement, SelectGroupProps>(
   (props, ref) => {
     const { className, children, dataAttrs, ...rest } = getComponentProps(
       props,
-      SelectGroupsPropDefs
+      SelectGroupsPropDefs,
     );
 
     return (
@@ -33,7 +35,7 @@ const SelectGroup = React.forwardRef<HTMLDivElement, SelectGroupProps>(
         {children}
       </div>
     );
-  }
+  },
 );
 SelectGroup.displayName = "Select.Group";
 

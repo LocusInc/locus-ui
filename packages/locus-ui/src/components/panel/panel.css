@@ -1,6 +1,7 @@
 .panel[data-variant] {
   --panel-custom-color: var(--color, var(--panel-color));
 
+  border-radius: min(32px, var(--lcs-radius, 0px));
   backdrop-filter: blur(var(--panel-blur, 0px));
 
   &[data-variant="solid"] {
@@ -9,12 +10,12 @@
   }
 
   &[data-variant="outlined"] {
-    background-color: rgba(var(--panel-custom-color), 0.5);
+    background-color: rgba(var(--panel-custom-color), 0.8);
     border: 1px solid rgba(var(--color, var(--border-color)));
   }
 
   &[data-variant="muted"] {
-    background-color: rgba(var(--panel-custom-color), 0.4);
+    background-color: rgba(var(--panel-custom-color), 0.5);
     border: 1px solid transparent;
   }
 }

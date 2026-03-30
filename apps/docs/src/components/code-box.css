@@ -1,0 +1,49 @@
+.code-box {
+  margin: 0;
+  overflow-x: auto;
+  font-size: 0.875rem;
+  line-height: 1.6;
+}
+
+.code-box code {
+  font-family: var(--font-mono), ui-monospace, monospace;
+}
+
+.code-box-line {
+  display: flex;
+}
+
+.code-box-line-number {
+  display: inline-block;
+  min-width: 2.5em;
+  padding-right: 1em;
+  margin-right: 1em;
+  text-align: right;
+  opacity: 0.4;
+  border-right: 1px solid rgba(255, 255, 255, 0.1);
+  user-select: none;
+  flex-shrink: 0;
+}
+
+.code-box-line-content {
+  flex: 1;
+  white-space: pre;
+}
+
+.code-box-toggle {
+  display: block;
+  width: 100%;
+  padding: 4px 0;
+  border: none;
+  background: none;
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 0.8rem;
+  font-family: var(--font-mono), ui-monospace, monospace;
+  cursor: pointer;
+  text-align: center;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.code-box-toggle:hover {
+  color: rgba(255, 255, 255, 0.8);
+}

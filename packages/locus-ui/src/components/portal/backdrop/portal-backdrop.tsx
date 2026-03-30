@@ -2,6 +2,7 @@
 
 import clsx from "clsx";
 import * as React from "react";
+import ReactDOM from "react-dom";
 import { getComponentProps } from "../../../utils/get-component-props";
 import { usePortalContext } from "../portal-context";
 import {
@@ -21,20 +22,23 @@ const PortalBackdrop = React.forwardRef<HTMLDivElement, PortalBackdropProps>(
 
     const { className, dataAttrs, ...rest } = getComponentProps(
       props,
-      PortalBackdropPropsDefs
+      PortalBackdropPropsDefs,
     );
 
-    if (!context.open) return null;
+    const container = context.open && globalThis?.document?.body;
+    if (!container) return null;
 
-    return (
+    return ReactDOM.createPortal(
       <div
         ref={ref}
         className={clsx("portal-backdrop", className)}
+        onClick={() => context.onOpenChange?.(false)}
         {...dataAttrs}
         {...rest}
-      />
+      />,
+      container,
     );
-  }
+  },
 );
 PortalBackdrop.displayName = "Portal.Backdrop";
 

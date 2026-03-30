@@ -143,6 +143,7 @@ const SelectRoot: FC<SelectRootProps> = (props) => {
 
   const validChildren = filterChildren(children, ALLOWED_CHILDREN, {
     parentDisplayName: SelectRoot.displayName,
+    allowedTypes: [SelectLabel, SelectTrigger, SelectContent],
   });
 
   const labelInside = labelPosition === "inside";

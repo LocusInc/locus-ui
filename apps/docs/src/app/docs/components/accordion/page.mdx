@@ -1,0 +1,146 @@
+import { Accordion, Container, Text } from "@locus-ui/components";
+import { ComponentPreview } from "@/components/component-preview";
+import { PreviewBox } from "@/components/preview-box";
+import { CodeBox } from "@/components/code-box";
+import {
+  anatomySnippet,
+  indexSnippet,
+  multipleSnippet,
+  styleSnippet,
+  variantsSnippet,
+} from "./snippets";
+
+export const variants = ["solid", "outlined", "muted"];
+
+# Accordion Component
+
+A versatile Accordion component, managing state, context, and styling.
+
+<ComponentPreview
+  codeSnippets={[
+    {
+      title: "index.tsx",
+      code: indexSnippet,
+    },
+    {
+      title: "styles.css",
+      code: styleSnippet,
+    },
+  ]}
+  source="https://github.com/LocusInc/locus-ui/tree/main/packages/locus-ui/src/components/accordion"
+>
+  <Accordion.Root variant="muted">
+    <Accordion.Item value="item-1">
+      <Accordion.Header>
+        <Text>Item 1</Text>
+      </Accordion.Header>
+      <Accordion.Content>
+        <Text>This is the content of Item 1.</Text>
+      </Accordion.Content>
+    </Accordion.Item>
+
+    <Accordion.Item value="item-2">
+      <Accordion.Header>
+        <Text>Item 2</Text>
+      </Accordion.Header>
+      <Accordion.Content>
+        <Text>This is the content of Item 2.</Text>
+      </Accordion.Content>
+    </Accordion.Item>
+
+    <Accordion.Item value="item-3">
+      <Accordion.Header>
+        <Text>Item 3</Text>
+      </Accordion.Header>
+      <Accordion.Content>
+        <Text>This is the content of Item 3.</Text>
+      </Accordion.Content>
+    </Accordion.Item>
+
+  </Accordion.Root>
+</ComponentPreview>
+
+## Anatomy
+
+Import the component and its parts:
+
+<CodeBox title="Anatomy" language="typescript" className="my-2">
+  {anatomySnippet}
+</CodeBox>
+
+## Examples
+
+### Variants
+
+Accordion components come with three built in variants, `solid`, `outlined`, and `muted`.
+
+<PreviewBox title="variants.tsx" column code={variantsSnippet}>
+  {variants.map((variant) => (
+    <Accordion.Root key={variant} variant={variant}>
+      <Accordion.Item value="item-1">
+        <Accordion.Header>
+          <Text>Item 1</Text>
+        </Accordion.Header>
+        <Accordion.Content>
+          <Text>This is the content of Item 1.</Text>
+        </Accordion.Content>
+      </Accordion.Item>
+
+      <Accordion.Item value="item-2">
+        <Accordion.Header>
+          <Text>Item 2</Text>
+        </Accordion.Header>
+        <Accordion.Content>
+          <Text>This is the content of Item 2.</Text>
+        </Accordion.Content>
+      </Accordion.Item>
+
+      <Accordion.Item value="item-3">
+        <Accordion.Header>
+          <Text>Item 3</Text>
+        </Accordion.Header>
+        <Accordion.Content>
+          <Text>This is the content of Item 3.</Text>
+        </Accordion.Content>
+      </Accordion.Item>
+    </Accordion.Root>
+
+))}
+
+</PreviewBox>
+
+### Multiple Open
+
+The `multiple` prop allows multiple accordion items to be expanded simultaneously.
+
+<PreviewBox title="multiple.tsx" code={multipleSnippet}>
+  <Accordion.Root multiple variant="muted">
+    <Accordion.Item value="item-1">
+      <Accordion.Header>
+        <Text>Item 1</Text>
+      </Accordion.Header>
+      <Accordion.Content>
+        <Text>This is the content of Item 1.</Text>
+      </Accordion.Content>
+    </Accordion.Item>
+
+    <Accordion.Item value="item-2">
+      <Accordion.Header>
+        <Text>Item 2</Text>
+      </Accordion.Header>
+      <Accordion.Content>
+        <Text>This is the content of Item 2.</Text>
+      </Accordion.Content>
+    </Accordion.Item>
+
+    <Accordion.Item value="item-3">
+      <Accordion.Header>
+        <Text>Item 3</Text>
+      </Accordion.Header>
+      <Accordion.Content>
+        <Text>This is the content of Item 3.</Text>
+      </Accordion.Content>
+    </Accordion.Item>
+
+  </Accordion.Root>
+</PreviewBox>

@@ -1,41 +1,122 @@
 "use client";
 
-import { Box, Separator, Text, ThemeControl } from "@locus-ui/components";
+import {
+  Box,
+  Flex,
+  Portal,
+  Separator,
+  Text,
+  ThemeControl,
+} from "@locus-ui/components";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { useState } from "react";
+import { TableOfContents } from "../../components/table-of-contents";
 
 type DocsLayoutProps = React.PropsWithChildren & {};
 
 const DocsLayout = ({ children }: DocsLayoutProps) => {
+  const [sidebarOpen, setSidebarOpen] = useState(false);
+
   return (
-    <div className="flex relative gap-4 h-[calc(100vh-0.5rem)] bg-[rgb(var(--background-color-1))] overflow-hidden">
-      <div className="flex flex-col gap-2 mx-4 min-w-50 shrink-0">
+    <Flex gap="4" className="relative sm:px-20 px-4">
+      {/* Mobile sidebar via Portal */}
+      <Portal.Root open={sidebarOpen} onOpenChange={setSidebarOpen}>
+        <Portal.Trigger asChild>
+          <button
+            aria-label="Open sidebar"
+            className="md:hidden fixed bottom-4 left-4 z-50 p-2 rounded-lg bg-[rgb(var(--panel-color))] border border-[rgb(var(--panel-color))]"
+          >
+            <svg
+              width="20"
+              height="20"
+              viewBox="0 0 20 20"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
+            >
+              <line x1="3" y1="5" x2="17" y2="5" />
+              <line x1="3" y1="10" x2="17" y2="10" />
+              <line x1="3" y1="15" x2="17" y2="15" />
+            </svg>
+          </button>
+        </Portal.Trigger>
+        <Portal.Backdrop variant="shadow" />
+        <Portal.Content position="tl">
+          <Flex
+            gap="2"
+            p="4"
+            direction="column"
+            className="h-dvh w-64 bg-[rgb(var(--background-color-1))] overflow-y-auto"
+          >
+            <SideBarLinks
+              title="Overview"
+              components={overview}
+              onNavigate={() => setSidebarOpen(false)}
+            />
+            <SideBarLinks
+              title="Components"
+              components={components}
+              onNavigate={() => setSidebarOpen(false)}
+            />
+            <SideBarLinks
+              title="Properties"
+              components={properties}
+              onNavigate={() => setSidebarOpen(false)}
+            />
+          </Flex>
+        </Portal.Content>
+      </Portal.Root>
+
+      {/* Desktop sidebar */}
+      <Flex
+        gap="2"
+        direction="column"
+        className="flex-1 md:flex! hidden! sticky top-0 self-start max-h-screen overflow-y-auto"
+      >
         <SideBarLinks title="Overview" components={overview} />
         <SideBarLinks title="Components" components={components} />
         <SideBarLinks title="Properties" components={properties} />
-      </div>
+      </Flex>
 
-      <Separator direction="vertical" />
+      <Separator direction="vertical" className="sm:block hidden" />
 
-      <div className="flex flex-col flex-1 min-w-0 h-full overflow-auto bg-[rgb(var(--background-color-1))]">
+      <Flex
+        data-docs-content
+        direction="column"
+        className="flex-4 min-w-0 min-h-fit lg:px-8 bg-[rgb(var(--background-color-1))]"
+      >
         {children}
-      </div>
+      </Flex>
 
-      <Separator direction="vertical" variant="dashed" className="opacity-20" />
+      <Separator
+        direction="vertical"
+        variant="dashed"
+        className="lg:flex hidden opacity-20"
+      />
 
-      <Box pr="4" py="4" className="flex flex-col gap-2 mx-4 min-w-60 shrink-0">
-        <ThemeControl />
-      </Box>
-    </div>
+      <Flex
+        px="4"
+        pt="8"
+        className="flex-1 lg:flex! hidden! sticky top-0 self-start max-h-screen overflow-y-auto"
+      >
+        <TableOfContents />
+      </Flex>
+
+      <ThemeControl />
+    </Flex>
   );
 };
 
 const SideBarLinks = ({
   title,
   components,
+  onNavigate,
 }: {
   title: string;
   components: Array<{ name: string; path: string }>;
+  onNavigate?: () => void;
 }) => {
   const pathname = usePathname();
 
@@ -45,27 +126,37 @@ const SideBarLinks = ({
         {title}
       </Text>
 
-      <div className="flex flex-col ml-4">
+      <Flex direction="column">
         {components.map((component) => {
           const isActive = pathname === component.path;
+
           return (
             <Link
               key={component.name}
               href={component.path}
-              className="focus:outline-2 focus:outline-[rgba(var(--primary),0.4)] focus:outline-border-[rgba(var(--primary),_0.4)] focus:bg-[rgba(var(--primary),0.2)] focus:border-[rgba(var(--primary),0.4)] rounded-full"
+              onClick={onNavigate}
+              className="focus:outline-0 focus:outline-[rgba(var(--primary),0.4)] focus:outline-border-[rgba(var(--primary),_0.4)] focus:bg-[rgba(var(--primary),0.2)] focus:border-[rgba(var(--primary),0.4)] rounded-r-lg"
             >
               <Box
-                radius="full"
-                className={`border-2 border-transparent hover:border-[rgba(var(--primary),0.4)] hover:bg-[rgba(var(--primary),0.2)] ${
-                  isActive ? "bg-[rgba(var(--primary),0.6)]" : ""
+                radius-r="lg"
+                radius-l="none"
+                className={`border-l-2 hover:border-[rgb(var(--primary))] hover:bg-[rgba(var(--primary),0.2)] pl-2 ${
+                  isActive
+                    ? "border-[rgb(var(--primary))]"
+                    : "border-[rgb(var(--panel-color))]"
                 }`}
               >
-                <Text px="2">{component.name}</Text>
+                <Text
+                  px="2"
+                  style={{ color: isActive ? "rgb(var(--primary))" : "" }}
+                >
+                  {component.name}
+                </Text>
               </Box>
             </Link>
           );
         })}
-      </div>
+      </Flex>
     </>
   );
 };

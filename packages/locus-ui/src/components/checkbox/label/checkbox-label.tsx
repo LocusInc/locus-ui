@@ -1,3 +1,5 @@
+"use client";
+
 import clsx from "clsx";
 import React from "react";
 import { getComponentProps } from "../../../utils/get-component-props";
@@ -21,7 +23,7 @@ const CheckboxLabel = React.forwardRef<HTMLLabelElement, CheckboxLabelProps>(
     const context = useCheckboxContext();
     const { className, children, position } = getComponentProps(
       props,
-      CheckboxLabelPropDefs
+      CheckboxLabelPropDefs,
     );
 
     React.useLayoutEffect(() => {
@@ -38,7 +40,7 @@ const CheckboxLabel = React.forwardRef<HTMLLabelElement, CheckboxLabelProps>(
         <Text>{children}</Text>
       </label>
     );
-  }
+  },
 );
 CheckboxLabel.displayName = "Checkbox.Label";
 

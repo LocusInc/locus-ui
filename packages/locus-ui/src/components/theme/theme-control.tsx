@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { Box } from "../box";
+import { Panel } from "../panel";
 import { Portal } from "../portal";
 import { Select } from "../select";
 import { useTheme } from "./theme-context";
@@ -50,7 +50,8 @@ export function ThemeControl({ position = "bottom" }: ThemeControlProps) {
   return (
     <Portal.Root open={visible} onOpenChange={setVisible}>
       <Portal.Content position={position}>
-        <Box
+        <Panel
+          variant="outlined"
           m="4"
           p="4"
           className="flex flex-col gap-2 border-[rgba(var(--border-color), 0.6)]"
@@ -128,7 +129,7 @@ export function ThemeControl({ position = "bottom" }: ThemeControlProps) {
               <Select.Item value="xl">XL</Select.Item>
             </Select.Content>
           </Select.Root>
-        </Box>
+        </Panel>
       </Portal.Content>
     </Portal.Root>
   );

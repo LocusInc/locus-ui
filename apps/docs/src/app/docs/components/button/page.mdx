@@ -1,0 +1,128 @@
+import { Button } from "@locus-ui/components";
+import { ComponentPreview } from "@/components/component-preview";
+import { PreviewBox } from "@/components/preview-box";
+import { CodeBox } from "@/components/code-box";
+import {
+  anatomySnippet,
+  colorsSnippet,
+  disabledVariantsSnippet,
+  highContrastSnippet,
+  indexSnippet,
+  sizesSnippet,
+  statesSnippet,
+  styleSnippet,
+  variantsSnippet,
+} from "./snippets";
+
+export const variants = ["solid", "outlined", "muted", "clear"];
+export const colors = [
+  "primary",
+  "secondary",
+  "tertiary",
+  "accent",
+  "success",
+  "danger",
+  "warning",
+  "info",
+];
+export const sizes = ["xs", "sm", "md", "lg", "xl"];
+
+# Button Component
+
+A versatile Button component for triggering actions and events.
+
+<ComponentPreview
+  codeSnippets={[
+    {
+      title: "index.tsx",
+      code: indexSnippet,
+    },
+    {
+      title: "styles.css",
+      code: styleSnippet,
+    },
+  ]}
+  source="https://github.com/LocusInc/locus-ui/tree/main/packages/locus-ui/src/components/button"
+>
+  <Button variant="solid">Solid Button</Button>
+</ComponentPreview>
+
+## Anatomy
+
+Import the component and its parts:
+
+<CodeBox title="Anatomy" language="typescript" className="my-2">
+  {anatomySnippet}
+</CodeBox>
+
+## Examples
+
+### Variants
+
+Button components come with four built in variants, `solid`, `outlined`, `muted`, and `clear`.
+
+<PreviewBox title="variants.tsx" code={variantsSnippet}>
+  {variants.map((variant) => (
+    <Button key={variant} variant={variant}>
+      {variant.charAt(0).toUpperCase() + variant.slice(1)} Button
+    </Button>
+  ))}
+</PreviewBox>
+
+### Colors
+
+The button component uses the `color` prop to allow for predefined and custom colors.
+
+<PreviewBox title="colors.tsx" code={colorsSnippet}>
+  {colors.map((color) => (
+    <Button key={color} color={color} variant="muted">
+      {color.charAt(0).toUpperCase() + color.slice(1)} Button
+    </Button>
+  ))}
+</PreviewBox>
+
+### Sizes
+
+To manage the size of the button component you can provide a default or custom size through the `size` prop.
+
+<PreviewBox title="sizes.tsx" code={sizesSnippet}>
+  {sizes.map((size) => (
+    <Button key={size} size={size} variant="muted">
+      {size.toUpperCase()} Button
+    </Button>
+  ))}
+</PreviewBox>
+
+### States
+
+Buttons can be given the `disabled` and `readonly` states.
+
+<PreviewBox title="states.tsx" code={statesSnippet}>
+  <Button variant="solid">Default</Button>
+  <Button variant="solid" disabled>
+    Disabled
+  </Button>
+  <Button variant="solid" readonly>
+    Readonly
+  </Button>
+</PreviewBox>
+
+Each variant has its own disabled styling.
+
+<PreviewBox title="disabled-variants.tsx" code={disabledVariantsSnippet}>
+  {variants.map((variant) => (
+    <Button disabled key={variant} variant={variant}>
+      {variant.charAt(0).toUpperCase() + variant.slice(1)} Disabled
+    </Button>
+  ))}
+</PreviewBox>
+
+### High Contrast
+
+The `highContrast` prop enables high contrast mode for better visibility. High contrast button styles are only available with the `solid` variant.
+
+<PreviewBox title="high-contrast.tsx" code={highContrastSnippet}>
+  <Button highContrast variant="solid">
+    <span>High Contrast</span>
+  </Button>
+</PreviewBox>

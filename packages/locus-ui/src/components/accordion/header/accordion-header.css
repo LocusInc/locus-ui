@@ -17,6 +17,7 @@
     background-color: rgba(var(--background-color-2), 0.95);
   }
 
+  &[data-variant="outlined"],
   &[data-variant="muted"] {
     background-color: rgba(var(--background-color-2), 0.6);
   }

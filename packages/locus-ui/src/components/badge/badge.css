@@ -4,7 +4,6 @@
   display: flex;
   align-items: center;
   height: fit-content;
-  cursor: pointer;
   border-radius: var(--lcs-radius, 1);
 
   padding: calc(1px * var(--lcs-spacing, 1)) calc(6px * var(--lcs-spacing, 1));

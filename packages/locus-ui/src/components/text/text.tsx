@@ -22,7 +22,7 @@ type TextProps = TextInternalProps &
  */
 export const Text = React.forwardRef<HTMLParagraphElement, TextProps>(
   (props, ref) => {
-    const { className, dataAttrs, children, ...rest } = getComponentProps(
+    const { as, className, dataAttrs, children, ...rest } = getComponentProps(
       props,
       TextPropsDefs,
       MarginPropDefs,
@@ -30,10 +30,17 @@ export const Text = React.forwardRef<HTMLParagraphElement, TextProps>(
       ColorPropDef,
     );
 
+    const Component = as || "p";
+
     return (
-      <p ref={ref} {...dataAttrs} className={clsx("text", className)} {...rest}>
+      <Component
+        ref={ref}
+        className={clsx("text", className)}
+        {...dataAttrs}
+        {...rest}
+      >
         {children}
-      </p>
+      </Component>
     );
   },
 );

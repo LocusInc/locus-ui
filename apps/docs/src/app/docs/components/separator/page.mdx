@@ -1,0 +1,84 @@
+import { Flex, Panel, Separator, Text } from "@locus-ui/components";
+import { ComponentPreview } from "@/components/component-preview";
+import { PreviewBox } from "@/components/preview-box";
+import { CodeBox } from "@/components/code-box";
+import {
+  anatomySnippet,
+  directionsSnippet,
+  indexSnippet,
+  styleSnippet,
+  variantsSnippet,
+} from "./snippets";
+
+export const variants = ["solid", "dashed", "dotted"];
+export const five = [...Array(5).keys()];
+
+# Separator Component
+
+A component for visually separating content with a line.
+
+<ComponentPreview
+  codeSnippets={[
+    {
+      title: "index.tsx",
+      code: indexSnippet,
+    },
+    {
+      title: "styles.css",
+      code: styleSnippet,
+    },
+  ]}
+  source="https://github.com/LocusInc/locus-ui/tree/main/packages/locus-ui/src/components/separator"
+>
+  <Panel px="4" py="2" variant="outlined">
+    <Flex gap="2" direction="column">
+      <Text>My Movie</Text>
+      <Separator />
+      <Text>A movie made by me</Text>
+    </Flex>
+  </Panel>
+</ComponentPreview>
+
+## Anatomy
+
+Import the component:
+
+<CodeBox title="Anatomy" language="typescript" className="my-2">
+  {anatomySnippet}
+</CodeBox>
+
+## Examples
+
+### Variants
+
+The `variant` prop controls the line style: `solid` (default), `dashed`, or `dotted`.
+
+<PreviewBox title="variants.tsx" code={variantsSnippet}>
+  {variants.map((variant) => (
+    <Flex key={variant} gap="4" align="center" className="flex-1">
+      <Text>{variant.charAt(0).toUpperCase() + variant.slice(1)}</Text>
+      <Separator variant={variant} />
+    </Flex>
+  ))}
+</PreviewBox>
+
+### Directions
+
+The `direction` prop controls the orientation: `horizontal` (default) or `vertical`.
+
+<PreviewBox title="directions.tsx" code={directionsSnippet}>
+  <Flex gap="4" wrap="wrap">
+    <Flex direction="column" gap="2">
+      <Text>Top Text</Text>
+      <Separator direction="horizontal" />
+      <Text>Bottom Text</Text>
+    </Flex>
+
+    <Flex gap="2">
+      <Text>Left Text</Text>
+      <Separator direction="vertical" />
+      <Text>Right Text</Text>
+    </Flex>
+
+  </Flex>
+</PreviewBox>

@@ -1,3 +1,5 @@
+"use client";
+
 import clsx from "clsx";
 import { FC } from "react";
 import { ChevronDown } from "../../../icons/chevron-down.icon";
