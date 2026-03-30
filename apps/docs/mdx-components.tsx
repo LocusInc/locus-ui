@@ -19,9 +19,7 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
         <Text mt="8" mb="4" className="text-xl font-semibold" {...props} />
       </h3>
     ),
-    p: (props) => (
-      <Text className="text-base leading-relaxed mb-3" {...props} />
-    ),
+    p: (props) => <Text as="span" {...props} />,
     code: (props) => (
       <code
         className="bg-[rgb(var(--panel-color))] text-[rgb(var(--text-color))] px-1 py-0.5 rounded text-sm font-mono"
