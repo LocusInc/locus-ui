@@ -1,6 +1,6 @@
 "use client";
 
-import * as React from "react";
+import { FC, HTMLAttributes, useMemo, useRef } from "react";
 import {
   filterChildren,
   WithStrictChildren,
@@ -29,12 +29,12 @@ interface AllPortalRootProps extends PortalRootInternalProps {}
 
 type PortalRootProps = AllPortalRootProps &
   WithStrictChildren<
-    React.HTMLAttributes<HTMLDivElement>,
+    HTMLAttributes<HTMLDivElement>,
     PortalTriggerProps | PortalBackdropProps | PortalContentProps
   >;
 
 /** The root component of a portal used to provide context and styling to its children. */
-const PortalRoot: React.FC<PortalRootProps> = (props) => {
+const PortalRoot: FC<PortalRootProps> = (props) => {
   const {
     defaultOpen = false,
     open: portalOpen,
@@ -49,16 +49,16 @@ const PortalRoot: React.FC<PortalRootProps> = (props) => {
     onChange: onOpenChange,
   });
 
-  const triggerRef = React.useRef<HTMLElement | null>(null);
+  const triggerRef = useRef<HTMLElement | null>(null);
 
-  const value = React.useMemo(
+  const value = useMemo(
     () => ({
       open,
       onOpenChange: setOpen,
       triggerRef,
       anchorRef,
     }),
-    [open, setOpen, anchorRef]
+    [open, setOpen, anchorRef],
   );
 
   const validChildren = filterChildren(children, ALLOWED_CHILDREN, {
