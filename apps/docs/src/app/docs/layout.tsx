@@ -1,15 +1,75 @@
 "use client";
 
-import { Box, Flex, Separator, Text, ThemeControl } from "@locus-ui/components";
+import {
+  Box,
+  Flex,
+  Portal,
+  Separator,
+  Text,
+  ThemeControl,
+} from "@locus-ui/components";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { useState } from "react";
 import { TableOfContents } from "../../components/table-of-contents";
 
 type DocsLayoutProps = React.PropsWithChildren & {};
 
 const DocsLayout = ({ children }: DocsLayoutProps) => {
+  const [sidebarOpen, setSidebarOpen] = useState(false);
+
   return (
     <Flex gap="4" className="relative sm:px-20 px-4">
+      {/* Mobile sidebar via Portal */}
+      <Portal.Root open={sidebarOpen} onOpenChange={setSidebarOpen}>
+        <Portal.Trigger asChild>
+          <button
+            aria-label="Open sidebar"
+            className="md:hidden fixed bottom-4 left-4 z-50 p-2 rounded-lg bg-[rgb(var(--panel-color))] border border-[rgb(var(--panel-color))]"
+          >
+            <svg
+              width="20"
+              height="20"
+              viewBox="0 0 20 20"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
+            >
+              <line x1="3" y1="5" x2="17" y2="5" />
+              <line x1="3" y1="10" x2="17" y2="10" />
+              <line x1="3" y1="15" x2="17" y2="15" />
+            </svg>
+          </button>
+        </Portal.Trigger>
+        <Portal.Backdrop variant="shadow" />
+        <Portal.Content position="tl">
+          <Flex
+            gap="2"
+            p="4"
+            direction="column"
+            className="h-dvh w-64 bg-[rgb(var(--background-color-1))] overflow-y-auto"
+          >
+            <SideBarLinks
+              title="Overview"
+              components={overview}
+              onNavigate={() => setSidebarOpen(false)}
+            />
+            <SideBarLinks
+              title="Components"
+              components={components}
+              onNavigate={() => setSidebarOpen(false)}
+            />
+            <SideBarLinks
+              title="Properties"
+              components={properties}
+              onNavigate={() => setSidebarOpen(false)}
+            />
+          </Flex>
+        </Portal.Content>
+      </Portal.Root>
+
+      {/* Desktop sidebar */}
       <Flex
         gap="2"
         direction="column"
@@ -52,9 +112,11 @@ const DocsLayout = ({ children }: DocsLayoutProps) => {
 const SideBarLinks = ({
   title,
   components,
+  onNavigate,
 }: {
   title: string;
   components: Array<{ name: string; path: string }>;
+  onNavigate?: () => void;
 }) => {
   const pathname = usePathname();
 
@@ -72,6 +134,7 @@ const SideBarLinks = ({
             <Link
               key={component.name}
               href={component.path}
+              onClick={onNavigate}
               className="focus:outline-0 focus:outline-[rgba(var(--primary),0.4)] focus:outline-border-[rgba(var(--primary),_0.4)] focus:bg-[rgba(var(--primary),0.2)] focus:border-[rgba(var(--primary),0.4)] rounded-r-lg"
             >
               <Box
