@@ -31,6 +31,7 @@ export const PreviewBox: React.FC<{
         py="4"
         gap="4"
         wrap="wrap"
+        align="center"
         justify="center"
         direction={column ? "column" : "row"}
       >
