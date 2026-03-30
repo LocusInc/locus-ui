@@ -26,6 +26,7 @@ interface CodeBoxProps {
   language?: string;
   showLineNumbers?: boolean;
   maxLines?: number;
+  className?: string;
 }
 
 export const CodeBox = ({
@@ -34,6 +35,7 @@ export const CodeBox = ({
   language = "plaintext",
   showLineNumbers = false,
   maxLines = 12,
+  className,
 }: CodeBoxProps) => {
   const [expanded, setExpanded] = useState(false);
 
@@ -91,7 +93,7 @@ export const CodeBox = ({
 
   if (title) {
     return (
-      <Panel variant="outlined" className="overflow-hidden">
+      <Panel variant="outlined" className={`overflow-hidden ${className}`}>
         <Flex px="4" py="1" justify="between">
           <Text className="opacity-80">{title}</Text>
 

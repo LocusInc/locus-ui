@@ -27,7 +27,7 @@ export const ComponentPreview = ({
   const [activeSnippet, setActiveSnippet] = useState<Code>(codeSnippets?.[0]);
 
   return (
-    <Flex direction="column" gap="2" className="w-full">
+    <Flex direction="column" gap="2" my="2" className="w-full">
       <Panel variant="outlined" className="min-h-fit overflow-hidden">
         <Box
           p="4"
