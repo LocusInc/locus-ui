@@ -1,3 +1,5 @@
+"use client";
+
 import clsx from "clsx";
 import * as React from "react";
 import { RadiusProps, SpacingProp } from "../../../props";
@@ -8,9 +10,7 @@ import { SelectViewport } from "../viewport/select-viewport";
 import { SelectContentInternalProps } from "./select-content.props";
 
 interface AllSelectContentProps
-  extends SelectContentInternalProps,
-    RadiusProps,
-    SpacingProp {}
+  extends SelectContentInternalProps, RadiusProps, SpacingProp {}
 
 type SelectContentProps = AllSelectContentProps &
   Omit<React.HTMLAttributes<HTMLDivElement>, "children"> & {
@@ -70,24 +70,24 @@ const SelectContent = React.forwardRef<HTMLDivElement, SelectContentProps>(
           case "ArrowDown":
             event.preventDefault();
             context.setHighlightedIndex((prev) =>
-              prev < itemCount - 1 ? prev + 1 : 0
+              prev < itemCount - 1 ? prev + 1 : 0,
             );
             break;
           case "ArrowUp":
             event.preventDefault();
             context.setHighlightedIndex((prev) =>
-              prev > 0 ? prev - 1 : itemCount - 1
+              prev > 0 ? prev - 1 : itemCount - 1,
             );
             break;
           case "Tab":
             event.preventDefault();
             if (event.shiftKey) {
               context.setHighlightedIndex((prev) =>
-                prev > 0 ? prev - 1 : itemCount - 1
+                prev > 0 ? prev - 1 : itemCount - 1,
               );
             } else {
               context.setHighlightedIndex((prev) =>
-                prev < itemCount - 1 ? prev + 1 : 0
+                prev < itemCount - 1 ? prev + 1 : 0,
               );
             }
             break;
@@ -159,7 +159,7 @@ const SelectContent = React.forwardRef<HTMLDivElement, SelectContentProps>(
         </Portal.Content>
       </Portal.Root>
     );
-  }
+  },
 );
 SelectContent.displayName = "Select.Content";
 
