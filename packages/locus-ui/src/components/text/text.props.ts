@@ -1,26 +1,25 @@
 import { GetPropDefTypes, PropDef } from "../../props/prop-def";
 
-const textAs = ["p", "span", "div"] as const;
+const TextAs = ["p", "span", "div"] as const;
 
 const TextPropsDefs = {
   disabled: {
     type: "boolean",
-    default: false,
     dataAttr: "disabled",
   } satisfies PropDef<boolean>,
   /**
-   * Defines wether the Text is rendered as a **p**, **span** or **div**.
+   * Defines whether the Text is rendered as a **p**, **span** or **div**.
    *
    * @example
    * as="p"
    * as="span"
    * as="div"
    */
-  // as: {
-  //   type: "enum",
-  //   values: textAs,
-  //   default: "p",
-  // } satisfies PropDef<(typeof textAs)[number]>,
+  as: {
+    type: "enum",
+    values: TextAs,
+    default: "p",
+  } satisfies PropDef<(typeof TextAs)[number]>,
 };
 
 type TextInternalProps = GetPropDefTypes<typeof TextPropsDefs>;
