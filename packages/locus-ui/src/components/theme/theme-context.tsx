@@ -1,6 +1,7 @@
 "use client";
 
-import * as React from "react";
+import { createContext, useContext } from "react";
+import { ThemeColorProp } from "./theme-colors";
 import { ThemePropsDefs } from "./theme.props";
 
 export type ThemeAppearance = (typeof ThemePropsDefs.appearance.values)[number];
@@ -20,16 +21,15 @@ interface ThemeContextValue extends ThemeChangeHandlers {
   radius: ThemeRadius;
   roundness: ThemeRoundness;
   spacing: ThemeSpacing;
+  colors?: ThemeColorProp;
 }
 
 interface ThemeContextProps extends ThemeContextValue, ThemeChangeHandlers {}
 
-const ThemeContext = React.createContext<ThemeContextValue | undefined>(
-  undefined
-);
+const ThemeContext = createContext<ThemeContextValue | undefined>(undefined);
 
 function useTheme() {
-  const context = React.useContext(ThemeContext);
+  const context = useContext(ThemeContext);
   if (!context) {
     throw new Error("`useTheme` must be used within a `Theme`");
   }

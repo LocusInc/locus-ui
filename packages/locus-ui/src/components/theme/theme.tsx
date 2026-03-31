@@ -1,7 +1,14 @@
 "use client";
 
-import * as React from "react";
+import {
+  forwardRef,
+  HTMLAttributes,
+  useContext,
+  useMemo,
+  useState,
+} from "react";
 import { GetProps } from "../../utils/get-props";
+import { ThemeColorProp, themeColorsToStyle } from "./theme-colors";
 import {
   ThemeAppearance,
   ThemeContext,
@@ -12,10 +19,12 @@ import {
 import { ThemePropsDefs } from "./theme.props";
 
 export type ThemeProps = GetProps<typeof ThemePropsDefs> &
-  React.HTMLAttributes<HTMLDivElement>;
+  HTMLAttributes<HTMLDivElement> & {
+    colors?: ThemeColorProp;
+  };
 
-const Theme = React.forwardRef<HTMLDivElement, ThemeProps>((props, ref) => {
-  const context = React.useContext(ThemeContext);
+const Theme = forwardRef<HTMLDivElement, ThemeProps>((props, ref) => {
+  const context = useContext(ThemeContext);
   const isRoot = context === undefined;
 
   if (isRoot) return <ThemeRoot {...props} ref={ref} />;
@@ -24,38 +33,48 @@ const Theme = React.forwardRef<HTMLDivElement, ThemeProps>((props, ref) => {
 });
 Theme.displayName = "Theme";
 
-const ThemeRoot = React.forwardRef<HTMLDivElement, ThemeProps>((props, ref) => {
+const ThemeRoot = forwardRef<HTMLDivElement, ThemeProps>((props, ref) => {
   const {
     appearance: themeAppearance,
     radius: themeRadius,
     roundness: themeRoundness,
     spacing: themeSpacing,
+    colors,
 
     children,
+    style,
     ...rest
   } = props;
 
-  const [appearance, setAppearance] = React.useState<ThemeAppearance>(
-    themeAppearance ?? "light"
+  const [appearance, setAppearance] = useState<ThemeAppearance>(
+    themeAppearance ?? "light",
   );
-  const [radius, setRadius] = React.useState<ThemeRadius>(themeRadius ?? "md");
-  const [roundness, setRoundness] = React.useState<ThemeRoundness>(
-    themeRoundness ?? "3"
+  const [radius, setRadius] = useState<ThemeRadius>(themeRadius ?? "md");
+  const [roundness, setRoundness] = useState<ThemeRoundness>(
+    themeRoundness ?? "3",
   );
-  const [spacing, setSpacing] = React.useState(themeSpacing ?? "md");
+  const [spacing, setSpacing] = useState(themeSpacing ?? "md");
 
-  const value = React.useMemo(
+  const currentAppearance = appearance === "inherit" ? "light" : appearance;
+
+  const colorStyle = useMemo(
+    () => (colors ? themeColorsToStyle(colors, currentAppearance) : {}),
+    [colors, currentAppearance],
+  );
+
+  const value = useMemo(
     () => ({
       appearance,
       radius,
       roundness,
       spacing,
+      colors,
       onAppearanceChange: setAppearance,
       onRadiusChange: setRadius,
       onRoundnessChange: setRoundness,
       onSpacingChange: setSpacing,
     }),
-    [appearance, radius, roundness, spacing]
+    [appearance, radius, roundness, spacing, colors],
   );
 
   return (
@@ -66,6 +85,7 @@ const ThemeRoot = React.forwardRef<HTMLDivElement, ThemeProps>((props, ref) => {
         data-theme-radius={radius}
         data-theme-roundness={roundness}
         data-theme-spacing={spacing}
+        style={{ colorScheme: currentAppearance, ...colorStyle, ...style }}
         {...rest}
       >
         {children}
@@ -75,32 +95,53 @@ const ThemeRoot = React.forwardRef<HTMLDivElement, ThemeProps>((props, ref) => {
 });
 ThemeRoot.displayName = "ThemeRoot";
 
-const ThemeSub = React.forwardRef<
+const ThemeSub = forwardRef<
   HTMLDivElement,
   Partial<ThemeContextProps> &
-    React.HTMLAttributes<HTMLDivElement> & { isRoot?: boolean }
+    HTMLAttributes<HTMLDivElement> & {
+      isRoot?: boolean;
+      colors?: ThemeColorProp;
+    }
 >((props, ref) => {
-  const context = React.useContext(ThemeContext)!;
+  const context = useContext(ThemeContext)!;
 
   const {
     appearance,
     radius,
     roundness,
     spacing,
+    colors,
     onAppearanceChange,
     onRadiusChange,
     onRoundnessChange,
     onSpacingChange,
 
     children,
+    style,
     ...rest
   } = props;
+
+  const currentAppearance =
+    (appearance ?? context.appearance) === "inherit"
+      ? "light"
+      : ((appearance ?? context.appearance) as "light" | "dark");
+
+  const mergedColors = useMemo(
+    () => ({ ...context.colors, ...colors }),
+    [context.colors, colors],
+  );
+
+  const colorStyle = useMemo(
+    () => (colors ? themeColorsToStyle(colors, currentAppearance) : {}),
+    [colors, currentAppearance],
+  );
 
   const contextProps: ThemeContextProps = {
     appearance: appearance ?? context.appearance,
     radius: radius ?? context.radius,
     roundness: roundness ?? context.roundness,
     spacing: spacing ?? context.spacing,
+    colors: mergedColors,
 
     onAppearanceChange: context.onAppearanceChange,
     onRadiusChange: context.onRadiusChange,
@@ -116,6 +157,7 @@ const ThemeSub = React.forwardRef<
         data-theme-radius={radius}
         data-theme-roundness={roundness}
         data-theme-spacing={spacing}
+        style={{ colorScheme: currentAppearance, ...colorStyle, ...style }}
         {...rest}
         className="flex"
       >
