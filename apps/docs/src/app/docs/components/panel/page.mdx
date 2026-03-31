@@ -17,7 +17,6 @@ export const colors = [
   "primary",
   "secondary",
   "tertiary",
-  "accent",
   "success",
   "danger",
   "warning",
@@ -63,7 +62,7 @@ Panel components come with three built in variants, `solid`, `outlined`, and `mu
 <PreviewBox title="variants.tsx" code={variantsSnippet}>
   {variants.map((variant) => (
     <Panel key={variant} variant={variant} p="4">
-      {variant.charAt(0).toUpperCase() + variant.slice(1)} Panel
+      <Text>{variant.charAt(0).toUpperCase() + variant.slice(1)} Panel</Text>
     </Panel>
   ))}
 </PreviewBox>
@@ -81,7 +80,7 @@ The `blur` prop applies a backdrop blur effect to the panel content.
     <Flex gap="3">
       {blurs.map((blur) => (
         <Panel key={blur} blur={blur} p="4" variant="muted">
-          Blur: {blur}
+          <Text>Blur: {blur}</Text>
         </Panel>
       ))}
     </Flex>

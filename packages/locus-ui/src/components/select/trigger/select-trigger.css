@@ -26,7 +26,7 @@
   }
 
   &[data-variant="solid"] {
-    background-color: rgba(var(--background-color-2), 0.95);
+    background-color: rgba(var(--bg-2), 0.95);
 
     &:focus {
       background-color: rgba(var(--primary), 0.2);

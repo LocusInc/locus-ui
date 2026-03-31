@@ -1,5 +1,5 @@
 .progress-bar-root[data-variant] {
-  --progress-bar-base: var(--lcs-color, var(--panel-color));
+  --progress-bar-base: var(--lcs-color, var(--surface-1));
   --progress-bar-color: var(--color, var(--primary));
 
   display: flex;

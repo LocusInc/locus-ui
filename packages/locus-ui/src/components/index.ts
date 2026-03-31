@@ -15,6 +15,8 @@ export { Text } from "./text";
 export { Theme, ThemeControl, useTheme } from "./theme";
 export type {
   ThemeAppearance,
+  ThemeColorConfig,
+  ThemeColors,
   ThemeRadius,
   ThemeRoundness,
   ThemeSpacing,

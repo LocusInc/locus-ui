@@ -69,20 +69,20 @@
 
     /* Variants */
     &[data-variant="solid"] {
-      background-color: rgb(var(--panel-color));
-      border: 2px solid rgb(var(--panel-color));
+      background-color: rgb(var(--surface-1));
+      border: 2px solid rgb(var(--border-1));
       transition: background-color 100ms;
     }
 
     &[data-variant="outlined"] {
-      background-color: rgba(var(--panel-color), 0.4);
-      border: 2px solid rgb(var(--panel-color));
+      background-color: rgba(var(--surface-1), 0.4);
+      border: 2px solid rgb(var(--border-1));
       transition: background-color 100ms;
     }
 
     &[data-variant="muted"] {
-      background-color: rgba(var(--panel-color), 0.6);
-      border: 2px solid rgb(var(--panel-color));
+      background-color: rgba(var(--surface-1), 0.6);
+      border: 2px solid rgba(var(--border-1), 0.6);
       transition: background-color 100ms;
     }
   }

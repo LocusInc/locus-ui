@@ -5,7 +5,6 @@ const Colors = [
   "primary",
   "secondary",
   "tertiary",
-  "accent",
   "success",
   "warning",
   "danger",

@@ -1,6 +1,7 @@
 .button[data-variant] {
   --button-color: var(--color, var(--primary));
 
+  font-weight: bold;
   height: fit-content;
   font-size: medium;
   border-radius: var(--lcs-radius, 1);
@@ -37,6 +38,7 @@
   }
 
   &[data-variant="solid"] {
+    color: black;
     border: 1px solid rgba(var(--button-color), 0.8);
     background-color: rgba(var(--button-color), 0.9);
 
@@ -51,16 +53,15 @@
     }
 
     &[data-disabled="true"] {
-      color: rgb(var(--text-color-disabled));
-      border: 1px solid rgba(var(--panel-color), 0.2);
-      background-color: rgba(var(--panel-color), 0.5);
+      color: rgb(var(--text-dark));
+      border: 1px solid rgba(var(--surface-1), 0.2);
+      background-color: rgba(var(--surface-1), 0.5);
       opacity: 0.8;
     }
 
     &[data-high-contrast="true"] {
       position: relative;
       overflow: hidden;
-      color: black;
 
       &::before {
         content: "";
@@ -99,9 +100,9 @@
     }
 
     &[data-disabled="true"] {
-      color: rgb(var(--text-color-disabled));
-      border: 1px solid rgba(var(--panel-color), 0.7);
-      background-color: rgba(var(--panel-color), 0.1);
+      color: rgb(var(--text-dark));
+      border: 1px solid rgba(var(--surface-2), 0.7);
+      background-color: rgba(var(--surface-1), 0.1);
       opacity: 0.9;
     }
   }
@@ -110,6 +111,11 @@
     border: 1px solid transparent;
     background-color: rgba(var(--button-color), 0.2);
     color: rgba(var(--button-color));
+
+    [data-appearance="light"] & {
+      background-color: rgba(var(--button-color), 0.3);
+      color: color-mix(in srgb, rgb(var(--button-color)), black 40%);
+    }
 
     &[data-hovered="true"] {
       background-color: rgba(var(--button-color), 0.3);
@@ -121,9 +127,9 @@
     }
 
     &[data-disabled="true"] {
-      color: rgb(var(--text-color-disabled));
-      border: 1px solid rgba(var(--panel-color), 0.2);
-      background-color: rgba(var(--panel-color), 0.3);
+      color: rgb(var(--text-dark));
+      border: 1px solid rgba(var(--surface-1), 0.2);
+      background-color: rgba(var(--surface-1), 0.3);
       opacity: 0.8;
     }
   }
@@ -143,7 +149,7 @@
     }
 
     &[data-disabled="true"] {
-      color: rgb(var(--text-color-disabled));
+      color: rgb(var(--text-dark));
       opacity: 0.8;
     }
   }

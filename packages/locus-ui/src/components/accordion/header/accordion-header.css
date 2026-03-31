@@ -10,16 +10,16 @@
   &[data-variant="solid"]:hover,
   &[data-variant="outlined"]:hover,
   &[data-variant="muted"]:hover {
-    background-color: rgba(var(--primary, --background-color-3), 0.2);
+    background-color: rgba(var(--primary, --bg-3), 0.2);
   }
 
   &[data-variant="solid"] {
-    background-color: rgba(var(--background-color-2), 0.95);
+    background-color: rgba(var(--bg-2), 0.95);
   }
 
   &[data-variant="outlined"],
   &[data-variant="muted"] {
-    background-color: rgba(var(--background-color-2), 0.6);
+    background-color: rgba(var(--bg-2), 0.6);
   }
 
   &[data-variant="solid"]:focus,
@@ -46,11 +46,11 @@
   &[data-open="true"] {
     &[data-variant="solid"],
     &[data-variant="muted"] {
-      border-bottom: 1px solid rgba(var(--border-color), 0.2);
+      border-bottom: 1px solid rgba(var(--border-1), 0.2);
     }
 
     &[data-variant="outlined"] {
-      border-bottom: 1px solid rgba(var(--border-color), 0.5);
+      border-bottom: 1px solid rgba(var(--border-1), 0.5);
     }
 
     .accordion-header-indicator {

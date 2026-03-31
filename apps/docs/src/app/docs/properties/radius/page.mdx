@@ -28,7 +28,7 @@ Controls the border-radius of elements. Supports scaled values, custom values, r
   ]}
   source="https://github.com/LocusInc/locus-ui/tree/main/packages/locus-ui/src/props/radius.prop.ts"
 >
-  <Box p="2" radius="md" className="border">
+  <Box p="2" radius="md" className="border border-[rgb(var(--border-1))]">
     <Text>Medium Radius</Text>
   </Box>
 </ComponentPreview>
@@ -49,7 +49,7 @@ The `radius` prop accepts values `none`, `xs`, `sm`, `md`, `lg`, `xl`, and `full
             key={radius}
             radius={radius}
             roundness={number}
-            className="border"
+            className="border border-[rgb(var(--border-1))]"
           >
             <Text>
               {radius}, {number}
@@ -66,27 +66,41 @@ The `radius` prop accepts values `none`, `xs`, `sm`, `md`, `lg`, `xl`, and `full
 Radius values can be inherited from parent elements using `radius="inherit"`, or fall back to the theme default.
 
 <PreviewBox title="inheritance.tsx" code={inheritanceSnippet}>
-  <Box radius="none" p="2" className="border">
+  <Box radius="none" p="2" className="border border-[rgb(var(--border-1))]">
     <Text>No Radius</Text>
-    <Box radius="xl" p="2" className="border">
+    <Box radius="xl" p="2" className="border border-[rgb(var(--border-1))]">
       <Text>XL Radius</Text>
-      <Box p="2" className="border">
+      <Box p="2" className="border border-[rgb(var(--border-1))]">
         <Text>Default/Theme</Text>
       </Box>
     </Box>
-    <Box radius="inherit" p="2" className="border mt-2">
+    <Box
+      radius="inherit"
+      p="2"
+      className="border mt-2 border-[rgb(var(--border-1))]"
+    >
       <Text>Inherit</Text>
-      <Box p="2" className="border">
+      <Box p="2" className="border border-[rgb(var(--border-1))]">
         <Text>Default/Theme</Text>
       </Box>
     </Box>
   </Box>
-  <Box radius="9px" p="2" mt="4" className="border">
+  <Box
+    radius="9px"
+    p="2"
+    mt="4"
+    className="border border-[rgb(var(--border-1))]"
+  >
     <Text>This box has a custom radius (9px)</Text>
-    <Box radius="inherit" p="2" mt="2" className="border">
+    <Box
+      radius="inherit"
+      p="2"
+      mt="2"
+      className="border border-[rgb(var(--border-1))]"
+    >
       <Text>Inherit</Text>
     </Box>
-    <Box p="2" mt="2" className="border">
+    <Box p="2" mt="2" className="border border-[rgb(var(--border-1))]">
       <Text>Default/Theme</Text>
     </Box>
   </Box>
@@ -101,7 +115,7 @@ Radius supports responsive values using breakpoint objects.
     p="2"
     my="4"
     radius={{ initial: "xs", sm: "xl", md: "full" }}
-    className="border"
+    className="border border-[rgb(var(--border-1))]"
   >
     <Text>
       This box has breakpoint-specific radii (xs initial, xl on sm, full on md)
@@ -115,16 +129,36 @@ Use `radius-t`, `radius-r`, `radius-b`, and `radius-l` to set radius on specific
 
 <PreviewBox title="side-radii.tsx" code={cornerRadiiSnippet}>
   <Flex gap="2">
-    <Box p="2" radius-t="xl" radius="none" className="border">
+    <Box
+      p="2"
+      radius-t="xl"
+      radius="none"
+      className="border border-[rgb(var(--border-1))]"
+    >
       <Text>XL top radius only</Text>
     </Box>
-    <Box p="2" radius-l="xl" radius="none" className="border">
+    <Box
+      p="2"
+      radius-l="xl"
+      radius="none"
+      className="border border-[rgb(var(--border-1))]"
+    >
       <Text>XL left radius only</Text>
     </Box>
-    <Box p="2" radius-b="xl" radius="none" className="border">
+    <Box
+      p="2"
+      radius-b="xl"
+      radius="none"
+      className="border border-[rgb(var(--border-1))]"
+    >
       <Text>XL bottom radius only</Text>
     </Box>
-    <Box p="2" radius-r="xl" radius="none" className="border">
+    <Box
+      p="2"
+      radius-r="xl"
+      radius="none"
+      className="border border-[rgb(var(--border-1))]"
+    >
       <Text>XL right radius only</Text>
     </Box>
   </Flex>
@@ -136,16 +170,36 @@ Use `radius-tl`, `radius-tr`, `radius-br`, and `radius-bl` to set radius on indi
 
 <PreviewBox title="individual-corners.tsx" code={individualCornerSnippet}>
   <Flex gap="2">
-    <Box p="2" radius-tl="xl" radius="none" className="border">
+    <Box
+      p="2"
+      radius-tl="xl"
+      radius="none"
+      className="border border-[rgb(var(--border-1))]"
+    >
       <Text>XL top-left radius only</Text>
     </Box>
-    <Box p="2" radius-tr="xl" radius="none" className="border">
+    <Box
+      p="2"
+      radius-tr="xl"
+      radius="none"
+      className="border border-[rgb(var(--border-1))]"
+    >
       <Text>XL top-right radius only</Text>
     </Box>
-    <Box p="2" radius-br="xl" radius="none" className="border">
+    <Box
+      p="2"
+      radius-br="xl"
+      radius="none"
+      className="border border-[rgb(var(--border-1))]"
+    >
       <Text>XL bottom-right radius only</Text>
     </Box>
-    <Box p="2" radius-bl="xl" radius="none" className="border">
+    <Box
+      p="2"
+      radius-bl="xl"
+      radius="none"
+      className="border border-[rgb(var(--border-1))]"
+    >
       <Text>XL bottom-left radius only</Text>
     </Box>
   </Flex>

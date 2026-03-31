@@ -1,8 +1,8 @@
 .text {
-  --text-custom-color: var(--color, var(--text-color));
-  color: rgb(var(--text-custom-color));
+  --text-color: var(--color, var(--text));
+  color: rgb(var(--text-color));
 
   &[disabled] {
-    color: rgb(var(--text-color-disabled));
+    color: rgb(var(--text-dark));
   }
 }

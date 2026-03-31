@@ -135,14 +135,14 @@ const { appearance, setAppearance, radius, spacing } = useTheme();
 
 Most components accept these common props:
 
-| Prop      | Values                                                                                               |
-| --------- | ---------------------------------------------------------------------------------------------------- |
-| `color`   | `"primary"`, `"secondary"`, `"tertiary"`, `"accent"`, `"success"`, `"warning"`, `"danger"`, `"info"` |
-| `size`    | `"xs"`, `"sm"`, `"md"`, `"lg"`, `"xl"`                                                               |
-| `variant` | `"solid"`, `"outlined"`, `"muted"`, `"clear"`                                                        |
-| `radius`  | `"none"`, `"xs"`, `"sm"`, `"md"`, `"lg"`, `"xl"`, `"full"`, `"inherit"`                              |
-| `margin`  | `-8` to `8`, `"auto"` (directional: `mt`, `mb`, `ml`, `mr`, `mx`, `my`)                              |
-| `padding` | `0` to `8` (directional: `pt`, `pb`, `pl`, `pr`, `px`, `py`)                                         |
+| Prop      | Values                                                                                   |
+| --------- | ---------------------------------------------------------------------------------------- |
+| `color`   | `"primary"`, `"secondary"`, `"tertiary"`, `"success"`, `"warning"`, `"danger"`, `"info"` |
+| `size`    | `"xs"`, `"sm"`, `"md"`, `"lg"`, `"xl"`                                                   |
+| `variant` | `"solid"`, `"outlined"`, `"muted"`, `"clear"`                                            |
+| `radius`  | `"none"`, `"xs"`, `"sm"`, `"md"`, `"lg"`, `"xl"`, `"full"`, `"inherit"`                  |
+| `margin`  | `-8` to `8`, `"auto"` (directional: `mt`, `mb`, `ml`, `mr`, `mx`, `my`)                  |
+| `padding` | `0` to `8` (directional: `pt`, `pb`, `pl`, `pr`, `px`, `py`)                             |
 
 All layout props support responsive breakpoint objects:
 

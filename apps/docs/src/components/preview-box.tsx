@@ -24,7 +24,7 @@ export const PreviewBox: React.FC<{
     <Panel
       variant="outlined"
       my="2"
-      className="min-h-fit bg-[rgb(var(--background-color-3))]! overflow-hidden"
+      className="min-h-fit bg-[rgb(var(--bg-1))]! overflow-hidden"
     >
       <Flex
         px="8"
@@ -39,7 +39,7 @@ export const PreviewBox: React.FC<{
       </Flex>
 
       {code !== undefined && (
-        <Flex direction="column" className="bg-[rgb(var(--panel-color))]!">
+        <Flex direction="column" className="bg-[rgb(var(--surface-1))]!">
           <Flex
             className={`${showCode ? "max-h-250" : "max-h-0"} overflow-hidden transition-all`}
             direction="column"
@@ -67,7 +67,7 @@ export const PreviewBox: React.FC<{
               className="w-full cursor-pointer"
               onClick={() => setShowCode(!showCode)}
             >
-              {showCode ? "Hide Code" : "Show Code"}
+              <Text>{showCode ? "Hide Code" : "Show Code"}</Text>
             </Button>
           </Flex>
         </Flex>

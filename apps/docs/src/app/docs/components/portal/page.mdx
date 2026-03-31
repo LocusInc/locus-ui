@@ -1,4 +1,4 @@
-import { Box, Portal, Text } from "@locus-ui/components";
+import { Box, Panel, Portal, Text } from "@locus-ui/components";
 import { ComponentPreview } from "@/components/component-preview";
 import { PreviewBox } from "@/components/preview-box";
 import { CodeBox } from "@/components/code-box";
@@ -57,7 +57,7 @@ A portal component for rendering content in an overlay, supporting fixed positio
       <Box
         p="4"
         m="4"
-        className="bg-[rgb(var(--background-color-2))] border border-[rgb(var(--border-color-1))]"
+        className="bg-[rgb(var(--bg-2))] border border-[rgb(var(--border-1))]"
       >
         <Text>Portal Content</Text>
       </Box>
@@ -92,7 +92,7 @@ The `position` prop on `Portal.Content` controls where the content appears on sc
         <Box
           p="4"
           m="4"
-          className="bg-[rgb(var(--background-color-2))] border border-[rgb(var(--border-color-1))]"
+          className="bg-[rgb(var(--bg-2))] border border-[rgb(var(--border-1))]"
         >
           <Text>{position.toUpperCase()}</Text>
         </Box>
@@ -115,9 +115,9 @@ The `Portal.Backdrop` component supports three variants: `clear`, `shadow`, and 
       </Portal.Trigger>
       <Portal.Backdrop variant={variant} />
       <Portal.Content>
-        <Box className="p-4 bg-[rgb(var(--background-color-2))] border border-[rgb(var(--border-color-1))] rounded">
+        <Panel variant="outlined" p="4">
           <Text>{variant.charAt(0).toUpperCase() + variant.slice(1)}</Text>
-        </Box>
+        </Panel>
       </Portal.Content>
     </Portal.Root>
   ))}
@@ -136,7 +136,7 @@ When the `anchored` prop is set on `Portal.Content`, the content is positioned r
     </Portal.Trigger>
     <Portal.Backdrop />
     <Portal.Content anchored side="bottom" align="end">
-      <Box className="p-4 bg-[rgb(var(--background-color-2))] border border-[rgb(var(--border-color-1))] rounded">
+      <Box className="p-4 bg-[rgb(var(--bg-2))] border border-[rgb(var(--border-1))] rounded">
         <Text>Anchor</Text>
       </Box>
     </Portal.Content>
@@ -157,7 +157,7 @@ The `side` prop controls which side of the trigger the anchored content appears 
       </Portal.Trigger>
       <Portal.Backdrop />
       <Portal.Content anchored side={side}>
-        <Box className="p-4 bg-[rgb(var(--background-color-2))] border border-[rgb(var(--border-color-1))] rounded">
+        <Box className="p-4 bg-[rgb(var(--bg-2))] border border-[rgb(var(--border-1))] rounded">
           <Text>{side.charAt(0).toUpperCase() + side.slice(1)}</Text>
         </Box>
       </Portal.Content>
@@ -179,7 +179,7 @@ The `align` prop controls the alignment of the anchored content relative to the 
       </Portal.Trigger>
       <Portal.Backdrop />
       <Portal.Content anchored side="bottom" align={align}>
-        <Box className="p-4 bg-[rgb(var(--background-color-2))] border border-[rgb(var(--border-color-1))] rounded">
+        <Box className="p-4 bg-[rgb(var(--bg-2))] border border-[rgb(var(--border-1))] rounded">
           <Text>{align.charAt(0).toUpperCase() + align.slice(1)}</Text>
         </Box>
       </Portal.Content>
@@ -200,7 +200,7 @@ Use `sideOffset` and `alignOffset` to fine-tune the position of anchored content
     </Portal.Trigger>
     <Portal.Backdrop />
     <Portal.Content anchored side="bottom" align="start" sideOffset="32">
-      <Box className="p-4 bg-[rgb(var(--background-color-2))] border border-[rgb(var(--border-color-1))] rounded">
+      <Box className="p-4 bg-[rgb(var(--bg-2))] border border-[rgb(var(--border-1))] rounded">
         <Text>Side Offset of 32px</Text>
       </Box>
     </Portal.Content>
@@ -213,7 +213,7 @@ Use `sideOffset` and `alignOffset` to fine-tune the position of anchored content
     </Portal.Trigger>
     <Portal.Backdrop />
     <Portal.Content anchored side="bottom" align="start" alignOffset="32">
-      <Box className="p-4 bg-[rgb(var(--background-color-2))] border border-[rgb(var(--border-color-1))] rounded">
+      <Box className="p-4 bg-[rgb(var(--bg-2))] border border-[rgb(var(--border-1))] rounded">
         <Text>Align Offset of 32px</Text>
       </Box>
     </Portal.Content>

@@ -1,6 +1,6 @@
 .select-separator {
   height: 1px;
   border-radius: 2px;
-  background-color: rgba(var(--background-color-1), 0.5);
+  background-color: rgba(var(--bg-1), 0.5);
   margin: calc(4px * var(--lcs-spacing, 1)) 0;
 }

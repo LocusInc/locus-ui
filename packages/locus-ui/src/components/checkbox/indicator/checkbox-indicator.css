@@ -12,7 +12,9 @@
   border: 1px solid transparent;
   border-radius: max(5px, var(--lcs-radius, 0px));
   overflow: hidden;
-  transition: background-color 100ms, border-color 100ms;
+  transition:
+    background-color 100ms,
+    border-color 100ms;
 
   /* Sizes */
   &[data-size="xs"] {
@@ -55,7 +57,7 @@
   /* Solid variant */
   &[data-variant="solid"] {
     &:not([data-checked="true"]) {
-      background-color: rgba(var(--panel-color), 0.8);
+      background-color: rgba(var(--surface-1), 0.8);
     }
 
     &[data-checked="true"],
@@ -92,7 +94,7 @@
 
   /* Outlined variant */
   &[data-variant="outlined"] {
-    background-color: rgba(var(--panel-color), 0.8);
+    background-color: rgba(var(--surface-1), 0.8);
 
     &:not([data-checked="true"]) {
       border-color: rgb(var(--border-color));
@@ -118,7 +120,7 @@
   }
 
   &[data-variant="muted"] {
-    background-color: rgba(var(--panel-color), 0.5);
+    background-color: rgba(var(--surface-2), 0.4);
 
     &[data-checked="true"],
     &[data-indeterminate="true"] {

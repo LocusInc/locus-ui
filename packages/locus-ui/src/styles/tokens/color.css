@@ -10,9 +10,6 @@
 [data-color="tertiary"] {
   --color: var(--tertiary);
 }
-[data-color="accent"] {
-  --color: var(--accent);
-}
 [data-color="success"] {
   --color: var(--success);
 }

@@ -10,24 +10,24 @@
   }
 
   &[data-variant="solid"]:not([data-direction="vertical"]) {
-    border-top: 1px solid rgb(var(--border-color));
+    border-top: 1px solid rgb(var(--border-1));
   }
 
   &[data-variant="solid"]:not([data-direction="horizontal"]) {
-    border-right: 1px solid rgb(var(--border-color));
+    border-right: 1px solid rgb(var(--border-1));
   }
 
   &[data-variant="dashed"]:not([data-direction="vertical"]) {
-    border-top: 1px dashed rgb(var(--border-color));
+    border-top: 1px dashed rgb(var(--border-1));
   }
   &[data-variant="dashed"]:not([data-direction="horizontal"]) {
-    border-right: 1px dashed rgb(var(--border-color));
+    border-right: 1px dashed rgb(var(--border-1));
   }
 
   &[data-variant="dotted"]:not([data-direction="vertical"]) {
-    border-top: 1px dotted rgb(var(--border-color));
+    border-top: 1px dotted rgb(var(--border-1));
   }
   &[data-variant="dotted"]:not([data-direction="horizontal"]) {
-    border-right: 1px dotted rgb(var(--border-color));
+    border-right: 1px dotted rgb(var(--border-1));
   }
 }

@@ -84,7 +84,7 @@ return sizes.map((size) => (
 export const colorsSnippet = `${importSnippet}
 
 const colors = [
-  "primary", "secondary", "tertiary", "accent",
+  "primary", "secondary", "tertiary",
   "success", "danger", "warning", "info",
 ];
 
@@ -102,7 +102,7 @@ export const stackingSnippet = `${importSnippet}
 <ProgressBar.Root className="w-48" variant="solid" size="xl">
   <ProgressBar.Fill value={0.3} color="primary" />
   <ProgressBar.Fill value={0.2} color="secondary" />
-  <ProgressBar.Fill value={0.1} color="accent" />
+  <ProgressBar.Fill value={0.1} color="tertiary" />
 </ProgressBar.Root>`;
 
 export const overStackingSnippet = `${importSnippet}
@@ -110,5 +110,5 @@ export const overStackingSnippet = `${importSnippet}
 <ProgressBar.Root className="w-48" variant="solid" size="xl">
   <ProgressBar.Fill value={0.5} color="primary" />
   <ProgressBar.Fill value={0.4} color="secondary" />
-  <ProgressBar.Fill value={0.3} color="accent" />
+  <ProgressBar.Fill value={0.3} color="tertiary" />
 </ProgressBar.Root>`;

@@ -41,7 +41,7 @@ return variants.map((variant) => (
 export const colorsSnippet = `${importSnippet}
 
 const colors = [
-  "primary", "secondary", "tertiary", "accent",
+  "primary", "secondary", "tertiary",
   "success", "danger", "warning", "info",
 ];
 

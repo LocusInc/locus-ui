@@ -54,7 +54,7 @@ export function ThemeControl({ position = "bottom" }: ThemeControlProps) {
           variant="outlined"
           m="4"
           p="4"
-          className="flex flex-col gap-2 border-[rgba(var(--border-color), 0.6)]"
+          className="flex flex-col gap-2 border-[rgba(var(--border-1), 0.6)]"
         >
           <Select.Root
             variant="solid"

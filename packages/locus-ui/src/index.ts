@@ -20,6 +20,8 @@ export {
 
 export type {
   ThemeAppearance,
+  ThemeColorConfig,
+  ThemeColors,
   ThemeRadius,
   ThemeRoundness,
   ThemeSpacing,

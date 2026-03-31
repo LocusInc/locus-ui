@@ -1,5 +1,5 @@
 .select-content {
-  background-color: rgba(var(--background-color-1), 0.9);
+  background-color: rgba(var(--bg-1), 0.9);
   border-radius: min(var(--lcs-radius), 24px);
   box-shadow: var(--shadow-md);
   backdrop-filter: blur(var(--lcs-backdrop-blur, 2px));
@@ -12,9 +12,9 @@
 }
 
 .select-content[data-trigger-variant="outlined"] {
-  border: 1px solid rgb(var(--border-color));
+  border: 1px solid rgb(var(--border-1));
 }
 
 .select-content[data-trigger-variant="solid"] {
-  background-color: rgba(var(--background-color-2), 0.95);
+  background-color: rgba(var(--bg-2), 0.95);
 }

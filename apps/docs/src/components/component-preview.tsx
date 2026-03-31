@@ -1,6 +1,6 @@
 "use client";
 
-import { Box, Flex, Panel, Text } from "@locus-ui/components";
+import { Box, Flex, Panel, Separator, Text } from "@locus-ui/components";
 import Link from "next/link";
 import { useState } from "react";
 import { CodeBox } from "./code-box";
@@ -36,9 +36,11 @@ export const ComponentPreview = ({
           {children}
         </Box>
 
+        <Separator />
+
         <Box
           radius="none"
-          className="flex gap-0 border-y border-[rgb(var(--panel-color))] bg-[rgb(var(--background-color-2))]"
+          className="flex gap-0 border-y border-[rgb(var(--surface-1))] bg-[rgb(var(--bg-3))]"
         >
           {codeSnippets?.map((snippet) => (
             <TabButton
@@ -51,9 +53,9 @@ export const ComponentPreview = ({
           ))}
         </Box>
 
-        <Box radius="none" className="overflow-auto">
-          <CodeBox language="typescript">{activeSnippet.code}</CodeBox>
-        </Box>
+        <Separator mt="-4" />
+
+        <CodeBox language="typescript">{activeSnippet.code}</CodeBox>
       </Panel>
 
       {source !== undefined && (
@@ -81,7 +83,7 @@ const TabButton = ({
   <button
     type="button"
     onClick={onClick}
-    className={`px-4 py-2 text-sm font-medium cursor-pointer transition-colors border-b-2 bg-transparent ${
+    className={`-mb-0.5 px-4 py-2 text-sm font-medium cursor-pointer transition-colors border-b-2 bg-transparent ${
       active
         ? "border-[rgb(var(--primary))] text-[rgb(var(--primary))]"
         : "border-transparent text-[rgb(var(--foreground-color))] opacity-60 hover:opacity-100"

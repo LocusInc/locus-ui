@@ -22,7 +22,7 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
     p: (props) => <Text as="span" {...props} />,
     code: (props) => (
       <code
-        className="bg-[rgb(var(--panel-color))] text-[rgb(var(--text-color))] px-1 py-0.5 rounded text-sm font-mono"
+        className="bg-[rgb(var(--surface-1))] text-[rgb(var(--text))] px-1 py-0.5 rounded text-sm font-mono"
         {...props}
       />
     ),

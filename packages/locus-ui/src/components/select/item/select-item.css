@@ -10,11 +10,11 @@
 }
 
 .select-item[data-highlighted]:not([data-disabled]) {
-  background-color: rgba(var(--primary, --background-color-3), 0.2);
+  background-color: rgba(var(--primary, --bg-3), 0.2);
   cursor: pointer;
 }
 
 .select-item:hover:not([data-disabled]) {
-  background-color: rgba(var(--primary, --background-color-3), 0.2);
+  background-color: rgba(var(--primary, --bg-3), 0.2);
   cursor: pointer;
 }

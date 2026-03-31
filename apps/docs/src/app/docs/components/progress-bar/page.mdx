@@ -19,7 +19,6 @@ export const colors = [
   "primary",
   "secondary",
   "tertiary",
-  "accent",
   "success",
   "danger",
   "warning",
@@ -113,7 +112,7 @@ Use `ProgressBar.Fill` children to create stacked progress bars with multiple se
   <ProgressBar.Root className="w-48" variant="solid" size="xl">
     <ProgressBar.Fill value={0.3} color="primary" />
     <ProgressBar.Fill value={0.2} color="secondary" />
-    <ProgressBar.Fill value={0.1} color="accent" />
+    <ProgressBar.Fill value={0.1} color="tertiary" />
   </ProgressBar.Root>
 </PreviewBox>
 
@@ -125,6 +124,6 @@ When stacked fill values exceed 1, the progress bar gracefully handles overflow.
   <ProgressBar.Root className="w-48" variant="solid" size="xl">
     <ProgressBar.Fill value={0.5} color="primary" />
     <ProgressBar.Fill value={0.4} color="secondary" />
-    <ProgressBar.Fill value={0.3} color="accent" />
+    <ProgressBar.Fill value={0.3} color="tertiary" />
   </ProgressBar.Root>
 </PreviewBox>

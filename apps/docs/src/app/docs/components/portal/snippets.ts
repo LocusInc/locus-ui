@@ -12,7 +12,7 @@ export const indexSnippet = `${importSnippet}
   <Portal.Backdrop variant="shadow" />
 
   <Portal.Content>
-    <Box p="4" m="4" className="bg-[rgb(var(--background-color-2))] border border-[rgb(var(--border-color-1))]">
+    <Box p="4" m="4" className="bg-[rgb(var(--bg-2))] border border-[rgb(var(--border-1))]">
       <Text>Portal Content</Text>
     </Box>
   </Portal.Content>
@@ -69,7 +69,7 @@ return positions.map((position) => (
     <Portal.Backdrop variant="shadow" />
 
     <Portal.Content position={position}>
-      <Box p="4" m="4" className="bg-[rgb(var(--background-color-2))] border border-[rgb(var(--border-color-1))]">
+      <Box p="4" m="4" className="bg-[rgb(var(--bg-2))] border border-[rgb(var(--border-1))]">
         <Text>{position.toUpperCase()}</Text>
       </Box>
     </Portal.Content>
@@ -91,7 +91,7 @@ return variants.map((variant) => (
     <Portal.Backdrop variant={variant} />
 
     <Portal.Content>
-      <Box className="p-4 bg-[rgb(var(--background-color-2))] border border-[rgb(var(--border-color-1))] rounded">
+      <Box className="p-4 bg-[rgb(var(--bg-2))] border border-[rgb(var(--border-1))] rounded">
         <Text>{variant.charAt(0).toUpperCase() + variant.slice(1)}</Text>
       </Box>
     </Portal.Content>
@@ -110,7 +110,7 @@ export const anchorSnippet = `${importSnippet}
   <Portal.Backdrop />
 
   <Portal.Content anchored side="bottom" align="end">
-    <Box className="p-4 bg-[rgb(var(--background-color-2))] border border-[rgb(var(--border-color-1))] rounded">
+    <Box className="p-4 bg-[rgb(var(--bg-2))] border border-[rgb(var(--border-1))] rounded">
       <Text>Anchor</Text>
     </Box>
   </Portal.Content>
@@ -131,7 +131,7 @@ return sides.map((side) => (
     <Portal.Backdrop />
 
     <Portal.Content anchored side={side}>
-      <Box className="p-4 bg-[rgb(var(--background-color-2))] border border-[rgb(var(--border-color-1))] rounded">
+      <Box className="p-4 bg-[rgb(var(--bg-2))] border border-[rgb(var(--border-1))] rounded">
         <Text>{side.charAt(0).toUpperCase() + side.slice(1)}</Text>
       </Box>
     </Portal.Content>
@@ -153,7 +153,7 @@ return aligns.map((align) => (
     <Portal.Backdrop />
 
     <Portal.Content anchored side="bottom" align={align}>
-      <Box className="p-4 bg-[rgb(var(--background-color-2))] border border-[rgb(var(--border-color-1))] rounded">
+      <Box className="p-4 bg-[rgb(var(--bg-2))] border border-[rgb(var(--border-1))] rounded">
         <Text>{align.charAt(0).toUpperCase() + align.slice(1)}</Text>
       </Box>
     </Portal.Content>
@@ -172,7 +172,7 @@ export const offsetSnippet = `${importSnippet}
   <Portal.Backdrop />
 
   <Portal.Content anchored side="bottom" align="start" sideOffset="32">
-    <Box className="p-4 bg-[rgb(var(--background-color-2))] border border-[rgb(var(--border-color-1))] rounded">
+    <Box className="p-4 bg-[rgb(var(--bg-2))] border border-[rgb(var(--border-1))] rounded">
       <Text>Side Offset of 32px</Text>
     </Box>
   </Portal.Content>
@@ -188,7 +188,7 @@ export const offsetSnippet = `${importSnippet}
   <Portal.Backdrop />
 
   <Portal.Content anchored side="bottom" align="start" alignOffset="32">
-    <Box className="p-4 bg-[rgb(var(--background-color-2))] border border-[rgb(var(--border-color-1))] rounded">
+    <Box className="p-4 bg-[rgb(var(--bg-2))] border border-[rgb(var(--border-1))] rounded">
       <Text>Align Offset of 32px</Text>
     </Box>
   </Portal.Content>

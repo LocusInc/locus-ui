@@ -45,16 +45,16 @@
     }
 
     &:has(.select-label[data-position="inside"]) {
-      background-color: rgba(var(--panel-color), 0.9);
-      border: 1px solid rgb(var(--border-color));
+      background-color: rgba(var(--surface-1), 0.9);
+      border: 1px solid rgb(var(--border-1));
       border-radius: var(--lcs-radius);
       padding: 0 0 0 calc(8px * var(--lcs-spacing, 1));
     }
 
     &:not(:has(.select-label[data-position="inside"])) {
       .select-trigger {
-        border: 1px solid rgb(var(--border-color));
-        background-color: rgba(var(--panel-color), 0.9);
+        border: 1px solid rgb(var(--border-1));
+        background-color: rgba(var(--surface-1), 0.9);
       }
     }
   }
@@ -65,7 +65,7 @@
     }
 
     &:has(.select-label[data-position="inside"]) {
-      background-color: rgba(var(--background-color-2), 0.95);
+      background-color: rgba(var(--bg-2), 0.95);
       padding: 0 0 0 calc(8px * var(--lcs-spacing, 1));
 
       &:focus {
