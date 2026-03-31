@@ -1,6 +1,6 @@
 {
   "name": "@locus-ui/components",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "A React UI component library",
   "main": "dist/index.js",
   "module": "dist/index.mjs",
@@ -31,6 +31,7 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
+  "homepage": "https://locus-ui.com/",
   "repository": {
     "type": "git",
     "url": "https://github.com/LocusInc/locus-ui.git",
