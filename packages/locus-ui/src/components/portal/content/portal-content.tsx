@@ -1,10 +1,20 @@
 "use client";
 
 import clsx from "clsx";
-import * as React from "react";
+import {
+  CSSProperties,
+  forwardRef,
+  HTMLAttributes,
+  useCallback,
+  useContext,
+  useEffect,
+  useMemo,
+  useRef,
+} from "react";
 import ReactDOM from "react-dom";
 import { AlignProp, AlignPropDef } from "../../../props";
 import { getComponentProps } from "../../../utils/get-component-props";
+import { themeColorsToStyle } from "../../theme/theme-colors";
 import { ThemeContext } from "../../theme/theme-context";
 import { usePortalContext } from "../portal-context";
 import {
@@ -20,14 +30,14 @@ import {
 interface AllPortalContentProps extends PortalContentInternalProps, AlignProp {}
 
 type PortalContentProps = AllPortalContentProps &
-  React.HTMLAttributes<HTMLDivElement>;
+  HTMLAttributes<HTMLDivElement>;
 
 /** The content displayed within a portal. */
-const PortalContent = React.forwardRef<HTMLDivElement, PortalContentProps>(
+const PortalContent = forwardRef<HTMLDivElement, PortalContentProps>(
   (props, ref) => {
     const portalContext = usePortalContext();
-    const themeContext = React.useContext(ThemeContext);
-    const contentRef = React.useRef<HTMLDivElement>(null);
+    const themeContext = useContext(ThemeContext);
+    const contentRef = useRef<HTMLDivElement>(null);
 
     const {
       side = "bottom",
@@ -56,7 +66,7 @@ const PortalContent = React.forwardRef<HTMLDivElement, PortalContentProps>(
     });
 
     // Compose refs
-    const setRefs = React.useCallback(
+    const setRefs = useCallback(
       (node: HTMLDivElement | null) => {
         contentRef.current = node;
         if (typeof ref === "function") {
@@ -65,10 +75,10 @@ const PortalContent = React.forwardRef<HTMLDivElement, PortalContentProps>(
           ref.current = node;
         }
       },
-      [ref]
+      [ref],
     );
 
-    React.useEffect(() => {
+    useEffect(() => {
       if (!portalContext.open) return;
 
       function onKeyDown(e: KeyboardEvent) {
@@ -85,7 +95,7 @@ const PortalContent = React.forwardRef<HTMLDivElement, PortalContentProps>(
     }, [portalContext.open, portalContext.onOpenChange]);
 
     // Click outside listener for anchored portals
-    React.useEffect(() => {
+    useEffect(() => {
       if (!portalContext.open || !anchored) return;
 
       function onClickOutside(e: MouseEvent) {
@@ -119,11 +129,22 @@ const PortalContent = React.forwardRef<HTMLDivElement, PortalContentProps>(
       anchored,
     ]);
 
+    // Resolve theme color overrides as inline styles
+    const colorStyle = useMemo(() => {
+      if (!themeContext?.colors) return {};
+      const appearance =
+        themeContext.appearance === "inherit"
+          ? "light"
+          : themeContext.appearance;
+      return themeColorsToStyle(themeContext.colors, appearance);
+    }, [themeContext?.colors, themeContext?.appearance]);
+
     const container = portalContext.open && globalThis?.document?.body;
     if (!container) return null;
 
     // Build style for anchored positioning
-    const combinedStyle: React.CSSProperties = {
+    const combinedStyle: CSSProperties = {
+      ...colorStyle,
       ...style,
       ...(anchored && anchorPosition
         ? {
@@ -151,10 +172,7 @@ const PortalContent = React.forwardRef<HTMLDivElement, PortalContentProps>(
         style={combinedStyle}
         {...dataAttrs}
       >
-        <div
-          className="portal-content"
-          onClick={(e) => e.stopPropagation()}
-        >
+        <div className="portal-content" onClick={(e) => e.stopPropagation()}>
           {children}
         </div>
       </div>
@@ -170,7 +188,7 @@ const PortalContent = React.forwardRef<HTMLDivElement, PortalContentProps>(
     );
 
     return ReactDOM.createPortal(content, container);
-  }
+  },
 );
 PortalContent.displayName = "Portal.Content";
 
