@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 300" xmlns:bx="https://boxy-svg.com">
+  <defs>
+    <linearGradient id="gradient-1" bx:pinned="true" />
+    <linearGradient gradientUnits="userSpaceOnUse" x1="319.88" y1="-626.487" x2="319.88" y2="-375.957" id="gradient-0"
+      gradientTransform="matrix(-0.747597, -0.664153, 0.652281, -0.734234, 625.90004, 74.385159)">
+      <stop offset="0" style="stop-color: rgb(214, 2, 237); stop-opacity: 0;" />
+      <stop offset="1" style="stop-color: rgb(55.399% 0% 63.486%)" />
+    </linearGradient>
+    <linearGradient gradientUnits="userSpaceOnUse" x1="250.139" y1="0" x2="250.139" y2="300" id="gradient-2"
+      gradientTransform="matrix(-0.83252, -0.553996, 0.34802, -0.522989, 307.336258, 339.931852)">
+      <stop offset="0" style="stop-color: rgb(11, 80, 227); stop-opacity: 0;" />
+      <stop offset="1" style="stop-color: rgb(0% 25.365% 48.668%)" />
+    </linearGradient>
+    <linearGradient gradientUnits="userSpaceOnUse" x1="275" y1="0" x2="275" y2="250" id="gradient-3"
+      gradientTransform="matrix(-0.831852, -0.555, 0.614476, -0.921003, 459.844963, 354.858362)">
+      <stop offset="0" style="stop-color: rgb(252, 127, 10); stop-opacity: 0;" />
+      <stop offset="1" style="stop-color: rgb(65.473% 22.426% 0%)" />
+    </linearGradient>
+  </defs>
+  <rect width="500" height="300"
+    style="fill: rgb(216, 216, 216); stroke: rgb(0, 0, 0); stroke-linejoin: round; visibility: hidden;" x="0.32" />
+  <path
+    style="stroke-opacity: 0; stroke: rgba(0, 0, 0, 0); fill-rule: nonzero; paint-order: fill; fill: url(&quot;#gradient-0&quot;);"
+    d="M 0 50 C 0 50 54.685 42.968 83.438 80.145 C 159.596 178.615 252.627 254.517 359.851 257.495 C 417.05 259.084 442.424 291.745 450 300 L 0 300 L 0 50 Z" />
+  <path style="stroke: rgba(0, 0, 0, 0); fill: url(&quot;#gradient-3&quot;);"
+    d="M 50 0 C 75.963 11.91 61.497 8.462 109.387 20.627 C 211.002 31.254 360.76 126.49 419.068 193.553 C 448.587 226.335 484.17 242.743 500 250 L 500 0 L 50 0 Z" />
+  <path style="stroke-linejoin: round; stroke: rgba(0, 0, 0, 0); fill: url(&quot;#gradient-2&quot;);"
+    d="M 0.42 41.717 L 0 0 L 45 0 C 44.876 -0.008 59.022 24.16 92.804 27.238 C 157.443 33.127 329.482 100.711 419.924 211.625 C 454.436 253.948 500.145 255.985 500 255 C 500.542 258.556 500.147 293.229 500 300 L 455 300 C 457.375 298.226 426.04 262.92 401.087 257.128 C 217.74 224.358 150.212 128.89 70.512 56.812 C 50.725 43.56 22.356 42.156 0.42 41.717 Z" />
+</svg>
