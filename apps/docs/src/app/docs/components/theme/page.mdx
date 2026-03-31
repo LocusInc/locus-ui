@@ -1,0 +1,137 @@
+import { Theme, Button, Text, Box, useTheme } from "@locus-ui/components";
+import { ComponentPreview } from "@/components/component-preview";
+import { PreviewBox } from "@/components/preview-box";
+import { CodeBox } from "@/components/code-box";
+import {
+  anatomySnippet,
+  appearanceSnippet,
+  colorsSnippet,
+  indexSnippet,
+  nestedSnippet,
+  radiusSnippet,
+  spacingSnippet,
+  themeControlSnippet,
+  useThemeSnippet,
+} from "./snippets";
+
+export const radii = ["none", "xs", "sm", "md", "lg", "xl", "full"];
+export const spacings = ["xs", "sm", "md", "lg", "xl"];
+
+# Theme
+
+The Theme component provides global and scoped theming for your application. It manages appearance (light/dark), border radius, roundness, spacing, and custom color tokens. Nest Theme components to create scoped overrides.
+
+<ComponentPreview
+  codeSnippets={[
+    {
+      title: "index.tsx",
+      code: indexSnippet,
+    },
+  ]}
+  source="https://github.com/LocusInc/locus-ui/tree/main/packages/locus-ui/src/components/theme"
+>
+  <Theme appearance="light" radius="md" spacing="md">
+    <Box className="flex gap-2 items-center">
+      <Button variant="solid">Themed Button</Button>
+      <Text>Light Theme</Text>
+    </Box>
+  </Theme>
+</ComponentPreview>
+
+## Anatomy
+
+Import the component and its parts:
+
+<CodeBox title="Anatomy" language="typescript" className="my-2">
+  {anatomySnippet}
+</CodeBox>
+
+- **`Theme`** — Root provider that manages theme state and CSS variables.
+- **`useTheme`** — Hook to access and modify the current theme values.
+- **`ThemeControl`** — A floating panel (toggled with `Alt+T`) for adjusting theme settings at runtime.
+
+## Examples
+
+### Appearance
+
+The `appearance` prop controls the color scheme. Set it to `"light"`, `"dark"`, or `"inherit"` to follow the parent theme.
+
+<PreviewBox title="appearance.tsx" code={appearanceSnippet}>
+  <Box className="flex gap-4">
+    <Theme appearance="light">
+      <Box className="p-4 rounded bg-[rgb(var(--bg-1))]">
+        <Text>Light</Text>
+      </Box>
+    </Theme>
+    <Theme appearance="dark">
+      <Box className="p-4 rounded bg-[rgb(var(--bg-1))]">
+        <Text>Dark</Text>
+      </Box>
+    </Theme>
+  </Box>
+</PreviewBox>
+
+### Radius
+
+The `radius` prop sets the base border radius for all child components. Options: `"none"`, `"xs"`, `"sm"`, `"md"`, `"lg"`, `"xl"`, `"full"`.
+
+<PreviewBox title="radius.tsx" code={radiusSnippet}>
+  {radii.map((radius) => (
+    <Theme key={radius} radius={radius}>
+      <Button variant="solid">{radius.toUpperCase()}</Button>
+    </Theme>
+  ))}
+</PreviewBox>
+
+### Spacing
+
+The `spacing` prop controls the base spacing scale used by child components. Options: `"xs"`, `"sm"`, `"md"`, `"lg"`, `"xl"`.
+
+<PreviewBox title="spacing.tsx" code={spacingSnippet}>
+  {spacings.map((spacing) => (
+    <Theme key={spacing} spacing={spacing}>
+      <Button variant="solid">{spacing.toUpperCase()}</Button>
+    </Theme>
+  ))}
+</PreviewBox>
+
+### Custom Colors
+
+Use the `colors` prop to override theme color tokens. You can provide a flat object of colors, or separate `light` and `dark` overrides.
+
+<PreviewBox title="colors.tsx" code={colorsSnippet}>
+  <Theme colors={{ primary: "teal" }}>
+    <Button variant="solid">Custom Primary</Button>
+  </Theme>
+</PreviewBox>
+
+### Nested Themes
+
+Theme components can be nested to create scoped overrides. Child themes inherit values from their parent and only override what you specify.
+
+<PreviewBox title="nested.tsx" code={nestedSnippet}>
+  <Theme appearance="light" radius="md">
+    <Box className="flex gap-2 items-center">
+      <Button variant="solid">Parent Theme</Button>
+      <Theme appearance="dark" radius="full">
+        <Button variant="solid">Sub Theme</Button>
+      </Theme>
+    </Box>
+  </Theme>
+</PreviewBox>
+
+### useTheme Hook
+
+The `useTheme` hook provides access to the current theme values and change handlers from within any child component.
+
+<PreviewBox title="use-theme.tsx" code={useThemeSnippet} column>
+  <Text>Current appearance is controlled by the root Theme</Text>
+</PreviewBox>
+
+### ThemeControl
+
+The `ThemeControl` component renders a floating panel with select dropdowns for all theme settings. Toggle it with `Alt+T`. Use the `position` prop to control placement.
+
+<PreviewBox title="theme-control.tsx" code={themeControlSnippet} column>
+  <Text>Press Alt+T to toggle the ThemeControl panel</Text>
+</PreviewBox>
