@@ -1,18 +1,37 @@
-import { Box, Button, Text } from "@locus-ui/components";
+import Locus from "@/components/locus";
+import { Box, Button, Flex, Text } from "@locus-ui/components";
+import Image from "next/image";
 import Link from "next/link";
 
 export default function Home() {
   return (
-    <Box className="flex gap-4 flex-col justify-center items-center w-full h-screen">
-      <Text className="text-4xl font-bold">Locus UI</Text>
+    <Box>
+      <Image
+        src="/background.svg"
+        alt="Background"
+        layout="fill"
+        objectFit="cover"
+        className="absolute inset-0 z-0"
+      />
 
-      <Text>An (optionally) unstyled React component library</Text>
+      <Flex
+        gap="4"
+        px="4"
+        direction="column"
+        justify="center"
+        align="center"
+        className="relative w-full min-h-screen h-screen"
+      >
+        <Locus className="w-40 h-40 -mt-20" />
 
-      <Box className="flex gap-4">
-        <Link href="/docs">
+        <Text className="text-4xl font-bold">Locus UI</Text>
+
+        <Text>An (optionally) unstyled React component library</Text>
+
+        <Link href="/docs/overview/about">
           <Button variant="muted">Documentation</Button>
         </Link>
-      </Box>
+      </Flex>
     </Box>
   );
 }
