@@ -39,6 +39,9 @@ const ThemeRoot = forwardRef<HTMLDivElement, ThemeProps>((props, ref) => {
     radius: themeRadius,
     roundness: themeRoundness,
     spacing: themeSpacing,
+    primary: themePrimary,
+    secondary: themeSecondary,
+    tertiary: themeTertiary,
     colors,
 
     children,
@@ -54,12 +57,22 @@ const ThemeRoot = forwardRef<HTMLDivElement, ThemeProps>((props, ref) => {
     themeRoundness ?? "3",
   );
   const [spacing, setSpacing] = useState(themeSpacing ?? "md");
+  const [primary, setPrimary] = useState(themePrimary);
+  const [secondary, setSecondary] = useState(themeSecondary);
+  const [tertiary, setTertiary] = useState(themeTertiary);
 
   const currentAppearance = appearance === "inherit" ? "light" : appearance;
 
   const colorStyle = useMemo(
-    () => (colors ? themeColorsToStyle(colors, currentAppearance) : {}),
-    [colors, currentAppearance],
+    () =>
+      themeColorsToStyle(
+        currentAppearance,
+        colors,
+        primary,
+        secondary,
+        tertiary,
+      ),
+    [colors, currentAppearance, primary, secondary, tertiary],
   );
 
   const value = useMemo(
@@ -68,13 +81,28 @@ const ThemeRoot = forwardRef<HTMLDivElement, ThemeProps>((props, ref) => {
       radius,
       roundness,
       spacing,
+      primary,
+      secondary,
+      tertiary,
       colors,
       onAppearanceChange: setAppearance,
       onRadiusChange: setRadius,
       onRoundnessChange: setRoundness,
       onSpacingChange: setSpacing,
+      onPrimaryChange: setPrimary,
+      onSecondaryChange: setSecondary,
+      onTertiaryChange: setTertiary,
     }),
-    [appearance, radius, roundness, spacing, colors],
+    [
+      appearance,
+      radius,
+      roundness,
+      spacing,
+      primary,
+      secondary,
+      tertiary,
+      colors,
+    ],
   );
 
   return (
@@ -111,10 +139,16 @@ const ThemeSub = forwardRef<
     roundness,
     spacing,
     colors,
+    primary,
+    secondary,
+    tertiary,
     onAppearanceChange,
     onRadiusChange,
     onRoundnessChange,
     onSpacingChange,
+    onPrimaryChange,
+    onSecondaryChange,
+    onTertiaryChange,
 
     children,
     style,
@@ -132,8 +166,15 @@ const ThemeSub = forwardRef<
   );
 
   const colorStyle = useMemo(
-    () => (colors ? themeColorsToStyle(colors, currentAppearance) : {}),
-    [colors, currentAppearance],
+    () =>
+      themeColorsToStyle(
+        currentAppearance,
+        colors,
+        primary,
+        secondary,
+        tertiary,
+      ),
+    [colors, currentAppearance, primary, secondary, tertiary],
   );
 
   const contextProps: ThemeContextProps = {
@@ -142,11 +183,17 @@ const ThemeSub = forwardRef<
     roundness: roundness ?? context.roundness,
     spacing: spacing ?? context.spacing,
     colors: mergedColors,
+    primary: primary ?? context.primary,
+    secondary: secondary ?? context.secondary,
+    tertiary: tertiary ?? context.tertiary,
 
     onAppearanceChange: context.onAppearanceChange,
     onRadiusChange: context.onRadiusChange,
     onRoundnessChange: context.onRoundnessChange,
     onSpacingChange: context.onSpacingChange,
+    onPrimaryChange: context.onPrimaryChange,
+    onSecondaryChange: context.onSecondaryChange,
+    onTertiaryChange: context.onTertiaryChange,
   };
 
   return (

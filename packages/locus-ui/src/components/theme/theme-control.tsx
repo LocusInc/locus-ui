@@ -32,6 +32,12 @@ export function ThemeControl({ position = "bottom" }: ThemeControlProps) {
     onRoundnessChange,
     spacing,
     onSpacingChange,
+    primary,
+    onPrimaryChange,
+    secondary,
+    onSecondaryChange,
+    tertiary,
+    onTertiaryChange,
   } = useTheme();
 
   const [visible, setVisible] = useState(false);
@@ -68,6 +74,33 @@ export function ThemeControl({ position = "bottom" }: ThemeControlProps) {
             <Select.Content>
               <Select.Item value="light">Light</Select.Item>
               <Select.Item value="dark">Dark</Select.Item>
+            </Select.Content>
+          </Select.Root>
+
+          <Select.Root
+            variant="solid"
+            value={primary}
+            onValueChange={(change) => onPrimaryChange?.(change as any)}
+          >
+            <Select.Label position="inside">Primary Color</Select.Label>
+
+            <Select.Trigger />
+
+            <Select.Content>
+              <Select.Item value="">Default</Select.Item>
+              <Select.Item value="red">Red</Select.Item>
+              <Select.Item value="orange">Orange</Select.Item>
+              <Select.Item value="yellow">Yellow</Select.Item>
+              <Select.Item value="green">Green</Select.Item>
+              <Select.Item value="blue">Blue</Select.Item>
+              <Select.Item value="purple">Purple</Select.Item>
+              <Select.Item value="gray">Gray</Select.Item>
+              <Select.Item value="maroon">Maroon</Select.Item>
+              <Select.Item value="cyan">Cyan</Select.Item>
+              <Select.Item value="navy">Navy</Select.Item>
+              <Select.Item value="teal">Teal</Select.Item>
+              <Select.Item value="lime">Lime</Select.Item>
+              <Select.Item value="magenta">Magenta</Select.Item>
             </Select.Content>
           </Select.Root>
 

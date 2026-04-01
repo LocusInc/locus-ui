@@ -9,6 +9,19 @@ const Colors = [
   "warning",
   "danger",
   "info",
+  "red",
+  "orange",
+  "yellow",
+  "green",
+  "blue",
+  "purple",
+  "gray",
+  "maroon",
+  "cyan",
+  "navy",
+  "teal",
+  "lime",
+  "magenta",
 ] as const;
 
 const ColorPropDef = {

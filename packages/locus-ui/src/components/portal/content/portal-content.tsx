@@ -131,13 +131,19 @@ const PortalContent = forwardRef<HTMLDivElement, PortalContentProps>(
 
     // Resolve theme color overrides as inline styles
     const colorStyle = useMemo(() => {
-      if (!themeContext?.colors) return {};
+      if (!themeContext) return {};
       const appearance =
         themeContext.appearance === "inherit"
           ? "light"
           : themeContext.appearance;
-      return themeColorsToStyle(themeContext.colors, appearance);
-    }, [themeContext?.colors, themeContext?.appearance]);
+      return themeColorsToStyle(
+        appearance,
+        themeContext.colors,
+        themeContext.primary,
+        themeContext.secondary,
+        themeContext.tertiary,
+      );
+    }, [themeContext?.colors, themeContext?.appearance, themeContext?.primary, themeContext?.secondary, themeContext?.tertiary]);
 
     const container = portalContext.open && globalThis?.document?.body;
     if (!container) return null;

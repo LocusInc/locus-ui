@@ -1,3 +1,19 @@
+:root {
+  --red: 255, 0, 0;
+  --orange: 255, 127, 0;
+  --yellow: 255, 255, 0;
+  --green: 0, 128, 0;
+  --blue: 0, 0, 255;
+  --purple: 139, 0, 255;
+  --gray: 128, 128, 128;
+  --maroon: 128, 0, 0;
+  --cyan: 0, 255, 255;
+  --navy: 0, 0, 128;
+  --teal: 0, 128, 128;
+  --lime: 0, 255, 0;
+  --magenta: 255, 0, 255;
+}
+
 [data-color] {
   --color: var(--custom-color);
 }
@@ -21,4 +37,46 @@
 }
 [data-color="info"] {
   --color: var(--info);
+}
+[data-color="red"] {
+  --color: var(--red);
+}
+[data-color="orange"] {
+  --color: var(--orange);
+}
+[data-color="yellow"] {
+  --color: var(--yellow);
+}
+[data-color="green"] {
+  --color: var(--green);
+}
+[data-color="blue"] {
+  --color: var(--blue);
+}
+[data-color="purple"] {
+  --color: var(--purple);
+}
+[data-color="gray"] {
+  --color: var(--gray);
+}
+[data-color="maroon"] {
+  --color: var(--maroon);
+}
+[data-color="cyan"] {
+  --color: var(--cyan);
+}
+[data-color="olive"] {
+  --color: var(--olive);
+}
+[data-color="teal"] {
+  --color: var(--teal);
+}
+[data-color="navy"] {
+  --color: var(--navy);
+}
+[data-color="lime"] {
+  --color: var(--lime);
+}
+[data-color="magenta"] {
+  --color: var(--magenta);
 }

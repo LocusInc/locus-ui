@@ -8,12 +8,16 @@ export type ThemeAppearance = (typeof ThemePropsDefs.appearance.values)[number];
 export type ThemeRadius = (typeof ThemePropsDefs.radius.values)[number];
 export type ThemeRoundness = (typeof ThemePropsDefs.roundness.values)[number];
 export type ThemeSpacing = (typeof ThemePropsDefs.spacing.values)[number];
+export type ThemeColor = (typeof ThemePropsDefs.primary.values)[number];
 
 interface ThemeChangeHandlers {
   onAppearanceChange?: (appearance: ThemeAppearance) => void;
   onRadiusChange?: (radius: ThemeRadius) => void;
   onRoundnessChange?: (roundness: ThemeRoundness) => void;
   onSpacingChange?: (spacing: ThemeSpacing) => void;
+  onPrimaryChange?: (primary: ThemeColor) => void;
+  onSecondaryChange?: (secondary: ThemeColor) => void;
+  onTertiaryChange?: (tertiary: ThemeColor) => void;
 }
 
 interface ThemeContextValue extends ThemeChangeHandlers {
@@ -21,6 +25,9 @@ interface ThemeContextValue extends ThemeChangeHandlers {
   radius: ThemeRadius;
   roundness: ThemeRoundness;
   spacing: ThemeSpacing;
+  primary?: ThemeColor;
+  secondary?: ThemeColor;
+  tertiary?: ThemeColor;
   colors?: ThemeColorProp;
 }
 

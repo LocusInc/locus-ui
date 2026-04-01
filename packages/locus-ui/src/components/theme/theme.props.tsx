@@ -4,6 +4,16 @@ import { roundness } from "../../props/roundness.prop";
 import { spacingValues } from "../../props/spacing.prop";
 
 const appearances = ["inherit", "light", "dark"] as const;
+const Colors = [
+  "red",
+  "orange",
+  "yellow",
+  "green",
+  "blue",
+  "indigo",
+  "violet",
+  "gray",
+] as const;
 
 const ThemePropsDefs = {
   appearance: {
@@ -29,6 +39,21 @@ const ThemePropsDefs = {
     values: spacingValues,
     default: "md",
   } satisfies PropDef<(typeof spacingValues)[number]>,
+
+  primary: {
+    type: "enum",
+    values: Colors,
+  } satisfies PropDef<(typeof Colors)[number] | string>,
+
+  secondary: {
+    type: "enum",
+    values: Colors,
+  } satisfies PropDef<(typeof Colors)[number] | string>,
+
+  tertiary: {
+    type: "enum",
+    values: Colors,
+  } satisfies PropDef<(typeof Colors)[number] | string>,
 };
 
-export { ThemePropsDefs };
+export { Colors, ThemePropsDefs };
