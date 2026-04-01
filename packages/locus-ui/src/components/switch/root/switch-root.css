@@ -76,13 +76,13 @@
 
     &[data-variant="outlined"] {
       background-color: rgba(var(--surface-1), 0.4);
-      border: 2px solid rgb(var(--border-1));
+      border: 2px solid rgb(var(--switch-color));
       transition: background-color 100ms;
     }
 
     &[data-variant="muted"] {
       background-color: rgba(var(--surface-1), 0.6);
-      border: 2px solid rgba(var(--border-1), 0.6);
+      border: 2px solid rgba(var(--switch-color), 0.3);
       transition: background-color 100ms;
     }
   }
