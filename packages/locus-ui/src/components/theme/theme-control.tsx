@@ -1,9 +1,13 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { Box } from "../box";
+import { Button } from "../button";
+import { Flex } from "../flex";
 import { Panel } from "../panel";
 import { Portal } from "../portal";
-import { Select } from "../select";
+import { Separator } from "../separator";
+import { Text } from "../text";
 import { useTheme } from "./theme-context";
 
 const ThemeControlPosition = [
@@ -42,6 +46,27 @@ export function ThemeControl({ position = "bottom" }: ThemeControlProps) {
 
   const [visible, setVisible] = useState(false);
 
+  const colors = [
+    "red",
+    "orange",
+    "yellow",
+    "green",
+    "blue",
+    "purple",
+    "gray",
+    "maroon",
+    "magenta",
+    "cyan",
+    "lime",
+    "navy",
+    "teal",
+    "white",
+  ] as const;
+
+  const radii = ["none", "xs", "sm", "md", "lg", "xl", "full"] as const;
+
+  const spacings = ["xs", "sm", "md", "lg", "xl"] as const;
+
   useEffect(() => {
     function handleKeyDown(event: KeyboardEvent) {
       if (event.altKey && event.code === "KeyT") {
@@ -54,116 +79,154 @@ export function ThemeControl({ position = "bottom" }: ThemeControlProps) {
   }, [visible]);
 
   return (
-    <Portal.Root open={visible} onOpenChange={setVisible}>
-      <Portal.Content position={position}>
-        <Panel
+    <>
+      <Panel
+        variant="muted"
+        style={{
+          position: "fixed",
+          bottom: 16,
+          right: 16,
+          zIndex: 9999,
+        }}
+      >
+        <Button
+          size="sm"
           variant="outlined"
-          m="4"
-          p="4"
-          className="flex flex-col gap-2 border-[rgba(var(--border-1), 0.6)]"
+          className="sm:hidden flex"
+          aria-label="Toggle theme control"
+          onClick={() => setVisible((v) => !v)}
         >
-          <Select.Root
-            variant="solid"
-            value={appearance}
-            onValueChange={(change) => onAppearanceChange?.(change as any)}
+          Theme
+        </Button>
+      </Panel>
+
+      <Portal.Root open={visible} onOpenChange={setVisible}>
+        <Portal.Content position={position}>
+          <Panel
+            variant="outlined"
+            m="4"
+            p="4"
+            style={{ backgroundColor: "rgb(var(--bg-1))" }}
           >
-            <Select.Label position="inside">Theme Settings</Select.Label>
+            <Flex direction="column" gap="2">
+              <Flex justify="between" align="center">
+                <Text className="text-lg font-bold">Theme Control</Text>
 
-            <Select.Trigger />
+                <Flex gap="2">
+                  <Button
+                    size="sm"
+                    variant={appearance === "light" ? "solid" : "outlined"}
+                    onClick={() => onAppearanceChange?.("light")}
+                  >
+                    Light
+                  </Button>
 
-            <Select.Content>
-              <Select.Item value="light">Light</Select.Item>
-              <Select.Item value="dark">Dark</Select.Item>
-            </Select.Content>
-          </Select.Root>
+                  <Button
+                    size="sm"
+                    variant={appearance === "dark" ? "solid" : "outlined"}
+                    onClick={() => onAppearanceChange?.("dark")}
+                  >
+                    Dark
+                  </Button>
+                </Flex>
+              </Flex>
 
-          <Select.Root
-            variant="solid"
-            value={primary}
-            onValueChange={(change) => onPrimaryChange?.(change as any)}
-          >
-            <Select.Label position="inside">Primary Color</Select.Label>
+              <Separator />
 
-            <Select.Trigger />
+              <Flex direction="column" gap="2">
+                <Text>Primary Color</Text>
 
-            <Select.Content>
-              <Select.Item value="">Default</Select.Item>
-              <Select.Item value="red">Red</Select.Item>
-              <Select.Item value="orange">Orange</Select.Item>
-              <Select.Item value="yellow">Yellow</Select.Item>
-              <Select.Item value="green">Green</Select.Item>
-              <Select.Item value="blue">Blue</Select.Item>
-              <Select.Item value="purple">Purple</Select.Item>
-              <Select.Item value="gray">Gray</Select.Item>
-              <Select.Item value="maroon">Maroon</Select.Item>
-              <Select.Item value="cyan">Cyan</Select.Item>
-              <Select.Item value="navy">Navy</Select.Item>
-              <Select.Item value="teal">Teal</Select.Item>
-              <Select.Item value="lime">Lime</Select.Item>
-              <Select.Item value="magenta">Magenta</Select.Item>
-            </Select.Content>
-          </Select.Root>
+                <Flex
+                  gap="1"
+                  wrap="wrap"
+                  style={{
+                    maxWidth: 400,
+                  }}
+                >
+                  {colors.map((color) => (
+                    <Box
+                      color={color}
+                      key={color}
+                      p="1"
+                      className={
+                        primary === color
+                          ? "border"
+                          : "border border-transparent"
+                      }
+                    >
+                      <Button
+                        className="w-10 min-h-10"
+                        variant="solid"
+                        color={color}
+                        onClick={() => onPrimaryChange?.(color)}
+                      />
+                    </Box>
+                  ))}
+                </Flex>
+              </Flex>
 
-          <Select.Root
-            variant="solid"
-            value={radius}
-            onValueChange={(change) => onRadiusChange?.(change as any)}
-          >
-            <Select.Label position="inside">Radius</Select.Label>
+              <Separator />
 
-            <Select.Trigger />
+              <Flex direction="column" gap="2" className="flex-1">
+                <Text>Radius</Text>
 
-            <Select.Content>
-              <Select.Item value="none">None</Select.Item>
-              <Select.Item value="xs">XS</Select.Item>
-              <Select.Item value="sm">SM</Select.Item>
-              <Select.Item value="md">MD</Select.Item>
-              <Select.Item value="lg">LG</Select.Item>
-              <Select.Item value="xl">XL</Select.Item>
-              <Select.Item value="full">FULL</Select.Item>
-            </Select.Content>
-          </Select.Root>
+                <Flex gap="1" wrap="wrap" className="flex-1">
+                  {radii.map((rad) => (
+                    <Button
+                      key={rad}
+                      radius="md"
+                      variant="outlined"
+                      className="flex-1"
+                      style={{ padding: 8, maxWidth: 50, maxHeight: 50 }}
+                      onClick={() => onRadiusChange?.(rad)}
+                    >
+                      <Box
+                        radius="none"
+                        radius-tl={rad}
+                        style={{
+                          height: 30,
+                          borderTopWidth: rad === radius ? 3 : 1,
+                          borderLeftWidth: rad === radius ? 3 : 1,
+                          borderColor:
+                            rad !== radius
+                              ? appearance === "dark"
+                                ? "white"
+                                : "black"
+                              : "",
+                        }}
+                      />
+                    </Button>
+                  ))}
+                </Flex>
+              </Flex>
 
-          <Select.Root
-            variant="solid"
-            value={roundness}
-            onValueChange={(change) => onRoundnessChange?.(change as any)}
-          >
-            <Select.Label className="min-w-40!" position="inside">
-              Roundness
-            </Select.Label>
+              <Separator />
 
-            <Select.Trigger />
+              <Flex direction="column" gap="2">
+                <Text>Spacing</Text>
 
-            <Select.Content>
-              <Select.Item value="1">1</Select.Item>
-              <Select.Item value="2">2</Select.Item>
-              <Select.Item value="3">3</Select.Item>
-              <Select.Item value="4">4</Select.Item>
-              <Select.Item value="5">5</Select.Item>
-              <Select.Item value="6">6</Select.Item>
-            </Select.Content>
-          </Select.Root>
-
-          <Select.Root
-            variant="solid"
-            value={spacing}
-            onValueChange={(change) => onSpacingChange?.(change as any)}
-          >
-            <Select.Label position="inside">Spacing</Select.Label>
-
-            <Select.Trigger />
-
-            <Select.Content>
-              <Select.Item value="xs">XS</Select.Item>
-              <Select.Item value="sm">SM</Select.Item>
-              <Select.Item value="md">MD</Select.Item>
-              <Select.Item value="lg">LG</Select.Item>
-              <Select.Item value="xl">XL</Select.Item>
-            </Select.Content>
-          </Select.Root>
-        </Panel>
-      </Portal.Content>
-    </Portal.Root>
+                <Flex gap="2" wrap="wrap">
+                  {spacings.map((space) => (
+                    <Button
+                      key={space}
+                      onClick={() => onSpacingChange?.(space)}
+                    >
+                      <Panel
+                        px="4"
+                        color={space === spacing ? "primary" : undefined}
+                        spacing={space}
+                        variant="outlined"
+                      >
+                        <Text>{space.toUpperCase()}</Text>
+                      </Panel>
+                    </Button>
+                  ))}
+                </Flex>
+              </Flex>
+            </Flex>
+          </Panel>
+        </Portal.Content>
+      </Portal.Root>
+    </>
   );
 }
