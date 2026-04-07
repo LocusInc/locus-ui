@@ -55,6 +55,7 @@ const baseColors = {
   teal: "#008080",
   lime: "#00ff00",
   magenta: "#ff00ff",
+  white: "#ffffff",
 } as const;
 
 const defaultColors: ThemeColorConfig = {

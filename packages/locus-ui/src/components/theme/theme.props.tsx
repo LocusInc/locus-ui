@@ -10,9 +10,15 @@ const Colors = [
   "yellow",
   "green",
   "blue",
-  "indigo",
-  "violet",
+  "purple",
   "gray",
+  "maroon",
+  "cyan",
+  "navy",
+  "teal",
+  "lime",
+  "magenta",
+  "white",
 ] as const;
 
 const ThemePropsDefs = {

@@ -22,6 +22,7 @@ const Colors = [
   "teal",
   "lime",
   "magenta",
+  "white",
 ] as const;
 
 const ColorPropDef = {
