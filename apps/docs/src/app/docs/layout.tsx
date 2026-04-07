@@ -5,4 +5,4 @@ export const metadata: Metadata = {
   description: "An (optionally) unstyled React component library",
 };
 
-export { default } from "../../pages/documentation.page";
+export { default } from "../../root-pages/documentation.page";
