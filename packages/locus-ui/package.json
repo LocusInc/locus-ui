@@ -12,11 +12,13 @@
       "require": "./dist/index.js"
     },
     "./styles": {
+      "types": "./styles.d.ts",
       "default": "./dist/index.css"
     }
   },
   "files": [
-    "dist"
+    "dist",
+    "styles.d.ts"
   ],
   "sideEffects": false,
   "scripts": {
