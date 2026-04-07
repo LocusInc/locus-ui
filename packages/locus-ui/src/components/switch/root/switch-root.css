@@ -11,6 +11,10 @@
     cursor: not-allowed !important;
   }
 
+  &:not([data-align]) {
+    align-items: center;
+  }
+
   &[data-disabled="true"] {
     opacity: 0.6;
   }
@@ -35,6 +39,7 @@
     display: flex;
     overflow: hidden;
     border-radius: 32px;
+    height: fit-content;
     width: calc(44px * var(--lcs-spacing, 1));
     min-width: calc(44px * var(--lcs-spacing, 1));
 
