@@ -10,6 +10,7 @@ import {
   useEffect,
   useMemo,
   useRef,
+  useState,
 } from "react";
 import ReactDOM from "react-dom";
 import { AlignProp, AlignPropDef } from "../../../props";
@@ -38,6 +39,9 @@ const PortalContent = forwardRef<HTMLDivElement, PortalContentProps>(
     const portalContext = usePortalContext();
     const themeContext = useContext(ThemeContext);
     const contentRef = useRef<HTMLDivElement>(null);
+    const [mounted, setMounted] = useState(false);
+
+    useEffect(() => setMounted(true), []);
 
     const {
       side = "bottom",
@@ -143,9 +147,16 @@ const PortalContent = forwardRef<HTMLDivElement, PortalContentProps>(
         themeContext.secondary,
         themeContext.tertiary,
       );
-    }, [themeContext?.colors, themeContext?.appearance, themeContext?.primary, themeContext?.secondary, themeContext?.tertiary]);
+    }, [
+      themeContext?.colors,
+      themeContext?.appearance,
+      themeContext?.primary,
+      themeContext?.secondary,
+      themeContext?.tertiary,
+    ]);
 
-    const container = portalContext.open && globalThis?.document?.body;
+    const container =
+      portalContext.open && mounted && globalThis?.document?.body;
     if (!container) return null;
 
     // Build style for anchored positioning
