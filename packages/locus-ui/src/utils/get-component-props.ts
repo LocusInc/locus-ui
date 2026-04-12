@@ -67,6 +67,15 @@ export function getComponentProps<
         }
       }
 
+      if (
+        prop.default &&
+        !prop.cssProperty &&
+        !prop.dataAttr &&
+        !prop.className
+      ) {
+        extractedProps[key] = value !== undefined ? value : prop.default;
+      }
+
       continue;
     }
 

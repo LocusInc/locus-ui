@@ -194,6 +194,7 @@ const components = [
   { name: "Separator", path: "/docs/components/separator" },
   { name: "Switch", path: "/docs/components/switch" },
   { name: "Theme", path: "/docs/components/theme" },
+  { name: "Tooltip", path: "/docs/components/tooltip" },
 ];
 
 const properties = [

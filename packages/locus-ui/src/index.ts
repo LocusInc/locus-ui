@@ -15,6 +15,7 @@ export {
   Text,
   Theme,
   ThemeControl,
+  Tooltip,
   useTheme,
 } from "./components";
 

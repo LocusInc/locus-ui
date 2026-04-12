@@ -21,3 +21,4 @@ export type {
   ThemeRoundness,
   ThemeSpacing,
 } from "./theme";
+export { Tooltip } from "./tooltip";

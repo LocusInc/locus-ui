@@ -55,7 +55,7 @@ export const ComponentPreview = ({
 
         <Separator mt="-4" />
 
-        <CodeBox language="typescript">{activeSnippet.code}</CodeBox>
+        <CodeBox language="typescript">{activeSnippet?.code ?? ""}</CodeBox>
       </Panel>
 
       {source !== undefined && (

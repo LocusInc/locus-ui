@@ -1,0 +1,116 @@
+import { Button, Tooltip } from "@locus-ui/components";
+import { ComponentPreview } from "@/components/component-preview";
+import { PreviewBox } from "@/components/preview-box";
+import { CodeBox } from "@/components/code-box";
+import {
+  anatomySnippet,
+  delaySnippet,
+  indexSnippet,
+  openOnClickSnippet,
+  sidesSnippet,
+  styleSnippet,
+  variantsSnippet,
+} from "./snippets";
+
+export const variants = ["solid", "outlined", "muted"];
+export const sides = ["top", "right", "bottom", "left"];
+export const delays = [0, 300, 1000];
+
+# Tooltip Component
+
+A versatile Tooltip, managing state, context, and styling.
+
+<ComponentPreview
+  codeSnippets={[
+    { title: "index.tsx", code: indexSnippet },
+    { title: "styles.css", code: styleSnippet },
+  ]}
+  source="https://github.com/LocusInc/locus-ui/tree/main/packages/locus-ui/src/components/tooltip"
+>
+  <Tooltip.Root>
+    <Tooltip.Trigger>
+      <Button variant="muted">Help</Button>
+    </Tooltip.Trigger>
+
+    <Tooltip.Content variant="outlined">
+      This is the help
+    </Tooltip.Content>
+
+  </Tooltip.Root>
+</ComponentPreview>
+
+## Anatomy
+
+Import the component and its parts:
+
+<CodeBox title="Anatomy" language="typescript" className="my-2">
+  {anatomySnippet}
+</CodeBox>
+
+## Examples
+
+### Variants
+
+Tooltip content comes with three built in variants, `solid`, `outlined`, and `muted`.
+
+<PreviewBox title="variants.tsx" code={variantsSnippet}>
+  {variants.map((variant) => (
+    <Tooltip.Root key={variant}>
+      <Tooltip.Trigger>
+        <Button variant="muted">
+          {variant.charAt(0).toUpperCase() + variant.slice(1)}
+        </Button>
+      </Tooltip.Trigger>
+      <Tooltip.Content variant={variant}>
+        {variant.charAt(0).toUpperCase() + variant.slice(1)} Tooltip
+      </Tooltip.Content>
+    </Tooltip.Root>
+  ))}
+</PreviewBox>
+
+### Sides
+
+The `side` prop controls which side of the trigger the tooltip appears on: `top`, `right`, `bottom`, or `left`.
+
+<PreviewBox title="sides.tsx" code={sidesSnippet}>
+  {sides.map((side) => (
+    <Tooltip.Root key={side} side={side}>
+      <Tooltip.Trigger>
+        <Button variant="muted">
+          {side.charAt(0).toUpperCase() + side.slice(1)}
+        </Button>
+      </Tooltip.Trigger>
+      <Tooltip.Content variant="outlined">
+        {side.charAt(0).toUpperCase() + side.slice(1)} Tooltip
+      </Tooltip.Content>
+    </Tooltip.Root>
+  ))}
+</PreviewBox>
+
+### Open on Click
+
+The `openOnClick` prop enables opening the tooltip by clicking the trigger instead of hovering.
+
+<PreviewBox title="open-on-click.tsx" code={openOnClickSnippet}>
+  <Tooltip.Root openOnHover={false} openOnClick>
+    <Tooltip.Trigger>
+      <Button variant="muted">Click Me</Button>
+    </Tooltip.Trigger>
+    <Tooltip.Content variant="outlined">Opened by click</Tooltip.Content>
+  </Tooltip.Root>
+</PreviewBox>
+
+### Delay
+
+The `delay` prop controls the hover delay in milliseconds before the tooltip opens.
+
+<PreviewBox title="delay.tsx" code={delaySnippet}>
+  {delays.map((delay) => (
+    <Tooltip.Root key={delay} delay={delay}>
+      <Tooltip.Trigger>
+        <Button variant="muted">{delay}ms</Button>
+      </Tooltip.Trigger>
+      <Tooltip.Content variant="outlined">{delay}ms delay</Tooltip.Content>
+    </Tooltip.Root>
+  ))}
+</PreviewBox>
