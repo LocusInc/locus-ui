@@ -1,0 +1,212 @@
+import { Box, Grid, Text } from "@locus-ui/components";
+import { ComponentPreview } from "@/components/component-preview";
+import { PreviewBox } from "@/components/preview-box";
+import { CodeBox } from "@/components/code-box";
+import {
+  alignSnippet,
+  anatomySnippet,
+  columnsSnippet,
+  flowSnippet,
+  gapsSnippet,
+  indexSnippet,
+  justifySnippet,
+  rowsSnippet,
+  styleSnippet,
+} from "./snippets";
+
+export const gaps = ["0", "1", "2", "3", "4", "5", "6", "7", "8"];
+export const columns = ["1", "2", "3", "4", "5", "6"];
+export const rows = ["1", "2", "3", "4", "5", "6"];
+export const flows = ["row", "column", "dense", "row-dense", "column-dense"];
+export const justifies = [
+  "start",
+  "end",
+  "center",
+  "between",
+  "around",
+  "evenly",
+];
+export const aligns = ["start", "end", "center", "stretch", "baseline"];
+
+# Grid Component
+
+A layout component that uses CSS Grid for two-dimensional layouts with configurable columns, rows, gap, flow, justification, and alignment.
+
+<ComponentPreview
+  codeSnippets={[
+    {
+      title: "index.tsx",
+      code: indexSnippet,
+    },
+    {
+      title: "styles.css",
+      code: styleSnippet,
+    },
+  ]}
+  source="https://github.com/LocusInc/locus-ui/tree/main/packages/locus-ui/src/components/grid"
+>
+  <Grid columns="3" gap="4" align="center">
+    <Box px="2" py="1" className="border">
+      Item 1
+    </Box>
+    <Box px="2" py="1" className="border">
+      Item 2
+    </Box>
+    <Box px="2" py="1" className="border">
+      Item 3
+    </Box>
+  </Grid>
+</ComponentPreview>
+
+## Anatomy
+
+Import the component:
+
+<CodeBox title="Anatomy" language="typescript" className="my-2">
+  {anatomySnippet}
+</CodeBox>
+
+## Examples
+
+### Gaps
+
+The `gap` prop controls the spacing between grid items using predefined scale values `0` through `8`.
+
+<PreviewBox title="gaps.tsx" code={gapsSnippet}>
+  <Grid columns="4" gap="4">
+    {gaps.map((gap) => (
+      <Box key={gap} px="2" py="1">
+        <Text>{gap}</Text>
+        <Grid columns="2" gap={gap}>
+          <Box px="2" py="1" className="border">
+            Item 1
+          </Box>
+          <Box px="2" py="1" className="border">
+            Item 2
+          </Box>
+        </Grid>
+      </Box>
+    ))}
+  </Grid>
+</PreviewBox>
+
+### Columns
+
+The `columns` prop sets the number of grid columns: `1` through `12`.
+
+<PreviewBox title="columns.tsx" code={columnsSnippet}>
+  <Grid columns="1" gap="4">
+    {columns.map((col) => (
+      <Box key={col} px="2" py="1">
+        <Text>{col}</Text>
+        <Grid columns={col} gap="2">
+          {Array.from({ length: Number(col) }).map((_, i) => (
+            <Box key={i} px="2" py="1" className="border">
+              Item {i + 1}
+            </Box>
+          ))}
+        </Grid>
+      </Box>
+    ))}
+  </Grid>
+</PreviewBox>
+
+### Rows
+
+The `rows` prop sets the number of grid rows: `1` through `6`.
+
+<PreviewBox title="rows.tsx" code={rowsSnippet}>
+  <Grid columns="3" gap="4">
+    {rows.map((row) => (
+      <Box key={row} px="2" py="1">
+        <Text>{row}</Text>
+        <Grid rows={row} flow="column" gap="2">
+          {Array.from({ length: Number(row) }).map((_, i) => (
+            <Box key={i} px="2" py="1" className="border">
+              Item {i + 1}
+            </Box>
+          ))}
+        </Grid>
+      </Box>
+    ))}
+  </Grid>
+</PreviewBox>
+
+### Flow
+
+The `flow` prop controls the auto-placement direction: `row`, `column`, `dense`, `row-dense`, or `column-dense`.
+
+<PreviewBox title="flow.tsx" code={flowSnippet}>
+  <Grid columns="2" gap="4">
+    {flows.map((flow) => (
+      <Box key={flow} px="2" py="1">
+        <Text>{flow}</Text>
+        <Grid columns="3" rows="2" flow={flow} gap="2">
+          <Box px="2" py="1" className="border col-span-2">
+            Item 1
+          </Box>
+          <Box px="2" py="1" className="border col-span-2">
+            Item 2
+          </Box>
+          <Box px="2" py="1" className="border">
+            Item 3
+          </Box>
+          <Box px="2" py="1" className="border">
+            Item 4
+          </Box>
+          <Box px="2" py="1" className="border">
+            Item 5
+          </Box>
+        </Grid>
+      </Box>
+    ))}
+  </Grid>
+</PreviewBox>
+
+### Justify
+
+The `justify` prop controls the inline-axis alignment: `start`, `end`, `center`, `between`, `around`, or `evenly`.
+
+<PreviewBox title="justify.tsx" code={justifySnippet}>
+  <Grid columns="1" gap="4" className="sm:w-1/2 w-full">
+    {justifies.map((justify) => (
+      <Box key={justify} px="2" py="1" className="w-full">
+        <Text>{justify}</Text>
+        <Grid
+          justify={justify}
+          gap="2"
+          style={{ gridTemplateColumns: "auto auto" }}
+        >
+          <Box px="2" py="1" className="border">
+            Item 1
+          </Box>
+          <Box px="2" py="1" className="border">
+            Item 2
+          </Box>
+        </Grid>
+      </Box>
+    ))}
+  </Grid>
+</PreviewBox>
+
+### Align
+
+The `align` prop controls the block-axis alignment: `start`, `end`, `center`, `stretch`, or `baseline`.
+
+<PreviewBox title="align.tsx" code={alignSnippet}>
+  <Grid columns="2" gap="4">
+    {aligns.map((align) => (
+      <Box key={align} px="2" py="1">
+        <Text>{align}</Text>
+        <Grid columns="2" align={align} gap="2" style={{ height: "100px" }}>
+          <Box px="2" py="1" className="border">
+            Item 1
+          </Box>
+          <Box px="2" py="1" className="border">
+            Item 2
+          </Box>
+        </Grid>
+      </Box>
+    ))}
+  </Grid>
+</PreviewBox>

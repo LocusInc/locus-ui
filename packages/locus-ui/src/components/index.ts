@@ -5,6 +5,7 @@ export { Button } from "./button";
 export { Checkbox } from "./checkbox";
 export { Container } from "./container";
 export { Flex } from "./flex";
+export { Grid } from "./grid";
 export { Panel } from "./panel";
 export { Portal } from "./portal";
 export { ProgressBar } from "./progress-bar";

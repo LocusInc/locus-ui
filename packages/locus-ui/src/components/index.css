@@ -4,6 +4,7 @@
 @import "./button/button.css";
 @import "./checkbox/checkbox.css";
 @import "./flex/flex.css";
+@import "./grid/grid.css";
 @import "./panel/panel.css";
 @import "./portal/portal.css";
 @import "./progress-bar/progress-bar.css";

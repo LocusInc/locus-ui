@@ -180,6 +180,7 @@ const overview = [
 const layout = [
   { name: "Box", path: "/docs/layout/box" },
   { name: "Flex", path: "/docs/layout/flex" },
+  { name: "Grid", path: "/docs/layout/grid" },
 ];
 
 const components = [

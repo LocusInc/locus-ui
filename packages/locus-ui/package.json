@@ -1,6 +1,6 @@
 {
   "name": "@locus-ui/components",
-  "version": "0.1.11",
+  "version": "0.1.14",
   "description": "A React UI component library",
   "main": "dist/index.js",
   "module": "dist/index.mjs",
