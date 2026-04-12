@@ -1,0 +1,109 @@
+import { Box, Flex, Text } from "@locus-ui/components";
+import { ComponentPreview } from "@/components/component-preview";
+import { PreviewBox } from "@/components/preview-box";
+import { CodeBox } from "@/components/code-box";
+import {
+  anatomySnippet,
+  indexSnippet,
+  inheritanceSnippet,
+  marginSnippet,
+  paddingSnippet,
+  radiiSnippet,
+  roundnessSnippet,
+  styleSnippet,
+} from "./snippets";
+
+export const radii = ["none", "xs", "sm", "md", "lg", "xl", "full"];
+export const numbers = ["1", "2", "3", "4", "5", "6"];
+export const paddings = ["0", "1", "2", "3", "4", "5", "6", "8"];
+export const margins = ["0", "1", "2", "3", "4", "5", "6", "8"];
+
+# Box Component
+
+A versatile container used to provide layout and styling capabilities with configurable padding, margin, radius, and roundness.
+
+<ComponentPreview
+  codeSnippets={[
+    {
+      title: "index.tsx",
+      code: indexSnippet,
+    },
+    {
+      title: "styles.css",
+      code: styleSnippet,
+    },
+  ]}
+  source="https://github.com/LocusInc/locus-ui/tree/main/packages/locus-ui/src/components/box"
+>
+  <Box p="4" radius="md" className="border">
+    <Text>Content inside a Box</Text>
+  </Box>
+</ComponentPreview>
+
+## Anatomy
+
+Import the component:
+
+<CodeBox title="Anatomy" language="typescript" className="my-2">
+  {anatomySnippet}
+</CodeBox>
+
+## Examples
+
+Box components are used to provide a styled wrapper for other components. Boxes use the theme settings by default, and can be specified as needed.
+
+### Radii
+
+The `radius` prop controls the border-radius of the element using predefined scale values: `none`, `xs`, `sm`, `md`, `lg`, `xl`, `full`.
+
+<PreviewBox title="radii.tsx" code={radiiSnippet}>
+  <Flex wrap="wrap" gap="4">
+    {radii.map((radius) => (
+      <Box key={radius} radius={radius} p="2" className="border">
+        <Text>{radius}</Text>
+      </Box>
+    ))}
+  </Flex>
+</PreviewBox>
+
+### Roundness
+
+The `roundness` prop sets a multiplier for the element's radius: `1` through `6`.
+
+<PreviewBox title="roundness.tsx" code={roundnessSnippet}>
+  <Flex wrap="wrap" gap="4">
+    {numbers.map((number) => (
+      <Box key={number} radius="md" roundness={number} p="2" className="border">
+        <Text>{number}</Text>
+      </Box>
+    ))}
+  </Flex>
+</PreviewBox>
+
+### Padding
+
+The `p` prop controls padding on all sides using predefined scale values `0` through `8`.
+
+<PreviewBox title="padding.tsx" code={paddingSnippet}>
+  <Flex wrap="wrap" gap="4">
+    {paddings.map((p) => (
+      <Box key={p} p={p} className="border">
+        <Text>{p}</Text>
+      </Box>
+    ))}
+  </Flex>
+</PreviewBox>
+
+### Margin
+
+The `m` prop controls margin on all sides using predefined scale values `0` through `8`.
+
+<PreviewBox title="margin.tsx" code={marginSnippet}>
+  <Flex wrap="wrap" gap="4">
+    {margins.map((m) => (
+      <Box key={m} m={m} className="border" p="2">
+        <Text>{m}</Text>
+      </Box>
+    ))}
+  </Flex>
+</PreviewBox>
