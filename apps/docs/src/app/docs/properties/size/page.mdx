@@ -1,0 +1,52 @@
+import { Badge, Flex, Text } from "@locus-ui/components";
+import { ComponentPreview } from "@/components/component-preview";
+import { PreviewBox } from "@/components/preview-box";
+import { customSizeSnippet, indexSnippet, sizesSnippet } from "./snippets";
+
+export const sizes = ["xs", "sm", "md", "lg", "xl"];
+
+# Size Property
+
+Sets the size of a component. Supports predefined scale values and custom CSS sizes.
+
+<ComponentPreview
+  codeSnippets={[
+    {
+      title: "index.tsx",
+      code: indexSnippet,
+    },
+  ]}
+  source="https://github.com/LocusInc/locus-ui/tree/main/packages/locus-ui/src/props/size.prop.ts"
+>
+  <Badge size="md" variant="solid">
+    Medium
+  </Badge>
+</ComponentPreview>
+
+## Examples
+
+### Size Scale
+
+The `size` prop accepts values `xs`, `sm`, `md`, `lg`, and `xl`.
+
+<PreviewBox title="sizes.tsx" code={sizesSnippet}>
+  <Flex gap="2" align="center">
+    {sizes.map((size) => (
+      <Badge key={size} size={size} variant="solid">
+        {size.toUpperCase()}
+      </Badge>
+    ))}
+  </Flex>
+</PreviewBox>
+
+### Custom Size
+
+The `size` prop also accepts custom CSS values.
+
+<PreviewBox title="custom-size.tsx" code={customSizeSnippet}>
+  <Flex gap="2" align="center">
+    <Badge size="2.5rem" variant="solid">
+      Custom Size
+    </Badge>
+  </Flex>
+</PreviewBox>

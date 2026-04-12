@@ -1,0 +1,109 @@
+import { Box, Flex, Text } from "@locus-ui/components";
+import { ComponentPreview } from "@/components/component-preview";
+import { PreviewBox } from "@/components/preview-box";
+import {
+  customMarginSnippet,
+  indexSnippet,
+  marginDirectionsSnippet,
+  marginScaleSnippet,
+  negativeMarginSnippet,
+} from "./snippets";
+
+export const marginValues = [0, 1, 2, 3, 4, 5, 6, 8, "auto"];
+export const negativeMarginValues = [-8, -6, -5, -4, -3, -2, -1];
+
+# Margin Property
+
+Controls margin for elements. Supports scaled values, custom values, directional control, and negative margins.
+
+<ComponentPreview
+  codeSnippets={[
+    {
+      title: "index.tsx",
+      code: indexSnippet,
+    },
+  ]}
+  source="https://github.com/LocusInc/locus-ui/tree/main/packages/locus-ui/src/props"
+>
+  <Box m="4" className="border border-[rgb(var(--border-1))]">
+    <Text>Margin of 4</Text>
+  </Box>
+</ComponentPreview>
+
+## Examples
+
+### Margin Scale
+
+The `m` prop accepts scale values `0`–`8` and `auto`.
+
+<PreviewBox title="margin-scale.tsx" code={marginScaleSnippet}>
+  <Flex gap="2" align="center">
+    {marginValues.map((num) => (
+      <Box
+        key={num}
+        className="border border-[rgb(var(--border-1))] h-fit"
+        m={`${num}`}
+      >
+        {num}
+      </Box>
+    ))}
+  </Flex>
+</PreviewBox>
+
+### Negative Margins
+
+Margin supports negative values for overlapping layouts.
+
+<PreviewBox title="negative-margin.tsx" code={negativeMarginSnippet}>
+  <Flex gap="2" align="center">
+    {negativeMarginValues.map((num) => (
+      <Box
+        key={num}
+        className="border border-[rgb(var(--border-1))] h-fit"
+        mb={`${num}`}
+      >
+        {num}
+      </Box>
+    ))}
+  </Flex>
+</PreviewBox>
+
+### Margin Directions
+
+Use `m`, `mt`, `mb`, `ml`, `mr`, `mx`, and `my` for directional margin control.
+
+<PreviewBox title="margin-directions.tsx" code={marginDirectionsSnippet}>
+  <Flex gap="2" align="center">
+    <Box m="2" className="border border-[rgb(var(--border-1))]">
+      m = 2
+    </Box>
+    <Box mt="2" className="border border-[rgb(var(--border-1))]">
+      mt = 2
+    </Box>
+    <Box mb="2" className="border border-[rgb(var(--border-1))]">
+      mb = 2
+    </Box>
+    <Box ml="2" className="border border-[rgb(var(--border-1))]">
+      ml = 2
+    </Box>
+    <Box mr="2" className="border border-[rgb(var(--border-1))]">
+      mr = 2
+    </Box>
+    <Box mx="2" className="border border-[rgb(var(--border-1))]">
+      mx = 2
+    </Box>
+    <Box my="2" className="border border-[rgb(var(--border-1))]">
+      my = 2
+    </Box>
+  </Flex>
+</PreviewBox>
+
+### Custom Margin
+
+Margin also accepts custom CSS values.
+
+<PreviewBox title="custom-margin.tsx" code={customMarginSnippet}>
+  <Box className="border border-[rgb(var(--border-1))] w-fit" m="17px">
+    m = 17px
+  </Box>
+</PreviewBox>

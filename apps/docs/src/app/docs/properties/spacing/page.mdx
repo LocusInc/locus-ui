@@ -1,29 +1,17 @@
 import { Box, Flex, Text } from "@locus-ui/components";
 import { ComponentPreview } from "@/components/component-preview";
 import { PreviewBox } from "@/components/preview-box";
-import { CodeBox } from "@/components/code-box";
 import {
-  anatomySnippet,
-  customMarginSnippet,
-  customPaddingSnippet,
   indexSnippet,
-  marginDirectionsSnippet,
-  marginScaleSnippet,
-  negativeMarginSnippet,
-  paddingDirectionsSnippet,
-  paddingScaleSnippet,
   spacingInheritanceSnippet,
   spacingPropertySnippet,
 } from "./snippets";
 
-export const paddingValues = [0, 1, 2, 3, 4, 5, 6, 8];
-export const marginValues = [0, 1, 2, 3, 4, 5, 6, 8, "auto"];
-export const negativeMarginValues = [-8, -6, -5, -4, -3, -2, -1];
 export const spacingValues = ["xs", "sm", "md", "lg", "xl"];
 
-# Spacing Properties
+# Spacing Property
 
-Controls padding, margin, and spacing scale for elements. Supports scaled values, custom values, directional control, negative margins, and spacing inheritance.
+Controls the overall spacing scale for elements. Supports scaled values and inheritance from parent elements.
 
 <ComponentPreview
   codeSnippets={[
@@ -34,152 +22,14 @@ Controls padding, margin, and spacing scale for elements. Supports scaled values
   ]}
   source="https://github.com/LocusInc/locus-ui/tree/main/packages/locus-ui/src/props"
 >
-  <Box p="4" className="border border-[rgb(var(--border-1))]">
-    <Text>Padding of 4</Text>
+  <Box spacing="lg" p="4" className="border border-[rgb(var(--border-1))]">
+    <Text>Large Spacing</Text>
   </Box>
 </ComponentPreview>
 
-## Padding
+## Examples
 
-### Padding Scale
-
-The `p` prop accepts scale values `0`–`8` for consistent spacing.
-
-<PreviewBox title="padding-scale.tsx" code={paddingScaleSnippet}>
-  <Flex gap="2" align="center">
-    {paddingValues.map((num) => (
-      <Box
-        key={num}
-        className="border border-[rgb(var(--border-1))] h-fit"
-        p={`${num}`}
-      >
-        {num}
-      </Box>
-    ))}
-  </Flex>
-</PreviewBox>
-
-### Padding Directions
-
-Use `p`, `pt`, `pb`, `pl`, `pr`, `px`, and `py` for directional padding control.
-
-<PreviewBox title="padding-directions.tsx" code={paddingDirectionsSnippet}>
-  <Flex gap="2" align="center">
-    <Box p="2" className="border border-[rgb(var(--border-1))]">
-      p = 2
-    </Box>
-    <Box pt="2" className="border border-[rgb(var(--border-1))]">
-      pt = 2
-    </Box>
-    <Box pb="2" className="border border-[rgb(var(--border-1))]">
-      pb = 2
-    </Box>
-    <Box pl="2" className="border border-[rgb(var(--border-1))]">
-      pl = 2
-    </Box>
-    <Box pr="2" className="border border-[rgb(var(--border-1))]">
-      pr = 2
-    </Box>
-    <Box px="2" className="border border-[rgb(var(--border-1))]">
-      px = 2
-    </Box>
-    <Box py="2" className="border border-[rgb(var(--border-1))]">
-      py = 2
-    </Box>
-  </Flex>
-</PreviewBox>
-
-### Custom Padding
-
-Padding also accepts custom CSS values.
-
-<PreviewBox title="custom-padding.tsx" code={customPaddingSnippet}>
-  <Box className="border border-[rgb(var(--border-1))] w-fit" p="17px">
-    p = 17px
-  </Box>
-</PreviewBox>
-
-## Margin
-
-### Margin Scale
-
-The `m` prop accepts scale values `0`–`8` and `auto`.
-
-<PreviewBox title="margin-scale.tsx" code={marginScaleSnippet}>
-  <Flex gap="2" align="center">
-    {marginValues.map((num) => (
-      <Box
-        key={num}
-        className="border border-[rgb(var(--border-1))] h-fit"
-        m={`${num}`}
-      >
-        {num}
-      </Box>
-    ))}
-  </Flex>
-</PreviewBox>
-
-### Negative Margins
-
-Margin supports negative values for overlapping layouts.
-
-<PreviewBox title="negative-margin.tsx" code={negativeMarginSnippet}>
-  <Flex gap="2" align="center">
-    {negativeMarginValues.map((num) => (
-      <Box
-        key={num}
-        className="border border-[rgb(var(--border-1))] h-fit"
-        mb={`${num}`}
-      >
-        {num}
-      </Box>
-    ))}
-  </Flex>
-</PreviewBox>
-
-### Margin Directions
-
-Use `m`, `mt`, `mb`, `ml`, `mr`, `mx`, and `my` for directional margin control.
-
-<PreviewBox title="margin-directions.tsx" code={marginDirectionsSnippet}>
-  <Flex gap="2" align="center">
-    <Box m="2" className="border border-[rgb(var(--border-1))]">
-      m = 2
-    </Box>
-    <Box mt="2" className="border border-[rgb(var(--border-1))]">
-      mt = 2
-    </Box>
-    <Box mb="2" className="border border-[rgb(var(--border-1))]">
-      mb = 2
-    </Box>
-    <Box ml="2" className="border border-[rgb(var(--border-1))]">
-      ml = 2
-    </Box>
-    <Box mr="2" className="border border-[rgb(var(--border-1))]">
-      mr = 2
-    </Box>
-    <Box mx="2" className="border border-[rgb(var(--border-1))]">
-      mx = 2
-    </Box>
-    <Box my="2" className="border border-[rgb(var(--border-1))]">
-      my = 2
-    </Box>
-  </Flex>
-</PreviewBox>
-
-### Custom Margin
-
-Margin also accepts custom CSS values.
-
-<PreviewBox title="custom-margin.tsx" code={customMarginSnippet}>
-  <Box className="border border-[rgb(var(--border-1))] w-fit" m="17px">
-    m = 17px
-  </Box>
-</PreviewBox>
-
-## Spacing
-
-### Spacing Property
+### Spacing Scale
 
 The `spacing` prop sets the overall spacing scale for an element: `xs`, `sm`, `md`, `lg`, or `xl`.
 
@@ -200,18 +50,32 @@ The `spacing` prop sets the overall spacing scale for an element: `xs`, `sm`, `m
 
 ### Spacing Inheritance
 
-Child elements inherit the spacing scale from their parent.
+Child elements use the theme spacing unless they are given `spacing="inherit"`.
 
 <PreviewBox title="spacing-inheritance.tsx" code={spacingInheritanceSnippet}>
   <Box
-    spacing="xl"
-    className="border border-[rgb(var(--border-1))]"
     p="2"
     m="2"
+    spacing="xl"
+    className="border border-[rgb(var(--border-1))]"
   >
     Parent Box (XL Spacing, p=2, m=2)
-    <Box className="border border-[rgb(var(--border-1))]" p="2" m="2">
-      Child 1 (Default Spacing, p=2, m=2)
+    <Box 
+      p="2" 
+      m="2"
+      spacing="inherit"
+      className="border border-[rgb(var(--border-1))]" 
+    >
+      Child 1 (Inherited Spacing, p=2, m=2)
     </Box>
+
+    <Box
+      p="2"
+      m="2"
+      className="border border-[rgb(var(--border-1))]"
+    >
+      Child 2 (Default Spacing, p=2, m=2)
+    </Box>
+
   </Box>
 </PreviewBox>

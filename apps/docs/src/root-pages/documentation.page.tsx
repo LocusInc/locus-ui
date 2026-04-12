@@ -199,6 +199,10 @@ const components = [
 ];
 
 const properties = [
+  { name: "Color", path: "/docs/properties/color" },
+  { name: "Margin", path: "/docs/properties/margin" },
+  { name: "Padding", path: "/docs/properties/padding" },
   { name: "Radius", path: "/docs/properties/radius" },
+  { name: "Size", path: "/docs/properties/size" },
   { name: "Spacing", path: "/docs/properties/spacing" },
 ];

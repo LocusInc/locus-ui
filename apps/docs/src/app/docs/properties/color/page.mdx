@@ -1,0 +1,101 @@
+import { Badge, Flex, Text } from "@locus-ui/components";
+import { ComponentPreview } from "@/components/component-preview";
+import { PreviewBox } from "@/components/preview-box";
+import {
+  customColorsSnippet,
+  indexSnippet,
+  paletteColorsSnippet,
+  themeColorsSnippet,
+} from "./snippets";
+
+export const themeColors = [
+  "primary",
+  "secondary",
+  "tertiary",
+  "success",
+  "warning",
+  "danger",
+  "info",
+];
+export const paletteColors = [
+  "red",
+  "orange",
+  "yellow",
+  "green",
+  "blue",
+  "purple",
+  "gray",
+  "maroon",
+  "cyan",
+  "navy",
+  "teal",
+  "lime",
+  "magenta",
+  "white",
+];
+
+# Color Property
+
+Sets the color of a component. Uses predefined theme colors or accepts custom values in hex, rgb, or raw rgb formats.
+
+<ComponentPreview
+  codeSnippets={[
+    {
+      title: "index.tsx",
+      code: indexSnippet,
+    },
+  ]}
+  source="https://github.com/LocusInc/locus-ui/tree/main/packages/locus-ui/src/props/color.prop.ts"
+>
+  <Badge color="primary" variant="solid">
+    Primary
+  </Badge>
+</ComponentPreview>
+
+## Examples
+
+### Theme Colors
+
+The `color` prop accepts semantic theme values: `primary`, `secondary`, `tertiary`, `success`, `warning`, `danger`, and `info`.
+
+<PreviewBox title="theme-colors.tsx" code={themeColorsSnippet}>
+  <Flex gap="2" align="center" wrap="wrap">
+    {themeColors.map((color) => (
+      <Badge key={color} color={color} variant="solid">
+        {color}
+      </Badge>
+    ))}
+  </Flex>
+</PreviewBox>
+
+### Palette Colors
+
+Additional named palette colors are available: `red`, `orange`, `yellow`, `green`, `blue`, `purple`, `gray`, `maroon`, `cyan`, `navy`, `teal`, `lime`, `magenta`, and `white`.
+
+<PreviewBox title="palette-colors.tsx" code={paletteColorsSnippet}>
+  <Flex gap="2" align="center" wrap="wrap">
+    {paletteColors.map((color) => (
+      <Badge key={color} color={color} variant="solid">
+        {color}
+      </Badge>
+    ))}
+  </Flex>
+</PreviewBox>
+
+### Custom Colors
+
+The `color` prop also accepts custom values in hex, `rgb()`, or raw RGB formats.
+
+<PreviewBox title="custom-colors.tsx" code={customColorsSnippet}>
+  <Flex gap="2" align="center">
+    <Badge color="#7BEB34" variant="solid">
+      Hex
+    </Badge>
+    <Badge color="rgb(125, 235, 52)" variant="solid">
+      RGB
+    </Badge>
+    <Badge color="125, 235, 52" variant="solid">
+      Raw RGB
+    </Badge>
+  </Flex>
+</PreviewBox>
