@@ -1,6 +1,6 @@
 {
   "name": "@locus-ui/components",
-  "version": "0.1.14",
+  "version": "0.1.15",
   "description": "A React UI component library",
   "main": "dist/index.js",
   "module": "dist/index.mjs",
@@ -24,7 +24,7 @@
   "scripts": {
     "dev": "tsup --watch src",
     "dev:ui": "tsup --watch src",
-    "build": "tsup",
+    "build": "tsup && tsc --emitDeclarationOnly --declaration --declarationDir dist --noEmit false",
     "prepublishOnly": "npm run build"
   },
   "publishConfig": {

@@ -5,7 +5,7 @@ export default defineConfig((overrideOptions) => [
     entry: ["src/**/*.{ts,tsx}"],
     outDir: "dist",
     format: ["esm", "cjs"],
-    dts: !overrideOptions.watch,
+    dts: false,
     target: "esnext",
     sourcemap: true,
     shims: true,
