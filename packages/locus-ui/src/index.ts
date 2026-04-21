@@ -12,6 +12,7 @@ export {
   ProgressBar,
   Select,
   Separator,
+  Skeleton,
   Switch,
   Text,
   Theme,

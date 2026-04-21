@@ -1,0 +1,94 @@
+import { Skeleton, Flex, Grid, Text } from "@locus-ui/components";
+import { ComponentPreview } from "@/components/component-preview";
+import { PreviewBox } from "@/components/preview-box";
+import { CodeBox } from "@/components/code-box";
+import {
+  anatomySnippet,
+  compositionSnippet,
+  indexSnippet,
+  loadingSnippet,
+  styleSnippet,
+  variantsSnippet,
+} from "./snippets";
+
+export const variants = ["solid", "pulse", "shimmer"];
+
+# Skeleton Component
+
+A placeholder component used to indicate loading state before content is available.
+
+<ComponentPreview
+  codeSnippets={[
+    {
+      title: "index.tsx",
+      code: indexSnippet,
+    },
+    {
+      title: "styles.css",
+      code: styleSnippet,
+    },
+  ]}
+  source="https://github.com/LocusInc/locus-ui/tree/main/packages/locus-ui/src/components/skeleton"
+>
+  <Skeleton variant="pulse" style={{ width: 200, height: 24 }} />
+</ComponentPreview>
+
+## Anatomy
+
+Import the component and its parts:
+
+<CodeBox title="Anatomy" language="typescript" className="my-2">
+  {anatomySnippet}
+</CodeBox>
+
+## Examples
+
+### Variants
+
+Skeleton components come with three built-in variants: `solid`, `pulse`, and `shimmer`.
+
+<PreviewBox title="variants.tsx" column code={variantsSnippet}>
+  {variants.map((variant) => (
+    <Grid key={variant} columns="2">
+      <Text>{variant}</Text>
+      <Skeleton variant={variant} style={{ width: 200, height: 24 }} />
+    </Grid>
+  ))}
+</PreviewBox>
+
+### Loading State
+
+Use the `loading` prop to toggle between the skeleton and its children. When `loading` is `false`, the children are rendered instead of the skeleton placeholder.
+
+<PreviewBox title="loading.tsx" code={loadingSnippet}>
+  <Grid columns="2" gap="2">
+      <Text>Loading</Text>
+      <Skeleton
+        loading={true}
+        variant="pulse"
+      >
+        <Text>This is the content</Text>
+      </Skeleton>
+
+      <Text>Loaded</Text>
+      <Skeleton
+        loading={false}
+        variant="pulse"
+      >
+        <Text>This is the content</Text>
+      </Skeleton>
+    </Grid>
+
+</PreviewBox>
+
+### Composition
+
+Skeletons can be composed to represent more complex loading layouts.
+
+<PreviewBox title="composition.tsx" code={compositionSnippet}>
+  <Flex direction="column" gap="2">
+    <Skeleton variant="pulse" style={{ width: 120, height: 12 }} />
+    <Skeleton variant="pulse" style={{ width: 200, height: 12 }} />
+    <Skeleton variant="pulse" style={{ width: 160, height: 12 }} />
+  </Flex>
+</PreviewBox>

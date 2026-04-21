@@ -9,6 +9,7 @@
 @import "./portal/portal.css";
 @import "./progress-bar/progress-bar.css";
 @import "./select/select.css";
+@import "./skeleton/skeleton.css";
 @import "./separator/separator.css";
 @import "./switch/switch.css";
 @import "./text/text.css";

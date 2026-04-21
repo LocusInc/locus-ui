@@ -192,6 +192,7 @@ const components = [
   { name: "Portal", path: "/docs/components/portal" },
   { name: "Progress Bar", path: "/docs/components/progress-bar" },
   { name: "Select", path: "/docs/components/select" },
+  { name: "Skeleton", path: "/docs/components/skeleton" },
   { name: "Separator", path: "/docs/components/separator" },
   { name: "Switch", path: "/docs/components/switch" },
   { name: "Theme", path: "/docs/components/theme" },

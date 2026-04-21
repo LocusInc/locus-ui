@@ -11,6 +11,7 @@ export { Portal } from "./portal";
 export { ProgressBar } from "./progress-bar";
 export { Select } from "./select";
 export { Separator } from "./separator";
+export { Skeleton } from "./skeleton";
 export { Switch } from "./switch";
 export { Text } from "./text";
 export { Theme, ThemeControl, useTheme } from "./theme";
