@@ -4,6 +4,7 @@ export { Box } from "./box";
 export { Button } from "./button";
 export { Checkbox } from "./checkbox";
 export { Container } from "./container";
+export { Dropdown } from "./dropdown";
 export { Flex } from "./flex";
 export { Grid } from "./grid";
 export { Panel } from "./panel";

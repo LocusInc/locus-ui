@@ -188,6 +188,7 @@ const components = [
   { name: "Badge", path: "/docs/components/badge" },
   { name: "Button", path: "/docs/components/button" },
   { name: "Checkbox", path: "/docs/components/checkbox" },
+  { name: "Dropdown", path: "/docs/components/dropdown" },
   { name: "Panel", path: "/docs/components/panel" },
   { name: "Portal", path: "/docs/components/portal" },
   { name: "Progress Bar", path: "/docs/components/progress-bar" },

@@ -1,0 +1,6 @@
+.dropdown-content[data-variant][data-mode="menu"] .dropdown-separator {
+  height: 1px;
+  border-radius: 2px;
+  background-color: rgba(var(--bg-2), 0.8);
+  margin: calc(4px * var(--lcs-spacing, 1)) 0;
+}

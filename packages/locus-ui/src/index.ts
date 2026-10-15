@@ -5,6 +5,7 @@ export {
   Button,
   Checkbox,
   Container,
+  Dropdown,
   Flex,
   Grid,
   Panel,
@@ -29,3 +30,12 @@ export type {
   ThemeRoundness,
   ThemeSpacing,
 } from "./components";
+
+export {
+  CheckMark,
+  ChevronDown,
+  ChevronLeft,
+  ChevronRight,
+  ChevronUp,
+  Minus,
+} from "./icons";
