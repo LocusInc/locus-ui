@@ -1,7 +1,7 @@
 "use client";
 
 import clsx from "clsx";
-import { ButtonHTMLAttributes, FC, useState } from "react";
+import { ButtonHTMLAttributes, forwardRef, useState } from "react";
 import {
   ColorProp,
   ColorPropDef,
@@ -29,7 +29,7 @@ interface AllButtonRootProps
 type ButtonRootProps = AllButtonRootProps &
   ButtonHTMLAttributes<HTMLButtonElement>;
 
-const Button: FC<ButtonRootProps> = (props) => {
+const Button = forwardRef<HTMLButtonElement, ButtonRootProps>((props, ref) => {
   const {
     color,
     variant,
@@ -54,6 +54,7 @@ const Button: FC<ButtonRootProps> = (props) => {
 
   return (
     <button
+      ref={ref}
       className={clsx("button", className)}
       data-color={color ?? true}
       data-variant={variant}
@@ -70,6 +71,7 @@ const Button: FC<ButtonRootProps> = (props) => {
       <span>{children}</span>
     </button>
   );
-};
+});
+Button.displayName = "Button";
 
 export { AllButtonRootProps, Button, ButtonRootProps };
