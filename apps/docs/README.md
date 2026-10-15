@@ -1,36 +1,48 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Locus UI documentation
 
-## Getting Started
+Run `npm run dev` from the repository root, or `npm run dev --workspace apps/docs` to run only the documentation app.
 
-First, run the development server:
+Each route has a single `src/app/docs/<section>/<name>/page.mdx` file. Keep prose, live React examples, example data, and code snippets together. Shared documentation components remain in `src/components`.
+
+## Writing a page
+
+MDX supports Markdown and imported React components. Standard fenced code blocks use the shared syntax-highlighted renderer automatically:
+
+````mdx
+import { Button } from "@locus-ui/components";
+import { PreviewBox } from "@/components/preview-box";
+
+export const example = `import { Button } from "@locus-ui/components";
+
+export default function ButtonExample() {
+  return <Button variant="solid">Save</Button>;
+}`;
+
+# Button
+
+Trigger an action.
+
+<PreviewBox title="example.tsx" code={example}>
+  <Button variant="solid">Save</Button>
+</PreviewBox>
+
+## Installation
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm install @locus-ui/components
 ```
+````
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Declare reusable code strings with `export const` in the page. `ComponentPreview` supports multiple code tabs, `PreviewBox` supports collapsible example code, and `CodeBox` supports titled code blocks. Explicit snippets let examples include imports and setup that differ from the live preview's surrounding layout.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Write demo snippets as complete components with an explicit return and two-space indentation. Wrap sibling JSX elements in a fragment. Anatomy snippets can remain abbreviated to show component structure.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Markdown view
 
-## Learn More
+Every MDX page automatically gets a **View as Markdown** link, for example `/markdown/docs/components/button`. This opens plain text with prose, fenced example code, and property tables. Page imports, exports, and interactive preview wrappers are omitted. Custom React examples without snippets are retained as fenced JSX; semantic HTML such as `<kbd>` is preserved. The plain-text routes are prerendered during production builds.
 
-To learn more about Next.js, take a look at the following resources:
+Markdown is generated from MDX, so there is no second document to maintain. Development watches MDX changes; production builds regenerate all exports. Generated files in `public/markdown` are ignored by Git. TSX-only app pages do not get a Markdown link.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+The exporter reads static literals, template strings, arrays, and objects without executing JavaScript. Use these for snippets and property-table data; unsupported data used in an export fails generation with the page filename. When adding a new documentation wrapper, add its Markdown representation to `scripts/markdown.mjs`.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Run `npm run docs:markdown --workspace apps/docs` to regenerate exports. `npm run build --workspace apps/docs` builds the library and documentation site.

@@ -1,12 +1,82 @@
 import { Badge, Flex, Text } from "@locus-ui/components";
 import { ComponentPreview } from "@/components/component-preview";
 import { PreviewBox } from "@/components/preview-box";
-import {
-  customColorsSnippet,
-  indexSnippet,
-  paletteColorsSnippet,
-  themeColorsSnippet,
-} from "./snippets";
+export const importSnippet = `import { Badge } from "@locus-ui/components";`;
+
+export const indexSnippet = `${importSnippet}
+
+export default function ColorExample() {
+  return (
+    <Badge color="primary" variant="solid">
+      Primary
+    </Badge>
+  );
+}`;
+
+export const themeColorsSnippet = `${importSnippet}
+
+export default function ColorThemeColorsExample() {
+  const themeColors = [
+    "primary",
+    "secondary",
+    "tertiary",
+    "success",
+    "warning",
+    "danger",
+    "info",
+  ];
+
+  return themeColors.map((color) => (
+    <Badge key={color} color={color} variant="solid">
+      {color}
+    </Badge>
+  ));
+}`;
+
+export const paletteColorsSnippet = `${importSnippet}
+
+export default function ColorPaletteColorsExample() {
+  const paletteColors = [
+    "red",
+    "orange",
+    "yellow",
+    "green",
+    "blue",
+    "purple",
+    "gray",
+    "maroon",
+    "cyan",
+    "navy",
+    "teal",
+    "lime",
+    "magenta",
+    "white",
+  ];
+
+  return paletteColors.map((color) => (
+    <Badge key={color} color={color} variant="solid">
+      {color}
+    </Badge>
+  ));
+}`;
+
+export const customColorsSnippet = `${importSnippet}
+
+export default function ColorCustomColorsExample() {
+  return (
+    <>
+      <Badge color="#7BEB34" variant="solid">
+        Hex
+      </Badge>
+      <Badge color="rgb(125, 235, 52)" variant="solid">
+        RGB
+      </Badge>
+      <Badge color="125, 235, 52" variant="solid">
+        Raw RGB
+      </Badge>
+    </>
+  );
+}`;
 
 export const themeColors = [
   "primary",

@@ -1,13 +1,27 @@
 import { Text } from "@locus-ui/components";
 import type { MDXComponents } from "mdx/types";
 import React from "react";
+import { DocsPageTitle } from "./src/components/docs-page";
+import { CodeBox } from "./src/components/code-box";
 
 export function useMDXComponents(components: MDXComponents): MDXComponents {
   return {
+    pre: ({ children }) => {
+      const code = children as React.ReactElement<{ children: string; className?: string }>;
+      const language = code.props.className?.replace("language-", "") ?? "plaintext";
+      const aliases: Record<string, string> = { tsx: "typescript", ts: "typescript", jsx: "javascript", js: "javascript", sh: "bash" };
+      return (
+        <CodeBox
+          title={language === "bash" || language === "sh" ? "Terminal" : "Code"}
+          language={aliases[language] ?? language}
+          className="my-2"
+        >
+          {code.props.children}
+        </CodeBox>
+      );
+    },
     h1: (props) => (
-      <h1 id={slugify(props.children)}>
-        <Text mt="8" mb="4" className="text-4xl font-bold" {...props} />
-      </h1>
+      <DocsPageTitle id={slugify(props.children)} {...props} />
     ),
     h2: (props) => (
       <h2 id={slugify(props.children)}>

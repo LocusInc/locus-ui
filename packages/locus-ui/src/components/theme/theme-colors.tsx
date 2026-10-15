@@ -202,7 +202,9 @@ export function themeColorsToStyle(
   for (const key of Object.keys(resolved) as (keyof ThemeColors)[]) {
     const value = resolved[key];
     if (value !== undefined) {
-      style[colorToCssVar[key] as `--${string}`] = parseColor(value);
+      style[colorToCssVar[key] as `--${string}`] = parseColor(
+        baseColors[value as keyof typeof baseColors] ?? value,
+      );
     }
   }
 

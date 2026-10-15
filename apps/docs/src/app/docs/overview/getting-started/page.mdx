@@ -1,8 +1,19 @@
-import { CodeBox } from "@/components/code-box";
+# Getting Started
 
-export const installCode = `npm install @locus-ui/components`;
+## Installation
 
-export const quickStartCode = `import { Theme } from "@locus-ui/components";
+Install the package from npm. React 18 or 19 is required as a peer dependency.
+
+```bash
+npm install @locus-ui/components
+```
+
+## Quick Start
+
+Import the stylesheet and wrap your app with the `Theme` provider to get started:
+
+```tsx
+import { Theme } from "@locus-ui/components";
 import "@locus-ui/components/styles";
 
 export default function App({ children }) {
@@ -11,22 +22,5 @@ export default function App({ children }) {
       {children}
     </Theme>
   );
-}`;
-
-# Getting Started
-
-## Installation
-
-Install the package from npm. React 18 or 19 is required as a peer dependency.
-
-<CodeBox title="Terminal" language="bash" className="my-2">
-  {installCode}
-</CodeBox>
-
-## Quick Start
-
-Import the stylesheet and wrap your app with the `Theme` provider to get started:
-
-<CodeBox title="app.tsx" language="typescript" className="my-2">
-  {quickStartCode}
-</CodeBox>
+}
+```

@@ -1,7 +1,39 @@
 import { Badge, Flex, Text } from "@locus-ui/components";
 import { ComponentPreview } from "@/components/component-preview";
 import { PreviewBox } from "@/components/preview-box";
-import { customSizeSnippet, indexSnippet, sizesSnippet } from "./snippets";
+export const importSnippet = `import { Badge } from "@locus-ui/components";`;
+
+export const indexSnippet = `${importSnippet}
+
+export default function SizeExample() {
+  return (
+    <Badge size="md" variant="solid">
+      Medium
+    </Badge>
+  );
+}`;
+
+export const sizesSnippet = `${importSnippet}
+
+export default function SizeSizesExample() {
+  const sizes = ["xs", "sm", "md", "lg", "xl"];
+
+  return sizes.map((size) => (
+    <Badge key={size} size={size} variant="solid">
+      {size.toUpperCase()}
+    </Badge>
+  ));
+}`;
+
+export const customSizeSnippet = `${importSnippet}
+
+export default function SizeCustomSizeExample() {
+  return (
+    <Badge size="2.5rem" variant="solid">
+      Custom Size
+    </Badge>
+  );
+}`;
 
 export const sizes = ["xs", "sm", "md", "lg", "xl"];
 
