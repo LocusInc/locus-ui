@@ -1,17 +1,18 @@
-import { Box, ProgressBar, Text } from "@locus-ui/components";
-import { ComponentPreview } from "@/components/component-preview";
-import { PreviewBox } from "@/components/preview-box";
-import { CodeBox } from "@/components/code-box";
-export const importSnippet = `import { ProgressBar } from "@locus-ui/components";`;
+import { ViewSourceLink } from "@/components/markdown/view-source-link";
+import { Box, ProgressBar, Text, Flex } from "@locus-ui/components";
 
-export const indexSnippet = `${importSnippet}
-import styles from "./styles.css";
+# Progress Bar Component
 
-export default function ProgressBarExample() {
-  return <ProgressBar.Root variant="muted" value={0.5} className="w-48" />;
-}`;
+A progress bar component to display single or stacked progress indicators.
 
-export const styleSnippet = `.progress-bar-root[data-variant] {
+```jsx featured
+<Flex gap="4" wrap="wrap" align="center" justify="center" className="w-full">
+  <ProgressBar.Root variant="muted" value={0.5} className="w-48" />
+</Flex>
+```
+
+```css preview
+.progress-bar-root[data-variant] {
   --progress-bar-base: var(--lcs-color, var(--panel-color));
   --progress-bar-color: var(--color, var(--primary));
 
@@ -51,131 +52,22 @@ export const styleSnippet = `.progress-bar-root[data-variant] {
   &[data-variant="muted"] {
     background-color: rgba(var(--progress-bar-fill-color), 0.6);
   }
-}`;
+}
+```
 
-export const anatomySnippet = `${importSnippet}
-
-<ProgressBar.Root>
-  <ProgressBar.Fill />
-</ProgressBar.Root>;`;
-
-export const variantsSnippet = `${importSnippet}
-
-export default function ProgressBarVariantsExample() {
-  const variants = ["solid", "outlined", "muted"];
-
-  return variants.map((variant) => (
-    <ProgressBar.Root
-      key={variant}
-      variant={variant}
-      value={0.5}
-      className="w-48"
-    />
-  ));
-}`;
-
-export const sizesSnippet = `${importSnippet}
-
-export default function ProgressBarSizesExample() {
-  const sizes = ["xs", "sm", "md", "lg", "xl"];
-
-  return sizes.map((size) => (
-    <ProgressBar.Root
-      key={size}
-      size={size}
-      value={0.5}
-      variant="muted"
-      className="w-48"
-    />
-  ));
-}`;
-
-export const colorsSnippet = `${importSnippet}
-
-export default function ProgressBarColorsExample() {
-  const colors = [
-    "primary",
-    "secondary",
-    "tertiary",
-    "success",
-    "danger",
-    "warning",
-    "info",
-  ];
-
-  return colors.map((color) => (
-    <ProgressBar.Root
-      value={0.5}
-      color={color}
-      variant="muted"
-      className="w-48"
-    />
-  ));
-}`;
-
-export const stackingSnippet = `${importSnippet}
-
-export default function ProgressBarStackingExample() {
-  return (
-    <ProgressBar.Root className="w-48" variant="solid" size="xl">
-      <ProgressBar.Fill value={0.3} color="primary" />
-      <ProgressBar.Fill value={0.2} color="secondary" />
-      <ProgressBar.Fill value={0.1} color="tertiary" />
-    </ProgressBar.Root>
-  );
-}`;
-
-export const overStackingSnippet = `${importSnippet}
-
-export default function ProgressBarOverStackingExample() {
-  return (
-    <ProgressBar.Root className="w-48" variant="solid" size="xl">
-      <ProgressBar.Fill value={0.5} color="primary" />
-      <ProgressBar.Fill value={0.4} color="secondary" />
-      <ProgressBar.Fill value={0.3} color="tertiary" />
-    </ProgressBar.Root>
-  );
-}`;
-
-export const variants = ["solid", "outlined", "muted"];
-export const sizes = ["xs", "sm", "md", "lg", "xl"];
-export const colors = [
-  "primary",
-  "secondary",
-  "tertiary",
-  "success",
-  "danger",
-  "warning",
-  "info",
-];
-
-# Progress Bar Component
-
-A progress bar component to display single or stacked progress indicators.
-
-<ComponentPreview
-  codeSnippets={[
-    {
-      title: "index.tsx",
-      code: indexSnippet,
-    },
-    {
-      title: "styles.css",
-      code: styleSnippet,
-    },
-  ]}
-  source="https://github.com/LocusInc/locus-ui/tree/main/packages/locus-ui/src/components/progress-bar"
->
-  <ProgressBar.Root variant="muted" value={0.5} className="w-48" />
-</ComponentPreview>
+<ViewSourceLink href="https://github.com/LocusInc/locus-ui/tree/main/packages/locus-ui/src/components/progress-bar" />
 
 ## Anatomy
 
 Import the component and its parts:
 
-<CodeBox title="Anatomy" language="typescript" className="my-2">
-  {anatomySnippet}
-</CodeBox>
+```jsx code
+import { ProgressBar } from "@locus-ui/components";
+
+<ProgressBar.Root>
+  <ProgressBar.Fill />
+</ProgressBar.Root>;
+```
 
 ## Examples
 
@@ -183,21 +75,24 @@ Import the component and its parts:
 
 Progress bar components come with three built in variants, `solid`, `outlined`, and `muted`.
 
-<PreviewBox title="variants.tsx" code={variantsSnippet}>
-  {variants.map((variant) => (
+```jsx
+<Flex gap="4" wrap="wrap" align="center" justify="center" className="w-full">
+  {["solid", "outlined", "muted"].map((variant) => (
     <Box key={variant} className="flex flex-col gap-2">
       <Text>{variant.charAt(0).toUpperCase() + variant.slice(1)}</Text>
       <ProgressBar.Root variant={variant} value={0.5} className="w-48" />
     </Box>
   ))}
-</PreviewBox>
+</Flex>
+```
 
 ### Sizes
 
 To manage the size of the progress bar you can provide a size through the `size` prop.
 
-<PreviewBox title="sizes.tsx" code={sizesSnippet}>
-  {sizes.map((size) => (
+```jsx
+<Flex gap="4" wrap="wrap" align="center" justify="center" className="w-full">
+  {["xs", "sm", "md", "lg", "xl"].map((size) => (
     <Box key={size} className="flex flex-col gap-2">
       <Text>{size.toUpperCase()}</Text>
       <ProgressBar.Root
@@ -208,14 +103,24 @@ To manage the size of the progress bar you can provide a size through the `size`
       />
     </Box>
   ))}
-</PreviewBox>
+</Flex>
+```
 
 ### Colors
 
 The progress bar component uses the `color` prop to allow for predefined and custom colors.
 
-<PreviewBox title="colors.tsx" code={colorsSnippet}>
-  {colors.map((color) => (
+```jsx
+<Flex gap="4" wrap="wrap" align="center" justify="center" className="w-full">
+  {[
+    "primary",
+    "secondary",
+    "tertiary",
+    "success",
+    "danger",
+    "warning",
+    "info",
+  ].map((color) => (
     <Box key={color} className="flex flex-col gap-2">
       <Text>{color.charAt(0).toUpperCase() + color.slice(1)}</Text>
       <ProgressBar.Root
@@ -226,28 +131,33 @@ The progress bar component uses the `color` prop to allow for predefined and cus
       />
     </Box>
   ))}
-</PreviewBox>
+</Flex>
+```
 
 ### Stacking
 
 Use `ProgressBar.Fill` children to create stacked progress bars with multiple segments.
 
-<PreviewBox title="stacking.tsx" code={stackingSnippet}>
+```jsx
+<Flex gap="4" wrap="wrap" align="center" justify="center" className="w-full">
   <ProgressBar.Root className="w-48" variant="solid" size="xl">
     <ProgressBar.Fill value={0.3} color="primary" />
     <ProgressBar.Fill value={0.2} color="secondary" />
     <ProgressBar.Fill value={0.1} color="tertiary" />
   </ProgressBar.Root>
-</PreviewBox>
+</Flex>
+```
 
 ### Over Stacking
 
 When stacked fill values exceed 1, the progress bar gracefully handles overflow.
 
-<PreviewBox title="over-stacking.tsx" code={overStackingSnippet}>
+```jsx
+<Flex gap="4" wrap="wrap" align="center" justify="center" className="w-full">
   <ProgressBar.Root className="w-48" variant="solid" size="xl">
     <ProgressBar.Fill value={0.5} color="primary" />
     <ProgressBar.Fill value={0.4} color="secondary" />
     <ProgressBar.Fill value={0.3} color="tertiary" />
   </ProgressBar.Root>
-</PreviewBox>
+</Flex>
+```

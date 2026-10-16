@@ -1,8 +1,7 @@
 "use client";
 
-import { Box, Flex, Text } from "@locus-ui/components";
 import { usePathname } from "next/navigation";
-import { useEffect, useState } from "react";
+import { useEffect, useLayoutEffect, useRef, useState } from "react";
 
 interface TocItem {
   id: string;
@@ -22,11 +21,29 @@ export const TableOfContents = () => {
 
   const [headings, setHeadings] = useState<TocItem[]>([]);
   const [activeId, setActiveId] = useState<string>("");
+  const linksRef = useRef<HTMLDivElement>(null);
+  const [indicator, setIndicator] = useState<{ top: number; height: number } | null>(null);
 
-  const activeIndex = Math.max(
-    0,
-    headings.findIndex((h) => h.id === activeId),
-  );
+  useLayoutEffect(() => {
+    const links = linksRef.current;
+    if (!links) return;
+
+    const updateIndicator = () => {
+      const activeLink = links.querySelector<HTMLAnchorElement>('[aria-current="location"]');
+      if (!activeLink) return;
+
+      const next = { top: activeLink.offsetTop, height: activeLink.offsetHeight };
+      setIndicator((previous) =>
+        previous?.top === next.top && previous.height === next.height ? previous : next,
+      );
+    };
+
+    updateIndicator();
+    const observer = new ResizeObserver(updateIndicator);
+    observer.observe(links);
+    links.querySelectorAll("a").forEach((link) => observer.observe(link));
+    return () => observer.disconnect();
+  }, [activeId, headings]);
 
   useEffect(() => {
     const content = document.querySelector("[data-docs-content]");
@@ -91,36 +108,35 @@ export const TableOfContents = () => {
   if (headings.length === 0) return null;
 
   return (
-    <nav>
-      <Flex gap="2">
-        <Box
-          className="w-px h-6 bg-[rgb(var(--primary))] transition-all"
-          style={{ marginTop: 28 * activeIndex }}
-        />
-
-        <Flex direction="column" gap="1">
-          {headings.map((heading) => (
+    <nav aria-label="On this page" className="w-full min-w-0">
+      <div ref={linksRef} className="relative flex min-w-0 flex-col gap-1">
+        {indicator && (
+          <span
+            aria-hidden="true"
+            className="pointer-events-none absolute top-0 left-0 w-px bg-[rgb(var(--primary))] transition-[transform,height] duration-200 ease-out motion-reduce:transition-none"
+            style={{ transform: `translateY(${indicator.top}px)`, height: indicator.height }}
+          />
+        )}
+        {headings.map((heading) => {
+          const isActive = heading.id === (activeId || headings[0]?.id);
+          return (
             <a
               key={heading.id}
               href={`#${heading.id}`}
+              aria-current={isActive ? "location" : undefined}
               onClick={(event) => handleLinkClick(event, heading.id)}
+              className={`block min-w-0 border-l border-transparent py-0.5 whitespace-normal [overflow-wrap:anywhere] transition-colors hover:text-[rgb(var(--primary))] ${
+                isActive
+                  ? "text-[rgb(var(--primary))]"
+                  : "text-[rgb(var(--text))]"
+              }`}
+              style={{ paddingLeft: `${8 + (heading.level - 1) * 12}px` }}
             >
-              <Text
-                className="text-nowrap transition-colors !hover:color-[rgb(var(--primary))]"
-                style={{
-                  paddingLeft: `${(heading.level - 1) * 12}px`,
-                  color:
-                    activeId === heading.id
-                      ? "rgb(var(--primary)) !important"
-                      : "rgb(var(--text-color))",
-                }}
-              >
-                {heading.text}
-              </Text>
+              {heading.text}
             </a>
-          ))}
-        </Flex>
-      </Flex>
+          );
+        })}
+      </div>
     </nav>
   );
 };

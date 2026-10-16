@@ -1,16 +1,18 @@
+import { ViewSourceLink } from "@/components/markdown/view-source-link";
 import { Skeleton, Flex, Grid, Text } from "@locus-ui/components";
-import { ComponentPreview } from "@/components/component-preview";
-import { PreviewBox } from "@/components/preview-box";
-import { CodeBox } from "@/components/code-box";
-export const importSnippet = `import { Skeleton } from "@locus-ui/components";`;
 
-export const indexSnippet = `${importSnippet}
+# Skeleton Component
 
-export default function SkeletonExample() {
-  return <Skeleton variant="solid" style={{ width: 200, height: 24 }} />;
-}`;
+A placeholder component used to indicate loading state before content is available.
 
-export const styleSnippet = `.skeleton[data-variant] {
+```jsx featured
+<Flex gap="4" wrap="wrap" align="center" justify="center" className="w-full">
+  <Skeleton variant="pulse" style={{ width: 200, height: 24 }} />
+</Flex>
+```
+
+```css preview
+.skeleton[data-variant] {
   min-width: fit-content;
   min-height: fit-content;
   border-radius: min(32px, var(--lcs-radius, 0px));
@@ -27,87 +29,19 @@ export const styleSnippet = `.skeleton[data-variant] {
     /* add shimmer animation */
   }
 }
-`;
+```
 
-export const anatomySnippet = `${importSnippet}
-
-<Skeleton />;`;
-
-export const variantsSnippet = `${importSnippet}
-
-export default function SkeletonVariantsExample() {
-  const variants = ["solid", "pulse", "shimmer"];
-
-  return variants.map((variant) => (
-    <Skeleton
-      key={variant}
-      variant={variant}
-      style={{ width: 200, height: 24 }}
-    />
-  ));
-}`;
-
-export const loadingSnippet = `${importSnippet}
-import { Grid, Text } from "@locus-ui/components";
-
-export default function SkeletonLoadingExample() {
-  return (
-    <Grid columns="2" gap="2">
-      <Text>Loading</Text>
-      <Skeleton loading={true} variant="pulse">
-        <Text>This is the content</Text>
-      </Skeleton>
-
-      <Text>Loaded</Text>
-      <Skeleton loading={false} variant="pulse">
-        <Text>This is the content</Text>
-      </Skeleton>
-    </Grid>
-  );
-}`;
-
-export const compositionSnippet = `${importSnippet}
-import { Flex } from "@locus-ui/components";
-
-export default function SkeletonCompositionExample() {
-  return (
-    <Flex direction="column" gap="2">
-      <Skeleton variant="pulse" style={{ width: 120, height: 12 }} />
-      <Skeleton variant="pulse" style={{ width: 200, height: 12 }} />
-      <Skeleton variant="pulse" style={{ width: 160, height: 12 }} />
-    </Flex>
-  );
-}`;
-
-export const variants = ["solid", "pulse", "shimmer"];
-
-# Skeleton Component
-
-A placeholder component used to indicate loading state before content is available.
-
-<ComponentPreview
-  codeSnippets={[
-    {
-      title: "index.tsx",
-      code: indexSnippet,
-    },
-    {
-      title: "styles.css",
-      code: styleSnippet,
-    },
-  ]}
-  source="https://github.com/LocusInc/locus-ui/tree/main/packages/locus-ui/src/components/skeleton"
->
-  <Skeleton variant="pulse" style={{ width: 200, height: 24 }} />
-</ComponentPreview>
+<ViewSourceLink href="https://github.com/LocusInc/locus-ui/tree/main/packages/locus-ui/src/components/skeleton" />
 
 ## Anatomy
 
 Import the component and its parts:
 
-<CodeBox title="Anatomy" language="typescript" className="my-2">
-  {anatomySnippet}
-</CodeBox>
+```jsx code
+import { Skeleton } from "@locus-ui/components";
+
+<Skeleton />;
+```
 
 ## Examples
 
@@ -115,48 +49,54 @@ Import the component and its parts:
 
 Skeleton components come with three built-in variants: `solid`, `pulse`, and `shimmer`.
 
-<PreviewBox title="variants.tsx" column code={variantsSnippet}>
-  {variants.map((variant) => (
+```jsx
+<Flex
+  gap="4"
+  wrap="wrap"
+  align="center"
+  justify="center"
+  className="w-full"
+  direction="column"
+>
+  {["solid", "pulse", "shimmer"].map((variant) => (
     <Grid key={variant} columns="2">
       <Text>{variant}</Text>
       <Skeleton variant={variant} style={{ width: 200, height: 24 }} />
     </Grid>
   ))}
-</PreviewBox>
+</Flex>
+```
 
 ### Loading State
 
 Use the `loading` prop to toggle between the skeleton and its children. When `loading` is `false`, the children are rendered instead of the skeleton placeholder.
 
-<PreviewBox title="loading.tsx" code={loadingSnippet}>
+```jsx
+<Flex gap="4" wrap="wrap" align="center" justify="center" className="w-full">
   <Grid columns="2" gap="2">
-      <Text>Loading</Text>
-      <Skeleton
-        loading={true}
-        variant="pulse"
-      >
-        <Text>This is the content</Text>
-      </Skeleton>
+    <Text>Loading</Text>
+    <Skeleton loading={true} variant="pulse">
+      <Text>This is the content</Text>
+    </Skeleton>
 
-      <Text>Loaded</Text>
-      <Skeleton
-        loading={false}
-        variant="pulse"
-      >
-        <Text>This is the content</Text>
-      </Skeleton>
-    </Grid>
-
-</PreviewBox>
+    <Text>Loaded</Text>
+    <Skeleton loading={false} variant="pulse">
+      <Text>This is the content</Text>
+    </Skeleton>
+  </Grid>
+</Flex>
+```
 
 ### Composition
 
 Skeletons can be composed to represent more complex loading layouts.
 
-<PreviewBox title="composition.tsx" code={compositionSnippet}>
+```jsx
+<Flex gap="4" wrap="wrap" align="center" justify="center" className="w-full">
   <Flex direction="column" gap="2">
     <Skeleton variant="pulse" style={{ width: 120, height: 12 }} />
     <Skeleton variant="pulse" style={{ width: 200, height: 12 }} />
     <Skeleton variant="pulse" style={{ width: 160, height: 12 }} />
   </Flex>
-</PreviewBox>
+</Flex>
+```

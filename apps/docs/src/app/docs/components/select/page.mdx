@@ -1,27 +1,26 @@
-import { Select, Text } from "@locus-ui/components";
-import { ComponentPreview } from "@/components/component-preview";
-import { PreviewBox } from "@/components/preview-box";
-import { CodeBox } from "@/components/code-box";
-export const importSnippet = `import { Select } from "@locus-ui/components";`;
+import { ViewSourceLink } from "@/components/markdown/view-source-link";
+import { Select, Text, Flex } from "@locus-ui/components";
 
-export const indexSnippet = `${importSnippet}
-import styles from "./styles.css";
+# Select Component
 
-export default function SelectExample() {
-  return (
-    <Select.Root variant="outlined">
-      <Select.Label position="top">Fruit</Select.Label>
-      <Select.Trigger />
-      <Select.Content>
-        <Select.Item value="apple">Apple</Select.Item>
-        <Select.Item value="banana">Banana</Select.Item>
-        <Select.Item value="mango">Mango</Select.Item>
-      </Select.Content>
-    </Select.Root>
-  );
-}`;
+A versatile Select component for choosing from a list of options.
 
-export const styleSnippet = `.select-root[data-variant] {
+```jsx featured
+<Flex gap="4" wrap="wrap" align="center" justify="center" className="w-full">
+  <Select.Root variant="outlined">
+    <Select.Label position="top">Fruit</Select.Label>
+    <Select.Trigger />
+    <Select.Content>
+      <Select.Item value="apple">Apple</Select.Item>
+      <Select.Item value="banana">Banana</Select.Item>
+      <Select.Item value="mango">Mango</Select.Item>
+    </Select.Content>
+  </Select.Root>
+</Flex>
+```
+
+```css preview
+.select-root[data-variant] {
   flex: 1;
   display: flex;
   flex-wrap: wrap;
@@ -64,9 +63,17 @@ export const styleSnippet = `.select-root[data-variant] {
   box-shadow: var(--shadow-md);
   backdrop-filter: blur(var(--lcs-backdrop-blur, 2px));
   overflow: hidden;
-}`;
+}
+```
 
-export const anatomySnippet = `${importSnippet}
+<ViewSourceLink href="https://github.com/LocusInc/locus-ui/tree/main/packages/locus-ui/src/components/select" />
+
+## Anatomy
+
+Import the component and its parts:
+
+```jsx code
+import { Select } from "@locus-ui/components";
 
 <Select.Root>
   <Select.Label />
@@ -77,111 +84,8 @@ export const anatomySnippet = `${importSnippet}
     </Select.Group>
     <Select.Separator />
   </Select.Content>
-</Select.Root>;`;
-
-export const labelPositionsSnippet = `${importSnippet}
-
-export default function SelectLabelPositionsExample() {
-  const labelPositions = ["top", "left", "inside"];
-
-  return labelPositions.map((position) => (
-    <Select.Root key={position} variant="outlined">
-      <Select.Label position={position}>
-        {position.charAt(0).toUpperCase() + position.slice(1)}
-      </Select.Label>
-      <Select.Trigger />
-      <Select.Content>
-        <Select.Item value="option1">Option 1</Select.Item>
-        <Select.Item value="option2">Option 2</Select.Item>
-        <Select.Item value="option3">Option 3</Select.Item>
-      </Select.Content>
-    </Select.Root>
-  ));
-}`;
-
-export const variantsSnippet = `${importSnippet}
-
-export default function SelectVariantsExample() {
-  const variants = ["outlined", "solid", "clear"];
-
-  return variants.map((variant) => (
-    <Select.Root key={variant} variant={variant}>
-      <Select.Label position="left">
-        {variant.charAt(0).toUpperCase() + variant.slice(1)}
-      </Select.Label>
-      <Select.Trigger />
-      <Select.Content>
-        <Select.Item value="option1">Option 1</Select.Item>
-        <Select.Item value="option2">Option 2</Select.Item>
-        <Select.Item value="option3">Option 3</Select.Item>
-      </Select.Content>
-    </Select.Root>
-  ));
-}`;
-
-export const groupsSnippet = `${importSnippet}
-
-export default function SelectGroupsExample() {
-  return (
-    <Select.Root variant="solid">
-      <Select.Trigger />
-      <Select.Content>
-        <Select.Group title="Group 1">
-          <Select.Item value="option1">Option 1</Select.Item>
-          <Select.Item value="option2">Option 2</Select.Item>
-        </Select.Group>
-
-        <Select.Separator />
-
-        <Select.Group title="Group 2">
-          <Select.Item value="option3" disabled>
-            Option 3
-          </Select.Item>
-          <Select.Item value="option4">Option 4</Select.Item>
-        </Select.Group>
-      </Select.Content>
-    </Select.Root>
-  );
-}`;
-
-export const labelPositions = ["top", "left", "inside"];
-export const variants = ["outlined", "solid", "clear"];
-
-# Select Component
-
-A versatile Select component for choosing from a list of options.
-
-<ComponentPreview
-  codeSnippets={[
-    {
-      title: "index.tsx",
-      code: indexSnippet,
-    },
-    {
-      title: "styles.css",
-      code: styleSnippet,
-    },
-  ]}
-  source="https://github.com/LocusInc/locus-ui/tree/main/packages/locus-ui/src/components/select"
->
-  <Select.Root variant="outlined">
-    <Select.Label position="top">Fruit</Select.Label>
-    <Select.Trigger />
-    <Select.Content>
-      <Select.Item value="apple">Apple</Select.Item>
-      <Select.Item value="banana">Banana</Select.Item>
-      <Select.Item value="mango">Mango</Select.Item>
-    </Select.Content>
-  </Select.Root>
-</ComponentPreview>
-
-## Anatomy
-
-Import the component and its parts:
-
-<CodeBox title="Anatomy" language="typescript" className="my-2">
-  {anatomySnippet}
-</CodeBox>
+</Select.Root>;
+```
 
 ## Examples
 
@@ -189,8 +93,9 @@ Import the component and its parts:
 
 The label can be positioned with the `position` prop: `top`, `left`, or `inside`.
 
-<PreviewBox title="label-positions.tsx" code={labelPositionsSnippet}>
-  {labelPositions.map((position) => (
+```jsx
+<Flex gap="4" wrap="wrap" align="center" justify="center" className="w-full">
+  {["top", "left", "inside"].map((position) => (
     <Select.Root key={position} variant="outlined">
       <Select.Label position={position}>
         {position.charAt(0).toUpperCase() + position.slice(1)}
@@ -203,14 +108,16 @@ The label can be positioned with the `position` prop: `top`, `left`, or `inside`
       </Select.Content>
     </Select.Root>
   ))}
-</PreviewBox>
+</Flex>
+```
 
 ### Variants
 
 Select components come with three built in variants, `outlined`, `solid`, and `clear`, each shown across all label positions.
 
-<PreviewBox title="variants.tsx" code={variantsSnippet}>
-  {variants.map((variant) => (
+```jsx
+<Flex gap="4" wrap="wrap" align="center" justify="center" className="w-full">
+  {["outlined", "solid", "clear"].map((variant) => (
     <Select.Root key={variant} variant={variant}>
       <Select.Label position="left">
         {variant.charAt(0).toUpperCase() + variant.slice(1)}
@@ -223,13 +130,15 @@ Select components come with three built in variants, `outlined`, `solid`, and `c
       </Select.Content>
     </Select.Root>
   ))}
-</PreviewBox>
+</Flex>
+```
 
 ### Groups
 
 Items can be organized into groups using `Select.Group` with a `title`, separated by `Select.Separator`.
 
-<PreviewBox title="groups.tsx" code={groupsSnippet}>
+```jsx
+<Flex gap="4" wrap="wrap" align="center" justify="center" className="w-full">
   <Select.Root variant="solid">
     <Select.Trigger />
     <Select.Content>
@@ -246,4 +155,5 @@ Items can be organized into groups using `Select.Group` with a `title`, separate
       </Select.Group>
     </Select.Content>
   </Select.Root>
-</PreviewBox>
+</Flex>
+```

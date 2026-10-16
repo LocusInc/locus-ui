@@ -1,68 +1,141 @@
-import { Theme, Button, Text, Box, useTheme } from "@locus-ui/components";
-import { ComponentPreview } from "@/components/component-preview";
-import { PreviewBox } from "@/components/preview-box";
-import { CodeBox } from "@/components/code-box";
-export const importSnippet = `import { Theme, useTheme, ThemeControl } from "@locus-ui/components";`;
+import { ViewSourceLink } from "@/components/markdown/view-source-link";
+import { Theme, Button, Text, Box, Flex } from "@locus-ui/components";
 
-export const indexSnippet = `import { Theme } from "@locus-ui/components";
-import type { ReactNode } from "react";
+# Theme
 
-export default function ThemeExample({ children }: { children: ReactNode }) {
-  return (
-    <Theme appearance="light" radius="md" roundness="3" spacing="md">
-      {children}
-    </Theme>
-  );
-}`;
+The Theme component provides global and scoped theming for your application. It manages appearance (light/dark), border radius, roundness, spacing, and custom color tokens. Nest Theme components to create scoped overrides.
 
-export const anatomySnippet = `import { Theme, useTheme, ThemeControl } from "@locus-ui/components";
+```jsx featured
+<Flex gap="4" wrap="wrap" align="center" justify="center" className="w-full">
+  <Theme appearance="light" radius="md" spacing="md">
+    <Box className="flex gap-2 items-center">
+      <Button variant="solid">Themed Button</Button>
+    </Box>
+  </Theme>
+</Flex>
+```
+
+<ViewSourceLink href="https://github.com/LocusInc/locus-ui/tree/main/packages/locus-ui/src/components/theme" />
+
+## Anatomy
+
+Import the component and its parts:
+
+```jsx code
+import { Theme, useTheme, ThemeControl } from "@locus-ui/components";
 
 <Theme appearance="light">
   <ThemeControl />
   {children}
-</Theme>;`;
+</Theme>;
+```
 
-export const appearanceSnippet = `import { Theme, Text, Box } from "@locus-ui/components";
+- **`Theme`** — Root provider that manages theme state and CSS variables.
+- **`useTheme`** — Hook to access and modify the current theme values.
+- **`ThemeControl`** — A floating panel (toggled with `Alt+T`) for adjusting theme settings at runtime.
 
-export default function ThemeAppearanceExample() {
-  return (
-    <Box className="flex gap-4">
-      <Theme appearance="light">
-        <Text>Light theme content</Text>
-      </Theme>
+## Examples
 
-      <Theme appearance="dark">
-        <Text>Dark theme content</Text>
-      </Theme>
-    </Box>
-  );
-}`;
+### Appearance
 
-export const radiusSnippet = `import { Theme, Button } from "@locus-ui/components";
+The `appearance` prop controls the color scheme. Set it to `"light"`, `"dark"`, or `"inherit"` to follow the parent theme.
 
-export default function ThemeRadiusExample() {
-  const radii = ["none", "xs", "sm", "md", "lg", "xl", "full"];
+```jsx
+<Flex gap="4" wrap="wrap" align="center" justify="center" className="w-full">
+  <Box className="flex gap-4">
+    <Theme appearance="light">
+      <Box className="p-4 rounded bg-[rgb(var(--bg-1))]">
+        <Text>Light</Text>
+      </Box>
+    </Theme>
+    <Theme appearance="dark">
+      <Box className="p-4 rounded bg-[rgb(var(--bg-1))]">
+        <Text>Dark</Text>
+      </Box>
+    </Theme>
+  </Box>
+</Flex>
+```
 
-  return radii.map((radius) => (
+### Radius
+
+The `radius` prop sets the base border radius for all child components. Options: `"none"`, `"xs"`, `"sm"`, `"md"`, `"lg"`, `"xl"`, `"full"`.
+
+```jsx
+<Flex gap="4" wrap="wrap" align="center" justify="center" className="w-full">
+  {["none", "xs", "sm", "md", "lg", "xl", "full"].map((radius) => (
     <Theme key={radius} radius={radius}>
       <Button variant="solid">{radius.toUpperCase()}</Button>
     </Theme>
-  ));
-}`;
+  ))}
+</Flex>
+```
 
-export const spacingSnippet = `import { Theme, Button } from "@locus-ui/components";
+### Spacing
 
-export default function ThemeSpacingExample() {
-  const spacings = ["xs", "sm", "md", "lg", "xl"];
+The `spacing` prop controls the base spacing scale used by child components. Options: `"xs"`, `"sm"`, `"md"`, `"lg"`, `"xl"`.
 
-  return spacings.map((spacing) => (
+```jsx
+<Flex gap="4" wrap="wrap" align="center" justify="center" className="w-full">
+  {["xs", "sm", "md", "lg", "xl"].map((spacing) => (
     <Theme key={spacing} spacing={spacing}>
       <Button variant="solid">{spacing.toUpperCase()}</Button>
     </Theme>
-  ));
-}`;
+  ))}
+</Flex>
+```
 
-export const useThemeSnippet = `import { useTheme, Button, Text } from "@locus-ui/components";
+### Custom Colors
+
+Use the `colors` prop to override theme color tokens. You can provide a flat object of colors, or separate `light` and `dark` overrides.
+
+```jsx
+<Flex gap="4" wrap="wrap" align="center" justify="center" className="w-full">
+  <Theme colors={{ primary: "teal" }}>
+    <Button variant="solid">Custom Primary</Button>
+  </Theme>
+</Flex>
+```
+
+### Nested Themes
+
+Theme components can be nested to create scoped overrides. Child themes inherit values from their parent and only override what you specify.
+
+```jsx
+<Flex gap="4" wrap="wrap" align="center" justify="center" className="w-full">
+  <Theme appearance="light" radius="md">
+    <Box className="flex gap-2 items-center">
+      <Button variant="solid">Parent Theme</Button>
+      <Theme appearance="dark" radius="full">
+        <Button variant="solid">Sub Theme</Button>
+      </Theme>
+    </Box>
+  </Theme>
+</Flex>
+```
+
+### useTheme Hook
+
+The `useTheme` hook provides access to the current theme values and change handlers from within any child component.
+
+```jsx
+<Flex
+  gap="4"
+  wrap="wrap"
+  align="center"
+  justify="center"
+  className="w-full"
+  direction="column"
+>
+  <Text>Current appearance is controlled by the root Theme</Text>
+</Flex>
+```
+
+<details>
+<summary>Implementation</summary>
+
+```tsx
+import { useTheme, Button, Text } from "@locus-ui/components";
 
 export default function ThemeToggle() {
   const { appearance, onAppearanceChange } = useTheme();
@@ -80,9 +153,33 @@ export default function ThemeToggle() {
       </Button>
     </>
   );
-}`;
+}
+```
 
-export const themeControlSnippet = `import { Theme, ThemeControl } from "@locus-ui/components";
+</details>
+
+### ThemeControl
+
+The `ThemeControl` component renders a floating panel with select dropdowns for all theme settings. Toggle it with `Alt+T`. Use the `position` prop to control placement.
+
+```jsx
+<Flex
+  gap="4"
+  wrap="wrap"
+  align="center"
+  justify="center"
+  className="w-full"
+  direction="column"
+>
+  <Text>Press Alt+T to toggle the ThemeControl panel</Text>
+</Flex>
+```
+
+<details>
+<summary>Implementation</summary>
+
+```tsx
+import { Theme, ThemeControl } from "@locus-ui/components";
 import type { ReactNode } from "react";
 
 export default function ThemeControlExample({
@@ -96,154 +193,7 @@ export default function ThemeControlExample({
       {children}
     </Theme>
   );
-}`;
+}
+```
 
-export const colorsSnippet = `import { Theme, Button } from "@locus-ui/components";
-
-export default function ThemeColorsExample() {
-  return (
-    <Theme
-      colors={{
-        light: { primary: "teal", background1: "#f0fdf4" },
-        dark: { primary: "cyan", background1: "#042f2e" },
-      }}
-    >
-      <Button variant="solid">Custom Colors</Button>
-    </Theme>
-  );
-}`;
-
-export const nestedSnippet = `import { Theme, Button } from "@locus-ui/components";
-
-export default function ThemeNestedExample() {
-  return (
-    <Theme appearance="light" radius="md">
-      <Button variant="solid">Parent Theme</Button>
-
-      <Theme appearance="dark" radius="full">
-        <Button variant="solid">Sub Theme</Button>
-      </Theme>
-    </Theme>
-  );
-}`;
-
-export const radii = ["none", "xs", "sm", "md", "lg", "xl", "full"];
-export const spacings = ["xs", "sm", "md", "lg", "xl"];
-
-# Theme
-
-The Theme component provides global and scoped theming for your application. It manages appearance (light/dark), border radius, roundness, spacing, and custom color tokens. Nest Theme components to create scoped overrides.
-
-<ComponentPreview
-  codeSnippets={[
-    {
-      title: "index.tsx",
-      code: indexSnippet,
-    },
-  ]}
-  source="https://github.com/LocusInc/locus-ui/tree/main/packages/locus-ui/src/components/theme"
->
-  <Theme appearance="light" radius="md" spacing="md">
-    <Box className="flex gap-2 items-center">
-      <Button variant="solid">Themed Button</Button>
-    </Box>
-  </Theme>
-</ComponentPreview>
-
-## Anatomy
-
-Import the component and its parts:
-
-<CodeBox title="Anatomy" language="typescript" className="my-2">
-  {anatomySnippet}
-</CodeBox>
-
-- **`Theme`** — Root provider that manages theme state and CSS variables.
-- **`useTheme`** — Hook to access and modify the current theme values.
-- **`ThemeControl`** — A floating panel (toggled with `Alt+T`) for adjusting theme settings at runtime.
-
-## Examples
-
-### Appearance
-
-The `appearance` prop controls the color scheme. Set it to `"light"`, `"dark"`, or `"inherit"` to follow the parent theme.
-
-<PreviewBox title="appearance.tsx" code={appearanceSnippet}>
-  <Box className="flex gap-4">
-    <Theme appearance="light">
-      <Box className="p-4 rounded bg-[rgb(var(--bg-1))]">
-        <Text>Light</Text>
-      </Box>
-    </Theme>
-    <Theme appearance="dark">
-      <Box className="p-4 rounded bg-[rgb(var(--bg-1))]">
-        <Text>Dark</Text>
-      </Box>
-    </Theme>
-  </Box>
-</PreviewBox>
-
-### Radius
-
-The `radius` prop sets the base border radius for all child components. Options: `"none"`, `"xs"`, `"sm"`, `"md"`, `"lg"`, `"xl"`, `"full"`.
-
-<PreviewBox title="radius.tsx" code={radiusSnippet}>
-  {radii.map((radius) => (
-    <Theme key={radius} radius={radius}>
-      <Button variant="solid">{radius.toUpperCase()}</Button>
-    </Theme>
-  ))}
-</PreviewBox>
-
-### Spacing
-
-The `spacing` prop controls the base spacing scale used by child components. Options: `"xs"`, `"sm"`, `"md"`, `"lg"`, `"xl"`.
-
-<PreviewBox title="spacing.tsx" code={spacingSnippet}>
-  {spacings.map((spacing) => (
-    <Theme key={spacing} spacing={spacing}>
-      <Button variant="solid">{spacing.toUpperCase()}</Button>
-    </Theme>
-  ))}
-</PreviewBox>
-
-### Custom Colors
-
-Use the `colors` prop to override theme color tokens. You can provide a flat object of colors, or separate `light` and `dark` overrides.
-
-<PreviewBox title="colors.tsx" code={colorsSnippet}>
-  <Theme colors={{ primary: "teal" }}>
-    <Button variant="solid">Custom Primary</Button>
-  </Theme>
-</PreviewBox>
-
-### Nested Themes
-
-Theme components can be nested to create scoped overrides. Child themes inherit values from their parent and only override what you specify.
-
-<PreviewBox title="nested.tsx" code={nestedSnippet}>
-  <Theme appearance="light" radius="md">
-    <Box className="flex gap-2 items-center">
-      <Button variant="solid">Parent Theme</Button>
-      <Theme appearance="dark" radius="full">
-        <Button variant="solid">Sub Theme</Button>
-      </Theme>
-    </Box>
-  </Theme>
-</PreviewBox>
-
-### useTheme Hook
-
-The `useTheme` hook provides access to the current theme values and change handlers from within any child component.
-
-<PreviewBox title="use-theme.tsx" code={useThemeSnippet} column>
-  <Text>Current appearance is controlled by the root Theme</Text>
-</PreviewBox>
-
-### ThemeControl
-
-The `ThemeControl` component renders a floating panel with select dropdowns for all theme settings. Toggle it with `Alt+T`. Use the `position` prop to control placement.
-
-<PreviewBox title="theme-control.tsx" code={themeControlSnippet} column>
-  <Text>Press Alt+T to toggle the ThemeControl panel</Text>
-</PreviewBox>
+</details>

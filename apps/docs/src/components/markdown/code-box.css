@@ -1,0 +1,294 @@
+.docs-preview,
+.code-panel {
+  min-width: 0;
+  border: 1px solid rgb(var(--border-1));
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.docs-preview-content {
+  background: rgb(var(--bg-1));
+}
+
+.docs-preview-featured {
+  background: linear-gradient(
+    to bottom right,
+    rgba(var(--secondary), 0.5),
+    rgba(var(--tertiary), 0.5)
+  );
+}
+
+.docs-preview-source {
+  border-top: 1px solid rgb(var(--border-1));
+}
+
+.code-panel-embedded {
+  border: 0;
+  border-radius: 0;
+}
+
+.code-panel-title {
+  padding: 8px 16px;
+  border-bottom: 1px solid rgb(var(--border-1));
+  background: rgb(var(--bg-1));
+  font-size: 0.8125rem;
+  color: rgb(var(--text-light));
+}
+
+/* Match the nearest Theme provider, including nested appearance overrides. */
+.code-panel {
+  --code-bg: #0d1117;
+  --code-text: #c9d1d9;
+  --code-control-bg: #161b22;
+  --code-control-hover: #21262d;
+  --code-border: #30363d;
+  --code-keyword: #ff7b72;
+  --code-title: #d2a8ff;
+  --code-literal: #79c0ff;
+  --code-string: #a5d6ff;
+  --code-builtin: #ffa657;
+  --code-comment: #8b949e;
+  --code-tag: #7ee787;
+  --code-bullet: #f2cc60;
+  --code-addition: #aff5b4;
+  --code-addition-bg: #033a16;
+  --code-deletion: #ffdcd7;
+  --code-deletion-bg: #67060c;
+}
+
+.code-panel[data-code-theme="light"] {
+  --code-bg: #f6f8fa;
+  --code-text: #24292e;
+  --code-control-bg: #ffffff;
+  --code-control-hover: #eaeef2;
+  --code-border: #d0d7de;
+  --code-keyword: #d73a49;
+  --code-title: #6f42c1;
+  --code-literal: #005cc5;
+  --code-string: #032f62;
+  --code-builtin: #953800;
+  --code-comment: #6a737d;
+  --code-tag: #22863a;
+  --code-bullet: #735c0f;
+  --code-addition: #22863a;
+  --code-addition-bg: #f0fff4;
+  --code-deletion: #b31d28;
+  --code-deletion-bg: #ffeef0;
+}
+
+.code-panel-body {
+  position: relative;
+  background: var(--code-bg);
+  color: var(--code-text);
+}
+
+.code-box {
+  margin: 0;
+  padding: 16px;
+  overflow-x: auto;
+  font-size: 0.8125rem;
+  line-height: 1.7;
+  tab-size: 2;
+}
+
+.code-box:focus-visible {
+  outline: 2px solid rgb(var(--primary));
+  outline-offset: -2px;
+}
+
+.code-box code.hljs {
+  display: block;
+  width: max-content;
+  min-width: 100%;
+  padding: 0 36px 0 0;
+  background: transparent;
+  font-family: var(--font-mono), ui-monospace, monospace;
+}
+
+.code-box-line {
+  display: inline-flex;
+  min-width: 100%;
+}
+
+.code-box-line-number {
+  display: inline-block;
+  min-width: 2.5em;
+  padding-right: 1em;
+  margin-right: 1em;
+  text-align: right;
+  opacity: 0.4;
+  border-right: 1px solid var(--code-border);
+  user-select: none;
+  flex-shrink: 0;
+}
+
+.code-box-line-content {
+  flex: 1;
+  white-space: pre;
+}
+
+.code-copy {
+  position: absolute;
+  z-index: 1;
+  top: 8px;
+  right: 8px;
+  display: grid;
+  place-items: center;
+  width: 30px;
+  height: 30px;
+  border: 1px solid var(--code-border);
+  border-radius: 5px;
+  background: var(--code-control-bg);
+  color: var(--code-text);
+  cursor: pointer;
+  opacity: 0;
+  transition: opacity 120ms;
+}
+
+.code-panel-body:hover .code-copy,
+.code-panel-body:focus-within .code-copy {
+  opacity: 1;
+}
+
+.code-copy:hover {
+  background: var(--code-control-hover);
+}
+
+.code-copy:focus-visible {
+  outline: 2px solid rgb(var(--primary));
+  outline-offset: 2px;
+}
+
+@media (hover: none) {
+  .code-copy {
+    opacity: 1;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .code-copy {
+    transition: none;
+  }
+}
+
+.code-box-toggle {
+  display: block;
+  width: 100%;
+  padding: 8px;
+  border: none;
+  background: var(--code-control-bg);
+  color: var(--code-text);
+  font-size: 0.8125rem;
+  cursor: pointer;
+  text-align: center;
+  border-top: 1px solid var(--code-border);
+}
+
+.code-box-toggle:hover {
+  background: var(--code-control-hover);
+}
+
+/* Syntax colors remain scoped to documentation code blocks. */
+.code-panel .hljs {
+  color: var(--code-text);
+}
+.code-panel
+  :is(
+    .hljs-doctag,
+    .hljs-keyword,
+    .hljs-template-tag,
+    .hljs-template-variable,
+    .hljs-type,
+    .hljs-variable.language_
+  ) {
+  color: var(--code-keyword);
+}
+.code-panel :is(.hljs-title, .hljs-title.class_, .hljs-title.function_) {
+  color: var(--code-title);
+}
+.code-panel
+  :is(
+    .hljs-attr,
+    .hljs-attribute,
+    .hljs-literal,
+    .hljs-meta,
+    .hljs-number,
+    .hljs-operator,
+    .hljs-selector-attr,
+    .hljs-selector-class,
+    .hljs-selector-id,
+    .hljs-variable
+  ) {
+  color: var(--code-literal);
+}
+.code-panel :is(.hljs-regexp, .hljs-string),
+.code-panel .hljs-meta .hljs-string {
+  color: var(--code-string);
+}
+.code-panel :is(.hljs-built_in, .hljs-symbol) {
+  color: var(--code-builtin);
+}
+.code-panel :is(.hljs-code, .hljs-comment, .hljs-formula) {
+  color: var(--code-comment);
+}
+.code-panel
+  :is(.hljs-name, .hljs-quote, .hljs-selector-pseudo, .hljs-selector-tag) {
+  color: var(--code-tag);
+}
+.code-panel .hljs-subst {
+  color: var(--code-text);
+}
+.code-panel .hljs-section {
+  color: var(--code-literal);
+  font-weight: 700;
+}
+.code-panel .hljs-bullet {
+  color: var(--code-bullet);
+}
+.code-panel .hljs-emphasis {
+  color: var(--code-text);
+  font-style: italic;
+}
+.code-panel .hljs-strong {
+  color: var(--code-text);
+  font-weight: 700;
+}
+.code-panel .hljs-addition {
+  color: var(--code-addition);
+  background: var(--code-addition-bg);
+}
+.code-panel .hljs-deletion {
+  color: var(--code-deletion);
+  background: var(--code-deletion-bg);
+}
+
+.docs-preview-tabs {
+  display: flex;
+  gap: 4px;
+  overflow-x: auto;
+  padding: 0 12px;
+  background: rgb(var(--bg-1));
+  border-bottom: 1px solid rgb(var(--border-1));
+}
+
+.docs-preview-tabs [role="tab"] {
+  padding: 8px 12px;
+  border-bottom: 2px solid transparent;
+  color: rgb(var(--text-light));
+  font-size: 0.8125rem;
+  white-space: nowrap;
+  cursor: pointer;
+}
+
+.docs-preview-tabs [aria-selected="true"] {
+  color: rgb(var(--text));
+  border-bottom-color: rgb(var(--primary));
+}
+
+.docs-preview-tabs [role="tab"]:hover {
+  color: rgb(var(--text));
+}
+.docs-preview-tabs [role="tab"]:focus-visible {
+  outline: 2px solid rgb(var(--primary));
+  outline-offset: -2px;
+}

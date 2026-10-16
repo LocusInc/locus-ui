@@ -1,16 +1,18 @@
-import { Button } from "@locus-ui/components";
-import { ComponentPreview } from "@/components/component-preview";
-import { PreviewBox } from "@/components/preview-box";
-import { CodeBox } from "@/components/code-box";
-export const importSnippet = `import { Button } from "@locus-ui/components";`;
+import { ViewSourceLink } from "@/components/markdown/view-source-link";
+import { Button, Flex } from "@locus-ui/components";
 
-export const indexSnippet = `${importSnippet}
+# Button Component
 
-export default function ButtonExample() {
-  return <Button variant="solid">Solid Button</Button>;
-}`;
+A versatile Button component for triggering actions and events.
 
-export const styleSnippet = `.button[data-variant] {
+```jsx featured
+<Flex gap="4" wrap="wrap" align="center" justify="center" className="w-full">
+  <Button variant="solid">Solid Button</Button>
+</Flex>
+```
+
+```css preview
+.button[data-variant] {
   --button-color: var(--color, var(--primary));
 
   height: fit-content;
@@ -25,133 +27,19 @@ export const styleSnippet = `.button[data-variant] {
     background-color: rgba(var(--button-color), 0.9);
   }
 }
-`;
+```
 
-export const anatomySnippet = `${importSnippet}
-
-<Button />;`;
-
-export const variantsSnippet = `${importSnippet}
-
-export default function ButtonVariantsExample() {
-  const variants = ["solid", "outlined", "muted", "clear"];
-
-  return variants.map((variant) => (
-    <Button key={variant} variant={variant}>
-      {variant.charAt(0).toUpperCase() + variant.slice(1)} Button
-    </Button>
-  ));
-}`;
-
-export const colorsSnippet = `${importSnippet}
-
-export default function ButtonColorsExample() {
-  const colors = [
-    "primary",
-    "secondary",
-    "tertiary",
-    "success",
-    "danger",
-    "warning",
-    "info",
-  ];
-
-  return colors.map((color) => (
-    <Button key={color} color={color} variant="muted">
-      {color.charAt(0).toUpperCase() + color.slice(1)} Button
-    </Button>
-  ));
-}`;
-
-export const sizesSnippet = `${importSnippet}
-
-export default function ButtonSizesExample() {
-  const sizes = ["xs", "sm", "md", "lg", "xl"];
-
-  return sizes.map((size) => (
-    <Button key={size} size={size} variant="muted">
-      {size.toUpperCase()} Button
-    </Button>
-  ));
-}`;
-
-export const statesSnippet = `${importSnippet}
-
-export default function ButtonStatesExample() {
-  return (
-    <>
-      <Button variant="solid">Default</Button>
-      <Button variant="solid" disabled>
-        Disabled
-      </Button>
-      <Button variant="solid" readonly>
-        Readonly
-      </Button>
-    </>
-  );
-}`;
-
-export const disabledVariantsSnippet = `${importSnippet}
-
-export default function ButtonDisabledVariantsExample() {
-  const variants = ["solid", "outlined", "muted", "clear"];
-
-  return variants.map((variant) => (
-    <Button disabled key={variant} variant={variant}>
-      {variant.charAt(0).toUpperCase() + variant.slice(1)} Disabled
-    </Button>
-  ));
-}`;
-
-export const highContrastSnippet = `${importSnippet}
-
-export default function ButtonHighContrastExample() {
-  return (
-    <Button highContrast variant="solid">
-      High Contrast
-    </Button>
-  );
-}`;
-
-export const variants = ["solid", "outlined", "muted", "clear"];
-export const colors = [
-  "primary",
-  "secondary",
-  "tertiary",
-  "success",
-  "danger",
-  "warning",
-  "info",
-];
-export const sizes = ["xs", "sm", "md", "lg", "xl"];
-
-# Button Component
-
-A versatile Button component for triggering actions and events.
-
-<ComponentPreview
-  codeSnippets={[
-    {
-      title: "index.tsx",
-      code: indexSnippet,
-    },
-    {
-      title: "styles.css",
-      code: styleSnippet,
-    },
-  ]}
-  source="https://github.com/LocusInc/locus-ui/tree/main/packages/locus-ui/src/components/button"
->
-  <Button variant="solid">Solid Button</Button>
-</ComponentPreview>
+<ViewSourceLink href="https://github.com/LocusInc/locus-ui/tree/main/packages/locus-ui/src/components/button" />
 
 ## Anatomy
 
 Import the component and its parts:
 
-<CodeBox title="Anatomy" language="typescript" className="my-2">
-  {anatomySnippet}
-</CodeBox>
+```jsx code
+import { Button } from "@locus-ui/components";
+
+<Button />;
+```
 
 ## Examples
 
@@ -159,43 +47,58 @@ Import the component and its parts:
 
 Button components come with four built in variants, `solid`, `outlined`, `muted`, and `clear`.
 
-<PreviewBox title="variants.tsx" code={variantsSnippet}>
-  {variants.map((variant) => (
+```jsx
+<Flex gap="4" wrap="wrap" align="center" justify="center" className="w-full">
+  {["solid", "outlined", "muted", "clear"].map((variant) => (
     <Button key={variant} variant={variant}>
       {variant.charAt(0).toUpperCase() + variant.slice(1)} Button
     </Button>
   ))}
-</PreviewBox>
+</Flex>
+```
 
 ### Colors
 
 The button component uses the `color` prop to allow for predefined and custom colors.
 
-<PreviewBox title="colors.tsx" code={colorsSnippet}>
-  {colors.map((color) => (
+```jsx
+<Flex gap="4" wrap="wrap" align="center" justify="center" className="w-full">
+  {[
+    "primary",
+    "secondary",
+    "tertiary",
+    "success",
+    "danger",
+    "warning",
+    "info",
+  ].map((color) => (
     <Button key={color} color={color} variant="muted">
       {color.charAt(0).toUpperCase() + color.slice(1)} Button
     </Button>
   ))}
-</PreviewBox>
+</Flex>
+```
 
 ### Sizes
 
 To manage the size of the button component you can provide a default or custom size through the `size` prop.
 
-<PreviewBox title="sizes.tsx" code={sizesSnippet}>
-  {sizes.map((size) => (
+```jsx
+<Flex gap="4" wrap="wrap" align="center" justify="center" className="w-full">
+  {["xs", "sm", "md", "lg", "xl"].map((size) => (
     <Button key={size} size={size} variant="muted">
       {size.toUpperCase()} Button
     </Button>
   ))}
-</PreviewBox>
+</Flex>
+```
 
 ### States
 
 Buttons can be given the `disabled` and `readonly` states.
 
-<PreviewBox title="states.tsx" code={statesSnippet}>
+```jsx
+<Flex gap="4" wrap="wrap" align="center" justify="center" className="w-full">
   <Button variant="solid">Default</Button>
   <Button variant="solid" disabled>
     Disabled
@@ -203,24 +106,29 @@ Buttons can be given the `disabled` and `readonly` states.
   <Button variant="solid" readonly>
     Readonly
   </Button>
-</PreviewBox>
+</Flex>
+```
 
 Each variant has its own disabled styling.
 
-<PreviewBox title="disabled-variants.tsx" code={disabledVariantsSnippet}>
-  {variants.map((variant) => (
+```jsx
+<Flex gap="4" wrap="wrap" align="center" justify="center" className="w-full">
+  {["solid", "outlined", "muted", "clear"].map((variant) => (
     <Button disabled key={variant} variant={variant}>
       {variant.charAt(0).toUpperCase() + variant.slice(1)} Disabled
     </Button>
   ))}
-</PreviewBox>
+</Flex>
+```
 
 ### High Contrast
 
 The `highContrast` prop enables high contrast mode for better visibility. High contrast button styles are only available with the `solid` variant.
 
-<PreviewBox title="high-contrast.tsx" code={highContrastSnippet}>
+```jsx
+<Flex gap="4" wrap="wrap" align="center" justify="center" className="w-full">
   <Button highContrast variant="solid">
     <span>High Contrast</span>
   </Button>
-</PreviewBox>
+</Flex>
+```

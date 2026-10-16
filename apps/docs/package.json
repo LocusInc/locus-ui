@@ -3,12 +3,10 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "concurrently -k \"node scripts/generate-markdown.mjs --watch\" \"next dev --turbopack\"",
+    "dev": "next dev --turbopack",
     "build": "npm run build --prefix ../../packages/locus-ui && next build",
     "start": "next start",
-    "lint": "next lint",
-    "docs:markdown": "node scripts/generate-markdown.mjs",
-    "prebuild": "npm run docs:markdown"
+    "lint": "next lint"
   },
   "dependencies": {
     "@locus-ui/components": "*",

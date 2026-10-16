@@ -9,7 +9,7 @@
   --radius-6: calc(16px * var(--component-radius));
 
   --component-radius: var(--custom-radius, var(--theme-radius));
-  --lcs-radius: calc(var(--component-roundness) * var(--component-radius));
+  --lcs-radius: calc(var(--component-roundness, var(--theme-roundness, 0px)) * var(--component-radius));
   border-radius: var(--lcs-radius);
 }
 
@@ -79,10 +79,10 @@
 [data-radius-t] {
   --radius-t: var(--custom-radius-t);
   border-top-left-radius: calc(
-    var(--component-roundness, var(--theme-radius)) * var(--radius-t)
+    var(--component-roundness, var(--theme-roundness, 0px)) * var(--radius-t)
   );
   border-top-right-radius: calc(
-    var(--component-roundness, var(--theme-radius)) * var(--radius-t)
+    var(--component-roundness, var(--theme-roundness, 0px)) * var(--radius-t)
   );
 }
 
@@ -123,10 +123,10 @@
 [data-radius-b] {
   --radius-b: var(--custom-radius-b);
   border-bottom-left-radius: calc(
-    var(--component-roundness, var(--theme-radius)) * var(--radius-b)
+    var(--component-roundness, var(--theme-roundness, 0px)) * var(--radius-b)
   );
   border-bottom-right-radius: calc(
-    var(--component-roundness, var(--theme-radius)) * var(--radius-b)
+    var(--component-roundness, var(--theme-roundness, 0px)) * var(--radius-b)
   );
 }
 
@@ -167,10 +167,10 @@
 [data-radius-l] {
   --radius-l: var(--custom-radius-l);
   border-top-left-radius: calc(
-    var(--component-roundness, var(--theme-radius)) * var(--radius-l)
+    var(--component-roundness, var(--theme-roundness, 0px)) * var(--radius-l)
   );
   border-bottom-left-radius: calc(
-    var(--component-roundness, var(--theme-radius)) * var(--radius-l)
+    var(--component-roundness, var(--theme-roundness, 0px)) * var(--radius-l)
   );
 }
 
@@ -211,10 +211,10 @@
 [data-radius-r] {
   --radius-r: var(--custom-radius-r);
   border-top-right-radius: calc(
-    var(--component-roundness, var(--theme-radius)) * var(--radius-r)
+    var(--component-roundness, var(--theme-roundness, 0px)) * var(--radius-r)
   );
   border-bottom-right-radius: calc(
-    var(--component-roundness, var(--theme-radius)) * var(--radius-r)
+    var(--component-roundness, var(--theme-roundness, 0px)) * var(--radius-r)
   );
 }
 
@@ -255,7 +255,7 @@
 [data-radius-tl] {
   --radius-tl: var(--custom-radius-tl);
   border-top-left-radius: calc(
-    var(--component-roundness, var(--theme-radius)) * var(--radius-tl)
+    var(--component-roundness, var(--theme-roundness, 0px)) * var(--radius-tl)
   );
 }
 
@@ -295,7 +295,7 @@
 [data-radius-tr] {
   --radius-tr: var(--custom-radius-tr);
   border-top-right-radius: calc(
-    var(--component-roundness, var(--theme-radius)) * var(--radius-tr)
+    var(--component-roundness, var(--theme-roundness, 0px)) * var(--radius-tr)
   );
 }
 
@@ -335,7 +335,7 @@
 [data-radius-bl] {
   --radius-bl: var(--custom-radius-bl);
   border-bottom-left-radius: calc(
-    var(--component-roundness, var(--theme-radius)) * var(--radius-bl)
+    var(--component-roundness, var(--theme-roundness, 0px)) * var(--radius-bl)
   );
 }
 
@@ -375,7 +375,7 @@
 [data-radius-br] {
   --radius-br: var(--custom-radius-br);
   border-bottom-right-radius: calc(
-    var(--component-roundness, var(--theme-radius)) * var(--radius-br)
+    var(--component-roundness, var(--theme-roundness, 0px)) * var(--radius-br)
   );
 }
 

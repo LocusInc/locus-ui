@@ -1,15 +1,27 @@
 import { Text } from "@locus-ui/components";
 import type { MDXComponents } from "mdx/types";
-import React from "react";
+import type { ReactElement, ReactNode } from "react";
 import { DocsPageTitle } from "./src/components/docs-page";
-import { CodeBox } from "./src/components/code-box";
+import { CodeBox } from "./src/components/markdown/code-box";
+import { PreviewBox } from "./src/components/markdown/preview-box";
 
 export function useMDXComponents(components: MDXComponents): MDXComponents {
   return {
+    PreviewBox,
     pre: ({ children }) => {
-      const code = children as React.ReactElement<{ children: string; className?: string }>;
-      const language = code.props.className?.replace("language-", "") ?? "plaintext";
-      const aliases: Record<string, string> = { tsx: "typescript", ts: "typescript", jsx: "javascript", js: "javascript", sh: "bash" };
+      const code = children as ReactElement<{
+        children: string;
+        className?: string;
+      }>;
+      const language =
+        code.props.className?.replace("language-", "") ?? "plaintext";
+      const aliases: Record<string, string> = {
+        tsx: "typescript",
+        ts: "typescript",
+        jsx: "javascript",
+        js: "javascript",
+        sh: "bash",
+      };
       return (
         <CodeBox
           title={language === "bash" || language === "sh" ? "Terminal" : "Code"}
@@ -20,9 +32,7 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
         </CodeBox>
       );
     },
-    h1: (props) => (
-      <DocsPageTitle id={slugify(props.children)} {...props} />
-    ),
+    h1: (props) => <DocsPageTitle id={slugify(props.children)} {...props} />,
     h2: (props) => (
       <h2 id={slugify(props.children)}>
         <Text mt="8" mb="4" className="text-3xl font-semibold" {...props} />
@@ -44,7 +54,7 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
   };
 }
 
-function slugify(children: React.ReactNode): string {
+function slugify(children: ReactNode): string {
   const text = typeof children === "string" ? children : "";
   return text
     .toLowerCase()

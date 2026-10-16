@@ -1,75 +1,19 @@
+import { ViewSourceLink } from "@/components/markdown/view-source-link";
 import { Box, Flex, Text } from "@locus-ui/components";
-import { ComponentPreview } from "@/components/component-preview";
-import { PreviewBox } from "@/components/preview-box";
-export const importSnippet = `import { Box, Text } from "@locus-ui/components";`;
-
-export const indexSnippet = `${importSnippet}
-
-export default function SpacingExample() {
-  return (
-    <Box spacing="lg" p="4" className="border">
-      <Text>Large Spacing</Text>
-    </Box>
-  );
-}`;
-
-export const spacingPropertySnippet = `${importSnippet}
-
-export default function SpacingSpacingPropertyExample() {
-  const spacingValues = ["xs", "sm", "md", "lg", "xl"];
-
-  return spacingValues.map((size) => (
-    <Box p="4" key={size} className="border" spacing={size}>
-      {size}
-    </Box>
-  ));
-}`;
-
-export const spacingInheritanceSnippet = `${importSnippet}
-
-export default function SpacingSpacingInheritanceExample() {
-  return (
-    <Box
-      p="2"
-      m="2"
-      spacing="xl"
-      className="border border-[rgb(var(--border-1))]"
-    >
-      Parent Box (XL Spacing, p=2, m=2)
-      <Box
-        p="2"
-        m="2"
-        spacing="inherit"
-        className="border border-[rgb(var(--border-1))]"
-      >
-        Child 1 (Inherited Spacing, p=2, m=2)
-      </Box>
-      <Box p="2" m="2" className="border border-[rgb(var(--border-1))]">
-        Child 2 (Default Spacing, p=2, m=2)
-      </Box>
-    </Box>
-  );
-}`;
-
-export const spacingValues = ["xs", "sm", "md", "lg", "xl"];
 
 # Spacing Property
 
 Controls the overall spacing scale for elements. Supports scaled values and inheritance from parent elements.
 
-<ComponentPreview
-  codeSnippets={[
-    {
-      title: "index.tsx",
-      code: indexSnippet,
-    },
-  ]}
-  source="https://github.com/LocusInc/locus-ui/tree/main/packages/locus-ui/src/props"
->
+```jsx featured
+<Flex gap="4" wrap="wrap" align="center" justify="center" className="w-full">
   <Box spacing="lg" p="4" className="border border-[rgb(var(--border-1))]">
     <Text>Large Spacing</Text>
   </Box>
-</ComponentPreview>
+</Flex>
+```
+
+<ViewSourceLink href="https://github.com/LocusInc/locus-ui/tree/main/packages/locus-ui/src/props" />
 
 ## Examples
 
@@ -77,9 +21,10 @@ Controls the overall spacing scale for elements. Supports scaled values and inhe
 
 The `spacing` prop sets the overall spacing scale for an element: `xs`, `sm`, `md`, `lg`, or `xl`.
 
-<PreviewBox title="spacing-property.tsx" code={spacingPropertySnippet}>
+```jsx
+<Flex gap="4" wrap="wrap" align="center" justify="center" className="w-full">
   <Flex gap="2" align="center">
-    {spacingValues.map((size) => (
+    {["xs", "sm", "md", "lg", "xl"].map((size) => (
       <Box
         p="4"
         key={size}
@@ -90,13 +35,15 @@ The `spacing` prop sets the overall spacing scale for an element: `xs`, `sm`, `m
       </Box>
     ))}
   </Flex>
-</PreviewBox>
+</Flex>
+```
 
 ### Spacing Inheritance
 
 Child elements use the theme spacing unless they are given `spacing="inherit"`.
 
-<PreviewBox title="spacing-inheritance.tsx" code={spacingInheritanceSnippet}>
+```jsx
+<Flex gap="4" wrap="wrap" align="center" justify="center" className="w-full">
   <Box
     p="2"
     m="2"
@@ -112,14 +59,9 @@ Child elements use the theme spacing unless they are given `spacing="inherit"`.
     >
       Child 1 (Inherited Spacing, p=2, m=2)
     </Box>
-
-    <Box
-      p="2"
-      m="2"
-      className="border border-[rgb(var(--border-1))]"
-    >
+    <Box p="2" m="2" className="border border-[rgb(var(--border-1))]">
       Child 2 (Default Spacing, p=2, m=2)
     </Box>
-
   </Box>
-</PreviewBox>
+</Flex>
+```

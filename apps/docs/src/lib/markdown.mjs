@@ -58,17 +58,17 @@ export function toMarkdown(source) {
   function render(node) {
     if (node.type === "mdxjsEsm") return "";
     if (node.type === "mdxJsxFlowElement" || node.type === "mdxJsxTextElement") {
+      if (node.name === "ViewSourceLink") {
+        return `[View Source](${attribute(node, "href")})`;
+      }
       if (node.name === "CodeBox") {
         const content = node.children.filter((child) => child.type === "mdxFlowExpression" || child.type === "mdxTextExpression");
         if (content.length !== 1) throw new Error("CodeBox Markdown requires one static code expression");
         return fence(expression(content[0]), attribute(node, "language") ?? "text");
       }
       if (node.name === "PreviewBox" && attribute(node, "code") !== undefined) {
-        return fence(attribute(node, "code"));
-      }
-      if (node.name === "ComponentPreview") {
-        return attribute(node, "codeSnippets").map((snippet) =>
-          fence(snippet.code, snippet.title.endsWith(".css") ? "css" : "tsx")).join("\n\n");
+        const styles = attribute(node, "styles");
+        return fence(attribute(node, "code")) + (styles === undefined ? "" : "\n\n" + fence(styles, "css"));
       }
       if (node.name === "PropertyTable") {
         return ["| Property | Type | Values | Default |", "| --- | --- | --- | --- |",

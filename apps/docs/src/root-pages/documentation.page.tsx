@@ -108,7 +108,7 @@ const DocsLayout = ({ children }: DocsLayoutProps) => {
       <Flex
         px="4"
         pt="8"
-        className="flex-1 lg:flex! hidden! sticky top-0 self-start max-h-screen overflow-y-auto"
+        className="flex-1 min-w-0 lg:flex! hidden! sticky top-0 self-start max-h-screen overflow-y-auto"
       >
         <TableOfContents />
       </Flex>

@@ -1,25 +1,24 @@
+import { ViewSourceLink } from "@/components/markdown/view-source-link";
 import { Flex, Panel, Separator, Text } from "@locus-ui/components";
-import { ComponentPreview } from "@/components/component-preview";
-import { PreviewBox } from "@/components/preview-box";
-import { CodeBox } from "@/components/code-box";
-export const importSnippet = `import { Separator } from "@locus-ui/components";`;
 
-export const indexSnippet = `import { Flex, Panel, Separator, Text } from "@locus-ui/components";
-import styles from "./styles.css";
+# Separator Component
 
-export default function SeparatorExample() {
-  return (
-    <Panel px="4" py="2" variant="outlined">
-      <Flex gap="2" direction="column">
-        <Text>My Movie</Text>
-        <Separator />
-        <Text>A movie made by me</Text>
-      </Flex>
-    </Panel>
-  );
-}`;
+A component for visually separating content with a line.
 
-export const styleSnippet = `.separator[data-direction] {
+```jsx featured
+<Flex gap="4" wrap="wrap" align="center" justify="center" className="w-full">
+  <Panel px="4" py="2" variant="outlined">
+    <Flex gap="2" direction="column">
+      <Text>My Movie</Text>
+      <Separator />
+      <Text>A movie made by me</Text>
+    </Flex>
+  </Panel>
+</Flex>
+```
+
+```css preview
+.separator[data-direction] {
   &[data-direction="horizontal"] {
     width: 100%;
     height: 1px;
@@ -33,81 +32,20 @@ export const styleSnippet = `.separator[data-direction] {
   &[data-variant="solid"]:not([data-direction="vertical"]) {
     border-top: 1px solid rgb(var(--border-color));
   }
-}`;
+}
+```
 
-export const anatomySnippet = `${importSnippet}
-
-<Separator />;`;
-
-export const directionsSnippet = `import { Flex, Separator, Text } from "@locus-ui/components";
-
-export default function SeparatorDirectionsExample() {
-  return (
-    <>
-      <Flex direction="column" gap="2">
-        <Text>Top Text</Text>
-        <Separator direction="horizontal" />
-        <Text>Bottom Text</Text>
-      </Flex>
-
-      <Flex gap="2">
-        <Text>Left Text</Text>
-        <Separator direction="vertical" />
-        <Text>Right Text</Text>
-      </Flex>
-    </>
-  );
-}`;
-
-export const variantsSnippet = `${importSnippet}
-
-export default function SeparatorVariantsExample() {
-  const variants = ["solid", "dashed", "dotted"];
-
-  return variants.map((variant) => (
-    <Flex key={variant} gap="4" align="center" className="flex-1">
-      <Text>{variant.charAt(0).toUpperCase() + variant.slice(1)}</Text>
-      <Separator variant={variant} />
-    </Flex>
-  ));
-}`;
-
-export const variants = ["solid", "dashed", "dotted"];
-export const five = [...Array(5).keys()];
-
-# Separator Component
-
-A component for visually separating content with a line.
-
-<ComponentPreview
-  codeSnippets={[
-    {
-      title: "index.tsx",
-      code: indexSnippet,
-    },
-    {
-      title: "styles.css",
-      code: styleSnippet,
-    },
-  ]}
-  source="https://github.com/LocusInc/locus-ui/tree/main/packages/locus-ui/src/components/separator"
->
-  <Panel px="4" py="2" variant="outlined">
-    <Flex gap="2" direction="column">
-      <Text>My Movie</Text>
-      <Separator />
-      <Text>A movie made by me</Text>
-    </Flex>
-  </Panel>
-</ComponentPreview>
+<ViewSourceLink href="https://github.com/LocusInc/locus-ui/tree/main/packages/locus-ui/src/components/separator" />
 
 ## Anatomy
 
 Import the component:
 
-<CodeBox title="Anatomy" language="typescript" className="my-2">
-  {anatomySnippet}
-</CodeBox>
+```jsx code
+import { Separator } from "@locus-ui/components";
+
+<Separator />;
+```
 
 ## Examples
 
@@ -115,20 +53,23 @@ Import the component:
 
 The `variant` prop controls the line style: `solid` (default), `dashed`, or `dotted`.
 
-<PreviewBox title="variants.tsx" code={variantsSnippet}>
-  {variants.map((variant) => (
+```jsx
+<Flex gap="4" wrap="wrap" align="center" justify="center" className="w-full">
+  {["solid", "dashed", "dotted"].map((variant) => (
     <Flex key={variant} gap="4" align="center" className="flex-1">
       <Text>{variant.charAt(0).toUpperCase() + variant.slice(1)}</Text>
       <Separator variant={variant} />
     </Flex>
   ))}
-</PreviewBox>
+</Flex>
+```
 
 ### Directions
 
 The `direction` prop controls the orientation: `horizontal` (default) or `vertical`.
 
-<PreviewBox title="directions.tsx" code={directionsSnippet}>
+```jsx
+<Flex gap="4" wrap="wrap" align="center" justify="center" className="w-full">
   <Flex gap="4" wrap="wrap">
     <Flex direction="column" gap="2">
       <Text>Top Text</Text>
@@ -141,6 +82,6 @@ The `direction` prop controls the orientation: `horizontal` (default) or `vertic
       <Separator direction="vertical" />
       <Text>Right Text</Text>
     </Flex>
-
   </Flex>
-</PreviewBox>
+</Flex>
+```

@@ -1,144 +1,19 @@
+import { ViewSourceLink } from "@/components/markdown/view-source-link";
 import {
   Box,
   Button,
   ChevronRight,
   Dropdown,
   Text,
+  Flex,
 } from "@locus-ui/components";
-import { ComponentPreview } from "@/components/component-preview";
-import { PreviewBox } from "@/components/preview-box";
-import { CodeBox } from "@/components/code-box";
-export const importSnippet = `import { Button, Dropdown } from "@locus-ui/components";`;
-
-export const indexSnippet = `${importSnippet}
-
-export default function DropdownExample() {
-  return (
-    <Dropdown.Root variant="outlined">
-      <Dropdown.Trigger asChild>
-        <Button variant="outlined">Actions</Button>
-      </Dropdown.Trigger>
-
-      <Dropdown.Content>
-        <Dropdown.Item onSelect={() => console.log("edit")}>Edit</Dropdown.Item>
-        <Dropdown.Item onSelect={() => console.log("duplicate")}>
-          Duplicate
-        </Dropdown.Item>
-        <Dropdown.Separator />
-        <Dropdown.Item destructive onSelect={() => console.log("delete")}>
-          Delete
-        </Dropdown.Item>
-      </Dropdown.Content>
-    </Dropdown.Root>
-  );
-}`;
-
-export const anatomySnippet = `${importSnippet}
-
-<Dropdown.Root>
-  <Dropdown.Trigger />
-  <Dropdown.Content>
-    <Dropdown.Item />
-    <Dropdown.Separator />
-  </Dropdown.Content>
-</Dropdown.Root>;`;
-
-export const nestedSnippet = `import { Button, ChevronRight, Dropdown } from "@locus-ui/components";
-
-export default function DropdownNestedExample() {
-  return (
-    <Dropdown.Root variant="outlined">
-      <Dropdown.Trigger asChild>
-        <Button variant="outlined">Share</Button>
-      </Dropdown.Trigger>
-
-      <Dropdown.Content>
-        <Dropdown.Item>Email link</Dropdown.Item>
-
-        <Dropdown.Root>
-          <Dropdown.Trigger asChild>
-            <Dropdown.Item trailingIcon={<ChevronRight />}>Copy</Dropdown.Item>
-          </Dropdown.Trigger>
-
-          <Dropdown.Content>
-            <Dropdown.Item>Copy URL</Dropdown.Item>
-
-            <Dropdown.Root>
-              <Dropdown.Trigger asChild>
-                <Dropdown.Item trailingIcon={<ChevronRight />}>
-                  Advanced
-                </Dropdown.Item>
-              </Dropdown.Trigger>
-
-              <Dropdown.Content>
-                <Dropdown.Item>Copy debug URL</Dropdown.Item>
-              </Dropdown.Content>
-            </Dropdown.Root>
-          </Dropdown.Content>
-        </Dropdown.Root>
-      </Dropdown.Content>
-    </Dropdown.Root>
-  );
-}`;
-
-export const variantsSnippet = `${importSnippet}
-
-export default function DropdownVariantsExample() {
-  const variants = ["solid", "outlined", "muted"] as const;
-
-  return variants.map((variant) => (
-    <Dropdown.Root key={variant} variant={variant}>
-      <Dropdown.Trigger asChild>
-        <Button variant={variant}>
-          {variant.charAt(0).toUpperCase() + variant.slice(1)}
-        </Button>
-      </Dropdown.Trigger>
-
-      <Dropdown.Content>
-        <Dropdown.Item>Edit</Dropdown.Item>
-        <Dropdown.Item>Duplicate</Dropdown.Item>
-        <Dropdown.Separator />
-        <Dropdown.Item destructive>Delete</Dropdown.Item>
-      </Dropdown.Content>
-    </Dropdown.Root>
-  ));
-}`;
-
-export const customSnippet = `${importSnippet}
-import { Box, Text } from "@locus-ui/components";
-
-export default function DropdownCustomExample() {
-  return (
-    <Dropdown.Root variant="outlined">
-      <Dropdown.Trigger asChild>
-        <Button variant="outlined">Filters</Button>
-      </Dropdown.Trigger>
-
-      <Dropdown.Content mode="custom">
-        <Box p="3" className="flex min-w-52 flex-col gap-2">
-          <Text>Filter panel content</Text>
-          <Button size="1">Apply</Button>
-        </Box>
-      </Dropdown.Content>
-    </Dropdown.Root>
-  );
-}`;
-
-export const variants = ["solid", "outlined", "muted"];
 
 # Dropdown Component
 
 A portal-backed dropdown for action menus, separators, nested dropdowns, and custom overlay content.
 
-<ComponentPreview
-  codeSnippets={[
-    {
-      title: "index.tsx",
-      code: indexSnippet,
-    },
-  ]}
-  source="https://github.com/LocusInc/locus-ui/tree/main/packages/locus-ui/src/components/dropdown"
->
+```jsx featured
+<Flex gap="4" wrap="wrap" align="center" justify="center" className="w-full">
   <Dropdown.Root variant="outlined">
     <Dropdown.Trigger asChild>
       <Button variant="outlined">Actions</Button>
@@ -151,15 +26,26 @@ A portal-backed dropdown for action menus, separators, nested dropdowns, and cus
       <Dropdown.Item destructive>Delete</Dropdown.Item>
     </Dropdown.Content>
   </Dropdown.Root>
-</ComponentPreview>
+</Flex>
+```
+
+<ViewSourceLink href="https://github.com/LocusInc/locus-ui/tree/main/packages/locus-ui/src/components/dropdown" />
 
 ## Anatomy
 
 Import the component and its parts:
 
-<CodeBox title="Anatomy" language="typescript" className="my-2">
-  {anatomySnippet}
-</CodeBox>
+```jsx code
+import { Button, Dropdown } from "@locus-ui/components";
+
+<Dropdown.Root>
+  <Dropdown.Trigger />
+  <Dropdown.Content>
+    <Dropdown.Item />
+    <Dropdown.Separator />
+  </Dropdown.Content>
+</Dropdown.Root>;
+```
 
 ## Examples
 
@@ -167,8 +53,9 @@ Import the component and its parts:
 
 Dropdown content supports `solid`, `outlined`, and `muted` variants.
 
-<PreviewBox title="variants.tsx" code={variantsSnippet}>
-  {variants.map((variant) => (
+```jsx
+<Flex gap="4" wrap="wrap" align="center" justify="center" className="w-full">
+  {["solid", "outlined", "muted"].map((variant) => (
     <Dropdown.Root key={variant} variant={variant}>
       <Dropdown.Trigger asChild>
         <Button variant={variant}>
@@ -184,13 +71,15 @@ Dropdown content supports `solid`, `outlined`, and `muted` variants.
       </Dropdown.Content>
     </Dropdown.Root>
   ))}
-</PreviewBox>
+</Flex>
+```
 
 ### Nested Dropdowns
 
 Render a child `Dropdown.Root` inside another dropdown to create a submenu. Selecting a leaf item closes the full dropdown chain.
 
-<PreviewBox title="nested.tsx" code={nestedSnippet}>
+```jsx
+<Flex gap="4" wrap="wrap" align="center" justify="center" className="w-full">
   <Dropdown.Root variant="outlined">
     <Dropdown.Trigger asChild>
       <Button variant="outlined">Share</Button>
@@ -222,13 +111,15 @@ Render a child `Dropdown.Root` inside another dropdown to create a submenu. Sele
       </Dropdown.Root>
     </Dropdown.Content>
   </Dropdown.Root>
-</PreviewBox>
+</Flex>
+```
 
 ### Custom Content
 
 Dropdown content defaults to menu behavior. Use `mode="custom"` for arbitrary content.
 
-<PreviewBox title="custom.tsx" code={customSnippet}>
+```jsx
+<Flex gap="4" wrap="wrap" align="center" justify="center" className="w-full">
   <Dropdown.Root variant="outlined">
     <Dropdown.Trigger asChild>
       <Button variant="outlined">Filters</Button>
@@ -241,4 +132,5 @@ Dropdown content defaults to menu behavior. Use `mode="custom"` for arbitrary co
       </Box>
     </Dropdown.Content>
   </Dropdown.Root>
-</PreviewBox>
+</Flex>
+```

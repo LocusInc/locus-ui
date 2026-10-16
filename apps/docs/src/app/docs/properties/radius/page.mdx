@@ -1,178 +1,19 @@
+import { ViewSourceLink } from "@/components/markdown/view-source-link";
 import { Box, Flex, Text } from "@locus-ui/components";
-import { ComponentPreview } from "@/components/component-preview";
-import { PreviewBox } from "@/components/preview-box";
-import { CodeBox } from "@/components/code-box";
-export const importSnippet = `import { Box, Text } from "@locus-ui/components";`;
-
-export const indexSnippet = `${importSnippet}
-
-export default function RadiusExample() {
-  return (
-    <Box p="2" radius="md" className="border">
-      <Text>Medium Radius</Text>
-    </Box>
-  );
-}`;
-
-export const anatomySnippet = `${importSnippet}
-
-<>
-  <Box radius="md" />
-  <Box radius="26px" />
-  <Box radius={{ initial: "none", lg: "full" }} />
-</>;`;
-
-export const allRadiiSnippet = `${importSnippet}
-
-export default function RadiusAllRadiiExample() {
-  const numbers = ["1", "2", "3", "4", "5", "6"];
-  const radii = ["none", "xs", "sm", "md", "lg", "xl", "full"];
-
-  return numbers.map((number) => (
-    <Box key={number} className="flex gap-2">
-      {radii.map((radius) => (
-        <Box
-          p="2"
-          key={radius}
-          radius={radius}
-          roundness={number}
-          className="border"
-        >
-          <Text>
-            {radius}, {number}
-          </Text>
-        </Box>
-      ))}
-    </Box>
-  ));
-}`;
-
-export const inheritanceSnippet = `${importSnippet}
-
-export default function RadiusInheritanceExample() {
-  return (
-    <>
-      <Box radius="none" p="2" className="border">
-        <Text>No Radius</Text>
-
-        <Box radius="xl" p="2" className="border">
-          <Text>XL Radius</Text>
-
-          <Box p="2" className="border">
-            <Text>Default/Theme</Text>
-          </Box>
-        </Box>
-
-        <Box radius="inherit" p="2" className="border mt-2">
-          <Text>Inherit</Text>
-
-          <Box p="2" className="border">
-            <Text>Default/Theme</Text>
-          </Box>
-        </Box>
-      </Box>
-
-      <Box radius="9px" p="2" mt="4" className="border">
-        <Text>This box has a custom radius (9px)</Text>
-
-        <Box radius="inherit" p="2" mt="2" className="border">
-          <Text>Inherit</Text>
-        </Box>
-
-        <Box p="2" mt="2" className="border">
-          <Text>Default/Theme</Text>
-        </Box>
-      </Box>
-    </>
-  );
-}`;
-
-export const responsiveSnippet = `${importSnippet}
-
-export default function RadiusResponsiveExample() {
-  return (
-    <Box
-      p="2"
-      my="4"
-      radius={{ initial: "xs", sm: "xl", md: "full" }}
-      className="border"
-    >
-      <Text>
-        This box has breakpoint-specific radii (xs initial, xl on sm, full on
-        md)
-      </Text>
-    </Box>
-  );
-}`;
-
-export const cornerRadiiSnippet = `${importSnippet}
-
-export default function RadiusCornerRadiiExample() {
-  return (
-    <>
-      <Box p="2" radius-t="xl" radius="none" className="border">
-        <Text>XL top radius only</Text>
-      </Box>
-
-      <Box p="2" radius-l="xl" radius="none" className="border">
-        <Text>XL left radius only</Text>
-      </Box>
-
-      <Box p="2" radius-b="xl" radius="none" className="border">
-        <Text>XL bottom radius only</Text>
-      </Box>
-
-      <Box p="2" radius-r="xl" radius="none" className="border">
-        <Text>XL right radius only</Text>
-      </Box>
-    </>
-  );
-}`;
-
-export const individualCornerSnippet = `${importSnippet}
-
-export default function RadiusIndividualCornerExample() {
-  return (
-    <>
-      <Box p="2" radius-tl="xl" radius="none" className="border">
-        <Text>XL top-left radius only</Text>
-      </Box>
-
-      <Box p="2" radius-tr="xl" radius="none" className="border">
-        <Text>XL top-right radius only</Text>
-      </Box>
-
-      <Box p="2" radius-br="xl" radius="none" className="border">
-        <Text>XL bottom-right radius only</Text>
-      </Box>
-
-      <Box p="2" radius-bl="xl" radius="none" className="border">
-        <Text>XL bottom-left radius only</Text>
-      </Box>
-    </>
-  );
-}`;
-
-export const numbers = ["1", "2", "3", "4", "5", "6"];
-export const radii = ["none", "xs", "sm", "md", "lg", "xl", "full"];
 
 # Radius Property
 
 Controls the border-radius of elements. Supports scaled values, custom values, responsive breakpoints, inheritance, and individual corner control.
 
-<ComponentPreview
-  codeSnippets={[
-    {
-      title: "index.tsx",
-      code: indexSnippet,
-    },
-  ]}
-  source="https://github.com/LocusInc/locus-ui/tree/main/packages/locus-ui/src/props/radius.prop.ts"
->
+```jsx featured
+<Flex gap="4" wrap="wrap" align="center" justify="center" className="w-full">
   <Box p="2" radius="md" className="border border-[rgb(var(--border-1))]">
     <Text>Medium Radius</Text>
   </Box>
-</ComponentPreview>
+</Flex>
+```
+
+<ViewSourceLink href="https://github.com/LocusInc/locus-ui/tree/main/packages/locus-ui/src/props/radius.prop.ts" />
 
 ## Examples
 
@@ -180,11 +21,12 @@ Controls the border-radius of elements. Supports scaled values, custom values, r
 
 The `radius` prop accepts values `none`, `xs`, `sm`, `md`, `lg`, `xl`, and `full`. Combined with the `roundness` multiplier (`1`–`6`), this creates a full matrix of border-radius options.
 
-<PreviewBox title="all-radii.tsx" code={allRadiiSnippet}>
+```jsx
+<Flex gap="4" wrap="wrap" align="center" justify="center" className="w-full">
   <Flex direction="column" gap="2">
-    {numbers.map((number) => (
+    {["1", "2", "3", "4", "5", "6"].map((number) => (
       <Flex key={number} gap="2">
-        {radii.map((radius) => (
+        {["none", "xs", "sm", "md", "lg", "xl", "full"].map((radius) => (
           <Box
             p="2"
             key={radius}
@@ -200,13 +42,15 @@ The `radius` prop accepts values `none`, `xs`, `sm`, `md`, `lg`, `xl`, and `full
       </Flex>
     ))}
   </Flex>
-</PreviewBox>
+</Flex>
+```
 
 ### Inheritance
 
 Radius values can be inherited from parent elements using `radius="inherit"`, or fall back to the theme default.
 
-<PreviewBox title="inheritance.tsx" code={inheritanceSnippet}>
+```jsx
+<Flex gap="4" wrap="wrap" align="center" justify="center" className="w-full">
   <Box radius="none" p="2" className="border border-[rgb(var(--border-1))]">
     <Text>No Radius</Text>
     <Box radius="xl" p="2" className="border border-[rgb(var(--border-1))]">
@@ -245,13 +89,15 @@ Radius values can be inherited from parent elements using `radius="inherit"`, or
       <Text>Default/Theme</Text>
     </Box>
   </Box>
-</PreviewBox>
+</Flex>
+```
 
 ### Responsive
 
 Radius supports responsive values using breakpoint objects.
 
-<PreviewBox title="responsive.tsx" code={responsiveSnippet}>
+```jsx
+<Flex gap="4" wrap="wrap" align="center" justify="center" className="w-full">
   <Box
     p="2"
     my="4"
@@ -262,13 +108,15 @@ Radius supports responsive values using breakpoint objects.
       This box has breakpoint-specific radii (xs initial, xl on sm, full on md)
     </Text>
   </Box>
-</PreviewBox>
+</Flex>
+```
 
 ### Side Radii
 
 Use `radius-t`, `radius-r`, `radius-b`, and `radius-l` to set radius on specific sides.
 
-<PreviewBox title="side-radii.tsx" code={cornerRadiiSnippet}>
+```jsx
+<Flex gap="4" wrap="wrap" align="center" justify="center" className="w-full">
   <Flex gap="2">
     <Box
       p="2"
@@ -303,13 +151,15 @@ Use `radius-t`, `radius-r`, `radius-b`, and `radius-l` to set radius on specific
       <Text>XL right radius only</Text>
     </Box>
   </Flex>
-</PreviewBox>
+</Flex>
+```
 
 ### Individual Corner Radii
 
 Use `radius-tl`, `radius-tr`, `radius-br`, and `radius-bl` to set radius on individual corners.
 
-<PreviewBox title="individual-corners.tsx" code={individualCornerSnippet}>
+```jsx
+<Flex gap="4" wrap="wrap" align="center" justify="center" className="w-full">
   <Flex gap="2">
     <Box
       p="2"
@@ -344,4 +194,5 @@ Use `radius-tl`, `radius-tr`, `radius-br`, and `radius-bl` to set radius on indi
       <Text>XL bottom-left radius only</Text>
     </Box>
   </Flex>
-</PreviewBox>
+</Flex>
+```
