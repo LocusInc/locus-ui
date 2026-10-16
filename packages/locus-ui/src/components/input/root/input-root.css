@@ -1,0 +1,153 @@
+.input-layout {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: flex-start;
+  min-width: 0;
+  gap: calc(8px * var(--lcs-spacing, 1));
+
+  &[data-label-position="left"],
+  &[data-label-position="right"] {
+    flex-direction: row;
+    align-items: center;
+  }
+
+  &[data-label-position="right"],
+  &[data-label-position="bottom"] {
+    & > .input-label {
+      order: 1;
+    }
+  }
+}
+
+.input[data-variant] {
+  --input-color: var(--color, var(--primary));
+  --input-outline-color: rgba(var(--color, var(--surface-2)), 0.7);
+  --input-solid-background: rgb(var(--bg-2));
+  --input-padding-y: calc(4px * var(--lcs-spacing, 1));
+  --input-padding-x: calc(8px * var(--lcs-spacing, 1));
+
+  display: inline-flex;
+  align-items: center;
+  box-sizing: border-box;
+  min-width: 0;
+  overflow: hidden;
+  gap: 0;
+  padding: 0;
+  border: 1px solid transparent;
+  border-radius: var(--lcs-radius, 4px);
+  color: inherit;
+  font-size: medium;
+  line-height: 1.5;
+
+  /* Sizes */
+  &[data-size="xs"] {
+    --input-padding-y: calc(1px * var(--lcs-spacing, 1));
+    --input-padding-x: calc(2px * var(--lcs-spacing, 1));
+    font-size: x-small;
+  }
+
+  &[data-size="sm"] {
+    --input-padding-y: calc(2px * var(--lcs-spacing, 1));
+    --input-padding-x: calc(4px * var(--lcs-spacing, 1));
+    font-size: small;
+  }
+
+  &[data-size="lg"] {
+    --input-padding-y: calc(6px * var(--lcs-spacing, 1));
+    --input-padding-x: calc(12px * var(--lcs-spacing, 1));
+    font-size: large;
+  }
+
+  &[data-size="xl"] {
+    --input-padding-y: calc(8px * var(--lcs-spacing, 1));
+    --input-padding-x: calc(16px * var(--lcs-spacing, 1));
+    font-size: x-large;
+  }
+
+  /* Solid variant */
+  &[data-variant="solid"] {
+    background-color: var(--input-solid-background);
+    border-color: transparent;
+
+    &:focus-within {
+      --input-outline-color: rgb(var(--input-color));
+      outline: 2px solid rgba(var(--input-color), 0.5);
+      outline-offset: 2px;
+      border-color: rgb(var(--input-color));
+    }
+  }
+
+  /* Outlined variant */
+  &[data-variant="outlined"] {
+    background-color: transparent;
+    border-color: var(--input-outline-color);
+
+    &:focus-within {
+      --input-outline-color: rgb(var(--input-color));
+      outline: 2px solid rgba(var(--input-color), 0.5);
+      outline-offset: 2px;
+      border-color: rgb(var(--input-color));
+    }
+  }
+
+  /* Muted variant */
+  &[data-variant="muted"] {
+    background-color: rgba(var(--input-color), 0.15);
+    border-color: rgb(var(--input-color), 0.15);
+
+    &:focus-within {
+      --input-outline-color: rgb(var(--input-color));
+      outline: 2px solid rgba(var(--input-color), 0.5);
+      outline-offset: 2px;
+      border-color: rgb(var(--input-color));
+    }
+  }
+
+  /* Clear variant */
+  &[data-variant="clear"] {
+    background-color: transparent;
+    border-color: transparent;
+
+    &:focus-within {
+      --input-outline-color: rgb(var(--input-color));
+      outline: 2px solid rgba(var(--input-color), 0.5);
+      outline-offset: 2px;
+      border-color: rgb(var(--input-color));
+    }
+  }
+
+  /* Shared states */
+  &[data-invalid="true"] {
+    --input-color: var(--danger);
+    --input-outline-color: rgb(var(--input-color));
+    border-color: rgb(var(--input-color));
+  }
+
+  &[data-disabled="true"] {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+
+  & > .input-field {
+    flex: 1;
+    min-width: 0;
+    width: 100%;
+    padding: var(--input-padding-y) var(--input-padding-x);
+    border: 0;
+    border-radius: 0;
+    outline: none;
+    background: transparent;
+    color: inherit;
+    font: inherit;
+
+    &::placeholder {
+      --placeholder-color: var(--color, var(--text));
+      color: rgb(var(--placeholder-color));
+      opacity: 0.5;
+    }
+
+    &:disabled {
+      cursor: not-allowed;
+    }
+  }
+}

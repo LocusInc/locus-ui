@@ -7,6 +7,14 @@ export { Container } from "./container";
 export { Dropdown } from "./dropdown";
 export { Flex } from "./flex";
 export { Grid } from "./grid";
+export { Input } from "./input";
+export type {
+  InputProps,
+  InputRootProps,
+  InputLabelProps,
+  InputLabelPosition,
+  InputSlotProps,
+} from "./input";
 export { Panel } from "./panel";
 export { Portal } from "./portal";
 export { ProgressBar } from "./progress-bar";

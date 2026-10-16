@@ -1,0 +1,7 @@
+.input-label {
+  flex-shrink: 0;
+}
+
+.input[data-variant] > .input-label[data-position="inside"] {
+  padding-left: var(--input-padding-x);
+}

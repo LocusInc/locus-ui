@@ -1,0 +1,148 @@
+# Tooltip Component
+
+A versatile Tooltip, managing state, context, and styling.
+
+```tsx
+import { Button, Tooltip } from "@locus-ui/components";
+import styles from "./styles.css";
+
+export default function TooltipExample() {
+  return (
+    <Tooltip.Root>
+      <Tooltip.Trigger>
+        <Button variant="muted">Help</Button>
+      </Tooltip.Trigger>
+
+      <Tooltip.Content variant="outlined">This is the help</Tooltip.Content>
+    </Tooltip.Root>
+  );
+}
+```
+
+```css
+.tooltip-content[data-variant] {
+  position: relative;
+  border-radius: min(32px, var(--lcs-radius, 0px));
+  padding: calc(4px * var(--lcs-spacing, 1)) calc(8px * var(--lcs-spacing, 1));
+
+  &[data-variant="solid"] {
+    background-color: rgb(var(--surface-1));
+    border: 1px solid transparent;
+  }
+
+  &[data-variant="outlined"] {
+    background-color: rgba(var(--surface-1), 0.8);
+    border: 1px solid rgba(var(--color, var(--border-1)));
+  }
+
+  &[data-variant="muted"] {
+    background-color: rgba(var(--surface-1), 0.6);
+    border: 1px solid transparent;
+  }
+}
+```
+
+## Anatomy
+
+Import the component and its parts:
+
+```typescript
+import { Button, Tooltip } from "@locus-ui/components";
+
+<Tooltip.Root>
+  <Tooltip.Trigger />
+  <Tooltip.Content />
+</Tooltip.Root>;
+```
+
+## Examples
+
+### Variants
+
+Tooltip content comes with three built in variants, `solid`, `outlined`, and `muted`.
+
+```tsx
+import { Button, Tooltip } from "@locus-ui/components";
+
+export default function TooltipVariantsExample() {
+  const variants = ["solid", "outlined", "muted"];
+
+  return variants.map((variant) => (
+    <Tooltip.Root key={variant}>
+      <Tooltip.Trigger>
+        <Button variant="muted">
+          {variant.charAt(0).toUpperCase() + variant.slice(1)}
+        </Button>
+      </Tooltip.Trigger>
+      <Tooltip.Content variant={variant}>
+        {variant.charAt(0).toUpperCase() + variant.slice(1)} Tooltip
+      </Tooltip.Content>
+    </Tooltip.Root>
+  ));
+}
+```
+
+### Sides
+
+The `side` prop controls which side of the trigger the tooltip appears on: `top`, `right`, `bottom`, or `left`.
+
+```tsx
+import { Button, Tooltip } from "@locus-ui/components";
+
+export default function TooltipSidesExample() {
+  const sides = ["top", "right", "bottom", "left"];
+
+  return sides.map((side) => (
+    <Tooltip.Root key={side} side={side}>
+      <Tooltip.Trigger>
+        <Button variant="muted">
+          {side.charAt(0).toUpperCase() + side.slice(1)}
+        </Button>
+      </Tooltip.Trigger>
+      <Tooltip.Content variant="outlined">
+        {side.charAt(0).toUpperCase() + side.slice(1)} Tooltip
+      </Tooltip.Content>
+    </Tooltip.Root>
+  ));
+}
+```
+
+### Open on Click
+
+The `openOnClick` prop enables opening the tooltip by clicking the trigger instead of hovering.
+
+```tsx
+import { Button, Tooltip } from "@locus-ui/components";
+
+export default function TooltipOpenOnClickExample() {
+  return (
+    <Tooltip.Root openOnHover={false} openOnClick>
+      <Tooltip.Trigger>
+        <Button variant="muted">Click Me</Button>
+      </Tooltip.Trigger>
+      <Tooltip.Content variant="outlined">Opened by click</Tooltip.Content>
+    </Tooltip.Root>
+  );
+}
+```
+
+### Delay
+
+The `delay` prop controls the hover delay in milliseconds before the tooltip opens.
+
+```tsx
+import { Button, Tooltip } from "@locus-ui/components";
+
+export default function TooltipDelayExample() {
+  const delays = [0, 300, 1000];
+
+  return delays.map((delay) => (
+    <Tooltip.Root key={delay} delay={delay}>
+      <Tooltip.Trigger>
+        <Button variant="muted">{delay}ms</Button>
+      </Tooltip.Trigger>
+      <Tooltip.Content variant="outlined">{delay}ms delay</Tooltip.Content>
+    </Tooltip.Root>
+  ));
+}
+```

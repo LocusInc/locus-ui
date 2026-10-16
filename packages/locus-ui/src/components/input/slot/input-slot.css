@@ -1,0 +1,45 @@
+.input[data-variant] {
+  & > .input-slot {
+    display: inline-flex;
+    align-items: stretch;
+    flex-shrink: 0;
+    align-self: stretch;
+    margin: 0;
+    padding: 0;
+    gap: 0;
+  }
+}
+
+.input-slot-content[data-variant] {
+  --input-slot-color: var(--color, var(--input-color, var(--primary)));
+
+  display: inline-flex;
+  align-items: center;
+  align-self: stretch;
+  box-sizing: border-box;
+  color: inherit;
+  background-color: transparent;
+
+  &[data-variant="outlined"] {
+    .input-slot[data-side="start"] > & {
+      box-shadow: inset -1px 0 0 var(--input-outline-color, rgba(var(--surface-2), 0.7));
+    }
+
+    .input-slot[data-side="end"] > & {
+      box-shadow: inset 1px 0 0 var(--input-outline-color, rgba(var(--surface-2), 0.7));
+    }
+  }
+
+  &[data-variant="solid"] {
+    background-color: var(--input-solid-background, rgb(var(--bg-2)));
+  }
+
+  &[data-variant="muted"] {
+    background-color: rgba(var(--input-slot-color), 0.2);
+    color: rgb(var(--input-slot-color));
+
+    [data-appearance="light"] & {
+      color: color-mix(in srgb, rgb(var(--input-slot-color)), black 40%);
+    }
+  }
+}

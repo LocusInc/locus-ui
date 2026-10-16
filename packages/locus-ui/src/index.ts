@@ -8,6 +8,7 @@ export {
   Dropdown,
   Flex,
   Grid,
+  Input,
   Panel,
   Portal,
   ProgressBar,
@@ -23,6 +24,11 @@ export {
 } from "./components";
 
 export type {
+  InputProps,
+  InputRootProps,
+  InputLabelProps,
+  InputLabelPosition,
+  InputSlotProps,
   ThemeAppearance,
   ThemeColorConfig,
   ThemeColors,
